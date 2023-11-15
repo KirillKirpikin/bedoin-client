@@ -1,0 +1,46 @@
+// @import '../../style/style';
+
+.coffee {
+    background: #F9F9F9;
+    // .coffee__container
+    // &__container {}   
+ 
+    // .coffee__text
+    &__text {
+        color: #415167;
+        font-family: Montserrat;
+        @include adaptiveValue("font-size", 36, 24,0,1320,375 );
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+    }
+    // .coffee__title
+    &__title {
+        color: #415167;
+        /* hEADLINE */
+        font-family: Uni Sans;
+        font-size: 48px;
+        @include adaptiveValue("font-size", 48, 24,0,1320,375 );
+        font-style: normal;
+        font-weight: 900;
+        line-height: normal;
+        margin-top: rem(25);
+        margin-bottom: rem(70);
+    }
+    // .coffee__list
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -10px;
+        @media (max-width: em(1069)){
+            justify-content: space-between;
+        }
+        @media (max-width:$mobile){
+            justify-content: center;
+              
+        }
+    }
+}
+
+
+

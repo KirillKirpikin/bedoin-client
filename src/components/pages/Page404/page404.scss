@@ -1,0 +1,34 @@
+.error-page {
+    background: #F9F9F9;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    // .error-page__container
+    &__container {
+        display: flex;
+        flex-direction: column;
+        align-items:center;
+    }
+    // .error-page__img
+    &__img {
+        max-width: 880px;
+        @include adaptiveValue("margin-bottom", 80, 20, 0, 1350, 375 );
+        svg{
+            width: 100%;
+        }
+    }
+    // .error-page__txt
+    &__txt {
+        color: var(--415167, #415167);
+        text-align: center;
+        font-family: Montserrat;
+        font-size: 36px;
+        @include adaptiveValue("font-size", 36, 26, 0, 1350, 375 );
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+        max-width: 700px;
+        margin-bottom: rem(40);
+    }
+    
+}
+

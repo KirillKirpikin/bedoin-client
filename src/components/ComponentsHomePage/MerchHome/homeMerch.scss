@@ -1,0 +1,90 @@
+// @import '../../style/style';
+
+.home-merch {
+    background: #F9F9F9;
+    @include adaptiveValue("padding-top", 200, 170, 0, 768, 375);
+    // padding-top: 200px;
+    @include adaptiveValue("padding-bottom", 250, 170, 0, 768, 375);
+    // .home-merch__container
+    &__bg{
+        background: #F2F2F2;
+        @media (max-width:$mobile){
+            @include adaptiveValue("padding-bottom", 300, 170, 0, 768, 375);
+        }
+    }
+    &__container {
+        display: flex;
+        align-items:center;
+        position: relative;
+        
+        // width: 100%;
+        @media (max-width:$mobile){
+            flex-direction: column;
+        }
+    }
+    // .home-merch__info
+    &__info {        
+        @media (min-width:$mobile){
+            width: 640px;
+            padding-top: 69px;
+            padding-bottom: 69px;
+        }      
+    }
+
+    &__text{
+        @media (max-width:$mobile){              
+            padding: 40px 45px 0;
+        }
+    }
+    // .home-merch__title
+    &__title {
+        color: #000;
+        /* hEADLINE */
+        font-family: Uni Sans;
+        @include adaptiveValue("font-size", 48, 20, 0, 1070, 375);
+        font-style: normal;
+        font-weight: 900;
+        line-height: normal;
+        margin-bottom: rem(25);
+    }
+    // .home-merch__txt
+    &__txt {
+        color: #415167;
+        /* H4 */
+        font-family: Montserrat;
+        @include adaptiveValue("font-size", 24, 18, 0, 1070, 375);
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+        margin-bottom: rem(40);
+    }
+    // .home-merch__btn
+    &__btn {
+        @media (max-width:$mobile){
+            display: flex;
+            justify-content: center; 
+        }
+    }
+    // .home-merch__img
+    &__img {
+        position: absolute;
+        @include adaptiveValue("top", -85, 50, 0, 1320, 1070 );
+        // top:-150px;
+        right: -80px;              
+        @media (max-width:$mobile){
+            top: 300px;
+            right: auto;
+        }
+        // max-width: 650px;
+        img{
+            @include adaptiveValue("width", 650, 400, 0, 1320, 1070);
+            @media (max-width:$mobile){
+                @include adaptiveValue("width", 650, 400, 0, 768, 375);
+                  
+            }
+            transform: rotate(30deg);
+        }
+    }
+}
+.btn {
+}

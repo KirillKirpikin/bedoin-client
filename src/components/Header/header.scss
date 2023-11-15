@@ -1,0 +1,327 @@
+// @import '../../style/base/mixins.scss';
+
+.header {
+    // background-color: #ec9a1f;
+    padding: 25px 0;
+    z-index: 10;
+    
+
+    // .header__container
+
+    // &__container {
+    //     // display: flex;
+    // }
+
+    // .header__menu
+
+
+    &__menu {
+        display: flex;
+        justify-content: space-between;
+        align-items:center;
+    }
+}
+.menu {
+    
+
+    // .menu__body
+
+    &__body {
+        @media (max-width:$mobile){
+            position: fixed;
+            top: 93px;
+            left: -100%;
+            top: 93px;           
+            width: 100%;
+            height: 100%;
+            background-color:#F9F9F9;
+            transition: all 0.3s ease 0s;
+            &-active{            
+                transform: translateX(100%);            
+            }
+        }
+        
+    }
+
+
+    // .menu__list
+
+    &__list {
+        display: flex;
+        align-items: center;
+        @media (max-width:$mobile){
+            flex-direction: column;
+            align-items: start;
+            padding-left: 20px;
+            padding-top: 30px;
+        }
+        
+        
+    }
+
+    // .menu__item
+
+    &__item {
+        font-family: Uni Sans;
+        font-size: 20px;
+        color: #FFF;
+
+        @media (max-width:$mobile){
+            color: black;
+            margin-bottom: 20px;
+            font-size: 38px;
+        }
+        transition: all 0.2s ease 0s;
+        &:hover{
+            color: #415167;
+            svg{
+                fill:#415167;
+            }
+        }
+
+        &:not(:last-child) {
+            @include adaptiveValue("margin-right", 74, 15, 0, 1440, 768);
+        }
+        &-drop{
+            display: flex;
+            align-items:center;
+            position: relative;
+            cursor: pointer;
+            svg{
+                transition: all 0.2s ease 0s;
+                width: 32.727px;
+                height: 32.727px;
+                margin-left: 5px;
+                fill: #FFF;
+                @media (max-width:$mobile){
+                    fill: black;
+                    
+                }
+            }
+            &-active{               
+                color: #415167;
+                svg{
+                    transform: rotate(180deg);
+                    fill:#415167;
+                }
+            }
+        }
+
+       
+    }
+
+    // .menu__logo
+
+    &__logo {
+        svg{
+            fill: white;
+        }
+    }
+
+    // .menu__info
+
+    &__info {
+        display: flex;
+        align-items:center;
+        
+    }
+
+    // .menu__cart
+
+    &__cart {
+        position: relative;
+        display: flex;
+        align-items: center;
+        font-family: Uni Sans;
+        font-size: 20px;
+        color: #FFF;
+        transition: all 0.2s ease 0s;
+        p{
+            cursor: pointer;
+        }
+        &:hover{
+            color: #415167;
+            svg{
+                fill:#415167;
+            }
+        }
+        
+        @media (max-width:$mobile){
+            p{
+                display: none;
+                
+            }
+            
+        }
+        
+        svg{
+            transition: all 0.2s ease 0s;
+            margin-left: 10px;
+            fill: #FFF;
+            cursor: pointer;
+            @media (max-width:$mobile){
+                width: 28px;
+                height: 28px;
+
+            }
+            
+        }
+    }
+
+    &__length{
+        display: flex;
+        align-items:center;
+        justify-content: center;
+        position: absolute;
+        top: 10px;
+        right: -11px;
+        background-color: black;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        color: var(--ffffff, #FFF);
+        font-family: Uni Sans;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 900;
+        line-height: normal;
+        @media (max-width:$mobile){
+            top: 14px;
+            right: -7px;
+        }
+
+    }
+
+    // .menu__phone
+
+    &__phone {
+        a{display: flex;
+        align-items: center;
+        font-family: Uni Sans;
+        font-size: 20px;
+        color: #FFF;
+
+        transition: all 0.2s ease 0s;
+        &:hover{
+            color: #415167;
+            svg{
+                fill:#415167;
+            }
+        }
+        @include adaptiveValue("margin-left", 41, 10, 0, 1440, 768, );
+        @media (max-width:$mobile){
+            p{
+                display: none;
+            }
+            
+        }
+        
+        svg{
+            transition: all 0.2s ease 0s;
+            fill: #FFF;
+            margin-left: 10px;
+            @media (max-width:$mobile){
+                width: 28px;
+                height: 28px;
+            }
+            
+        }}
+    }
+}
+
+
+
+.icon-menu {
+	display: none;
+	@media (max-width: $mobile) {
+		display: block;
+		position: relative;
+		width: rem(30);
+		height: rem(20);
+		margin-left: rem(20);
+		cursor: pointer;
+		z-index: 5;
+		span,
+		&::before,
+		&::after {
+			content: "";
+			transition: all 0.3s ease 0s;
+			right: 0;
+			position: absolute;
+			width: 100%;
+			height: rem(2.4);
+			background-color: #FFFFFF;
+		}
+		&::before {
+			top: 0;
+		}
+		&::after {
+			bottom: 0;
+		}
+		span {
+			top: calc(50% - rem(1));
+		}
+		
+	}
+}
+
+.menu-open {
+    span {
+        width: 0;
+    }
+    &::before,
+    &::after {
+        background-color: #FFFFFF;
+    }
+    &::before {
+        top: calc(50% - rem(1));
+        transform: rotate(-45deg);
+    }
+    &::after {
+        bottom: calc(50% - rem(1));
+        transform: rotate(45deg);
+    }
+}
+
+.color-black{
+    color:#000;
+    p{
+        color:#000;
+        
+    }
+    a{
+        svg{
+            fill: #000;
+        }
+    }
+    svg{
+        fill: black;
+    }
+    span,
+    &::before,
+    &::after {
+        background-color: #000;
+    }
+
+    &:hover{
+            color:#415167;
+        p{
+            color:#415167;
+            
+        }
+        a{
+            svg{
+                fill: #415167;
+            }
+        }
+        svg{
+            fill: #415167;
+        }
+        span,
+        &::before,
+        &::after {
+            background-color: #415167;
+        }
+    }
+    
+}

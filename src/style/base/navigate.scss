@@ -1,0 +1,38 @@
+.navigate {  
+    display: flex;
+    align-items:center;      
+    flex-wrap: wrap;
+    @include adaptiveValue("padding-top", 90, 55, 0, 1320, 375);
+    @include adaptiveValue("padding-bottom", 90, 50, 0, 1320, 375);
+    svg{
+        width: 25px;
+        // height: 29px;
+        fill: #000000;
+        transform: rotate(90deg);
+        margin: 0 30px;
+    }
+    &__link{
+        color: #000;
+        /* H8 */
+        font-family: Uni Sans;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 900;
+        line-height: normal;
+        &:hover{
+            color: #415167;
+        }
+
+    &-this{
+        color: #415167;
+    }
+    }
+}
+
+// <div className="navigate">
+//     <Link className='navigate__link' to={ROUTES.HOME}>головна</Link>
+//     <ArrowSvg/>
+//     <Link className='navigate__link' to={ROUTES.COFFEE}>кава</Link>
+//     <ArrowSvg/>
+//     <Link className='navigate__link navigate__link-this'>{!data ? 'кава' :data.title}</Link>
+// </div>

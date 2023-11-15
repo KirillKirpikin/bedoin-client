@@ -1,0 +1,117 @@
+// @import '../../../style/style.scss';
+
+.sliderContainer{
+   @include adaptiveValue("width", 500, 350, 0, 1350, 768);
+   @media (max-width:$mobile){
+    @include adaptiveValue("width", 500, 345, 0, 768, 320);
+   }
+
+    height: auto;
+}
+
+.main-slider{
+    width: 100%;
+    .swiper-button-prev,
+    .swiper-button-next{
+        display: none;
+    }
+ 
+    // width: 100%;
+    &__slide{
+        // img{
+        //     width: 100%;
+        //     height: auto;
+        //     object-fit: cover;
+        // }
+
+    }
+    &__img{     
+        img{
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+            }   
+
+    }
+
+    &__txt{
+        color: #FFF;
+        text-align: right;
+        font-family: Uni Sans;
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 900;
+        line-height: normal;
+        text-align: center;
+    }
+    &__navigation{
+        @include adaptiveValue("margin-top", 40, 30, 0, 768, 320);
+        display: flex;
+        justify-content: space-around;        
+        @media (max-width:$mobile){
+            justify-content: space-between;
+        }
+        .swiper-button-disabled{
+            svg{
+                fill: #ede5e5;
+                opacity: 0.5;
+                &:hover{
+                    fill:#ede5e5;
+                }
+            }
+        }
+
+
+    }
+    &__prev{        
+        // object-fit: cover;
+        z-index: 2;
+        // margin-right: 30px;
+        cursor: pointer;
+        svg{
+            transition: all 0.2s ease 0s;
+            fill: #FFF;
+            width: 60px;
+            height: 60px;
+            transform: rotate(90deg);
+            @media (any-hover: hover){
+                &:hover{
+                    fill: #415167;
+                }
+            }
+        }
+        
+        -moz-user-select: -moz-none;
+        -o-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+
+    }
+    &__next{
+        
+        cursor: pointer;
+        svg{
+            transition: all 0.2s ease 0s;
+            fill: #FFF;
+            width: 60px;
+            height: 60px;
+            transform: rotate(-90deg);
+            @media (any-hover: hover){
+                &:hover{
+                    fill: #415167;
+                }
+            }
+        }
+        -moz-user-select: -moz-none;
+        -o-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+
+
+    }
+
+   
+}
+

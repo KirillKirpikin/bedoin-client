@@ -1,0 +1,55 @@
+// @import '../../style/style';
+
+.home-drip {
+    background:#F9F9F9;
+    @include adaptiveValue("padding-bottom", 200, 130, 0, 1320, 768);
+    // .home-drip__container
+    // &__container {}
+     // .home-drip__subtitle
+     &__subtitle {
+        color: #415167;
+        /* Headline */
+        font-family: Montserrat;
+        @include adaptiveValue("font-size", 36, 24, 0, 1320, 768);
+        font-weight: 300;
+        margin-bottom: rem(25);
+     }
+     // .home-drip__title
+     &__title {
+        color: #415167;
+        font-family: Uni Sans;
+        font-size: 48px;
+        font-weight: 900;
+        @include adaptiveValue("margin-bottom", 90, 60, 0, 1320, 768 );
+    }
+     // .home-drip__list
+     &__list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-right: -30px;
+        @media (max-width: em(1068)){
+            margin-right: -10px;
+        }
+        @media (max-width:$mobile){
+            flex-direction: column;
+            flex-wrap: nowrap;   
+            align-items: center         
+        }
+
+     }
+     // .home-drip__bottom
+     &__bottom {
+        display: flex;
+        justify-content: center; 
+        a{
+            padding: 30px 65px;
+            font-size: 24px;
+        }   
+     }
+}
+// .btn {
+// }
+
+
+

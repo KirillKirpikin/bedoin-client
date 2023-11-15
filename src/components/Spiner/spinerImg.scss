@@ -1,0 +1,24 @@
+.skeleton{
+    height: 300px;
+    display: flex;
+    align-items: center;
+    &-mini{
+        height: 105px;
+    }
+
+    &__object{
+        width: 75px;
+        height: 75px;
+        border: 5px solid #f3f3f3;
+        border-top: 5px solid #1c1e1f;
+        border-radius: 50%;
+        animation: spin 2s linear infinite;
+        margin: 0 auto;
+    }
+    
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+}

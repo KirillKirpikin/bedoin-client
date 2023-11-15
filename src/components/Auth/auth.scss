@@ -1,0 +1,73 @@
+.auth {
+    background: #F9F9F9;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    // .auth__container
+    &__container {
+        display: flex;
+        justify-content: center;
+    }
+    &__form{
+        width: 500px;
+        border: 2px solid #000;
+        border-radius: 15px;
+        padding: 20px 30px;
+        
+    }
+    &__title{
+        color:  #000;
+        font-family: Montserrat;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        margin-bottom: 15px;
+    }
+    &__reject{
+        color:  red;
+        font-family: Montserrat;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        margin-bottom: 15px;
+    }
+    // .auth__input
+    &__input {
+        // width: 90%;
+        display: flex;
+        align-items:center;
+        margin-bottom: 20px;
+        input{
+            width: 100%;
+            padding: 23px 30px;
+            align-items: center;
+            border-radius: 15px;
+            border: 2px solid #000;
+            background: #FFF;
+            color: var(--415167, #415167);
+
+            font-family: Montserrat;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+        &-error{
+            input{
+                border: 2px solid #B00404; 
+            }
+        }
+    }
+    // .auth__btn
+    &__btn {
+        display: flex;
+        justify-content: flex-end;
+        button{
+            padding: 20px 45px;
+        }
+
+    }
+}
+.btn {
+}

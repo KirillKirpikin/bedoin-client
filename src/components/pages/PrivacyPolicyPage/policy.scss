@@ -1,0 +1,28 @@
+.policy {
+    background: #F9F9F9;
+    padding-bottom: 25px;
+    // .policy__container
+    // &__container {}
+    // .policy__title
+    &__title {
+        color: #000;
+        /* HEADLINE */
+        font-family: Uni Sans;
+        @include adaptiveValue("font-size", 36, 24, 0, 1320, 768);
+        font-style: normal;
+        font-weight: 900;
+        line-height: normal;
+        @include adaptiveValue("margin-bottom", 60, 30, 0, 1320, 768);
+    }
+    // .policy__txt
+    &__txt {
+        color: #000;
+        /* paragraph */
+        font-family: Montserrat;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+}
+

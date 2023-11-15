@@ -1,0 +1,35 @@
+// @import '../../style/style';
+
+.radio {
+    display: flex;
+    // width: 100%;
+    justify-content: space-between;
+    // .radio__btn
+    &__btn {
+        cursor: pointer;
+        color: #000;
+        /* Н4 */
+        font-family: Montserrat;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        border-radius: 10px;
+        border: 1px solid rgba(0, 0, 0, 0.30);
+        width: 160px;
+        text-align: center;
+        padding: rem(10);
+        transition: all 0.3s ease 0s;
+        // &:not(:last-child) {
+        //     // margin-right: rem(25);
+        // }
+        &:hover{
+            background:#000; 
+            color:#FFF;         
+        }
+        &-active{
+            background:#000; 
+            color:#FFF;  
+        }
+    }
+}

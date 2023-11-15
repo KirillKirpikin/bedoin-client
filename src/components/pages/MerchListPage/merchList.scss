@@ -1,0 +1,19 @@
+.merch {
+    // .merch__container
+    background: #F9F9F9;
+    // &__container {}
+    // .merch__list
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -10px;
+        @media (max-width: em(1069)){
+            justify-content: space-between;
+        }
+        @media (max-width:$mobile){
+            justify-content: center;
+              
+        }
+        padding-bottom: 50px;
+    }
+}

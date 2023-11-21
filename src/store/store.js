@@ -33,7 +33,7 @@ const store = configureStore({
     middleware: (getDefaultMiddleware)=> getDefaultMiddleware({serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       }}).concat(api.middleware),
-    devTools: true,
+    devTools: false,
 })
 
 const persistor = persistStore(store);

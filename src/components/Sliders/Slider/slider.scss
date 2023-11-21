@@ -1,11 +1,8 @@
-// @import '../../../style/style.scss';
-
 .sliderContainer{
    @include adaptiveValue("width", 500, 350, 0, 1350, 768);
    @media (max-width:$mobile){
     @include adaptiveValue("width", 500, 345, 0, 768, 320);
    }
-
     height: auto;
 }
 
@@ -15,30 +12,18 @@
     .swiper-button-next{
         display: none;
     }
- 
-    // width: 100%;
-    &__slide{
-        // img{
-        //     width: 100%;
-        //     height: auto;
-        //     object-fit: cover;
-        // }
-
-    }
     &__img{     
-        img{
-                width: 100%;
-                height: auto;
-                object-fit: cover;
-            }   
-
+        img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
     }
-
     &__txt{
         color: #FFF;
         text-align: right;
         font-family: Uni Sans;
-        font-size: 32px;
+        font-size: rem(32);
         font-style: normal;
         font-weight: 900;
         line-height: normal;
@@ -60,19 +45,15 @@
                 }
             }
         }
-
-
     }
     &__prev{        
-        // object-fit: cover;
         z-index: 2;
-        // margin-right: 30px;
         cursor: pointer;
         svg{
             transition: all 0.2s ease 0s;
             fill: #FFF;
-            width: 60px;
-            height: 60px;
+            width: rem(60);
+            height: rem(60);
             transform: rotate(90deg);
             @media (any-hover: hover){
                 &:hover{
@@ -80,16 +61,13 @@
                 }
             }
         }
-        
         -moz-user-select: -moz-none;
         -o-user-select: none;
         -khtml-user-select: none;
         -webkit-user-select: none;
         user-select: none;
-
     }
     &__next{
-        
         cursor: pointer;
         svg{
             transition: all 0.2s ease 0s;
@@ -108,10 +86,5 @@
         -khtml-user-select: none;
         -webkit-user-select: none;
         user-select: none;
-
-
     }
-
-   
 }
-

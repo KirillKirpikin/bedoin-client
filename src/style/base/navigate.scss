@@ -9,7 +9,9 @@
         // height: 29px;
         fill: #000000;
         transform: rotate(90deg);
+        // margin: 0 30px 15px 30px;
         margin: 0 30px;
+        // margin-bottom: 15px; 
     }
     &__link{
         color: #000;
@@ -19,6 +21,9 @@
         font-style: normal;
         font-weight: 900;
         line-height: normal;
+        text-transform: uppercase;
+        margin: 12px 0;
+        // margin-bottom: 15px;
         &:hover{
             color: #415167;
         }

@@ -18,7 +18,7 @@ const OneProduct = ({item, all}) => {
             </Link>
             {item.type && 
                 <div className="listProduct__triangles">
-                    {item.type.slice(-3).map((typ, i)=>(<div key={i} className="listProduct__triangle">{typ}</div>))}                    
+                    {item.type.length > 0 && item.type.map((t)=>(<div key={t._id} className="listProduct__triangle"> <img src={BASE_URL_IMG + t.img} alt={t.label}/></div>))}                    
                 </div>
             }                
             <div className="listProduct__main">

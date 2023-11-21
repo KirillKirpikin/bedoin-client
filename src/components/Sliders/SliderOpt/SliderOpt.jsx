@@ -63,8 +63,8 @@ const SliderOpt = () => {
                                 <Link to={`/coffee/${item._id}`} state={{some: 1}} className='slider-opt__img'>
                                     <ZoomImage src={BASE_URL_IMG + item.imgs_kg[0]}/>
                                 </Link>
-                                <div className="slider-opt__triangles">                                                                       
-                                    {item.type.length > 0 && item.type.map((t, i)=>(<div key={i} className="slider-opt__triangle">{t}</div>))}
+                                <div className="slider-opt__triangles">                                                                     
+                                    {item.type.length > 0 && item.type.map((t)=>(<div key={t._id} className="slider-opt__triangle"> <img src={BASE_URL_IMG + t.img} alt={t.label}/></div>))}
                                 </div> 
                                 <div className="slider-opt__bottom">
                                     <div className="slider-opt__prices">

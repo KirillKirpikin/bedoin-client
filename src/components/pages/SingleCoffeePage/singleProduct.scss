@@ -1,44 +1,35 @@
 .single-product {
     background: #F9F9F9;
-    // padding-bottom: 30px;
     &__container{
-        padding-bottom: 25px;
+        padding-bottom: rem(25);
     }
 }
 .main-product {
     margin-bottom: rem(60);
     @include adaptiveValue("margin-bottom", 60, 20, 0, 1350, 375);
-    // .main-produc__top
     &__top {
         display: flex;
-        // align-items: center;
         justify-content: space-between;
         @media (max-width:$tablet){
             flex-direction: column;
         }
-        
     }
-    // .main-produc__slider
     &__slider {
         @include adaptiveValue("width", 450, 310, 0, 1330, 1024);
         @include adaptiveValue(" margin-right", 72, 40, 0, 1330, 1024);
-
         @media (max-width:$tablet){
             width: 100%;
             margin-right: 0;
-            margin-bottom: 25px;
+            margin-bottom: rem(25);
         }
     }
-    // .main-produc__info
     &__info {
         display: flex;
         flex-direction: column;
         flex: 0 1 70%;
     }
-    // .main-produc__title
     &__title {
-        color: var(--415167, #415167);
-        /* H2 */
+        color:#415167;
         font-family: Uni Sans;
         @include adaptiveValue("font-size", 55, 36, 0, 1350, 375 );
         font-style: normal;
@@ -46,10 +37,8 @@
         line-height: normal;
         @include adaptiveValue("padding-bottom", 40, 20, 0, 1350, 375 );       
     }
-    // .main-produc__lildescr
     &__lildescr {
         color: #000;
-        /* Н4 */
         font-family: Montserrat;
         @include adaptiveValue("font-size", 24, 20, 0, 1350, 375 );
         font-style: normal;
@@ -57,10 +46,8 @@
         line-height: normal;
         @include adaptiveValue("padding-bottom", 40, 20, 0, 1350, 375 );  
     }
-    // .main-produc__arabic
     &__tit {
         color: #000;
-        /* Н4 */
         font-family: Montserrat;
         @include adaptiveValue("font-size", 24, 20, 0, 1350, 375 );
         font-style: normal;
@@ -68,21 +55,16 @@
         line-height: normal;
         @include adaptiveValue("padding-bottom", 40, 20, 0, 1350, 375 );  
     }
-    // .main-produc__prices
     &__prices {
         display: flex;
         @include adaptiveValue("padding-bottom", 40, 20, 0, 1350, 375 ); 
-       
         @media (max-width:$mobileSmall){            
             justify-content: space-between;
         }
     }
-    // .main-produc__price
     &__price {
         div{
             color: #000;
-            // text-align: center;
-            /* H2 */
             font-family: Uni Sans;
             @include adaptiveValue("font-size", 55, 24, 0, 1350, 375 );
             font-style: normal;
@@ -102,15 +84,11 @@
             flex-direction: column; 
             align-items: flex-start;
         }
-        
     }
-
-    // .main-produc__counter
     &__select {
         width: rem(328);
         @include adaptiveValue("width", 328, 250, 0, 1350, 1024 );
         @include adaptiveValue("margin-right", 70, 30, 0, 1350, 1024 );
-
         @media (max-width:$mobile){
             margin-right: 0; 
             margin-bottom: rem(42);
@@ -122,9 +100,8 @@
     &__radio {
         width: rem(345);
         @media (max-width:$mobileSmall){
-             width: 100%; 
+            width: 100%; 
         }
-        
     }
     &__counter {
         display: flex;
@@ -136,84 +113,71 @@
         width: rem(310);
         @media (max-width:$mobileSmall){
             width: 100%; 
-       }
+        }
     }
     &__btn{
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 12px 11px;
+        padding: rem(12) rem(11);
         svg{
             fill: white;
         }
-        border-radius: 30px;
+        border-radius: rem(30);
         background: var(--000000, #000);
         color: var(--ffffff, #FFF);
         text-align: center;
         font-family: Nunito;
-        font-size: 16px;
+        font-size: rem(16);
         font-style: normal;
         font-weight: 500;
         line-height: normal;
     }
-
-
-   
 }
 
 .info-product {
-    // .info-coffee__discount
     &__discount {
         li{
-            color: var(--415167, #415167);
-            /* Н4 */
+            color: #415167;
             font-family: Montserrat;
             @include adaptiveValue("font-size", 24, 16, 0, 1350, 375 );
             font-style: normal;
             font-weight: 500;
             line-height: normal;
-            margin-bottom: 18px;
+            margin-bottom: rem(18);
             list-style: disc;
             list-style-position: inside;            
         }
         @include adaptiveValue("margin-bottom",70, 50, 0, 1350, 375 );
     }
-    // .info-coffee__title
     &__title {
         color: #415167;
         font-family: Uni Sans;
-        font-size: 48px;
+        font-size: rem(48);
         @include adaptiveValue("font-size", 48, 24, 0, 1350, 375 );
         font-style: normal;
         font-weight: 900;
         line-height: normal;
         margin-bottom: rem(21);
     }
-    // .info-coffee__txt
     &__txt {
         color: #000;
-        /* H4 */
         font-family: Montserrat;
-        font-size: 24px;
+        font-size: rem(24);
         @include adaptiveValue("font-size", 24, 18, 0, 1350, 375 );
         font-style: normal;
         font-weight: 300;
         line-height: normal;
         @include adaptiveValue("padding-bottom", 70, 40, 0, 1350, 375);
-        
     }
-    // .info-coffee__list
-    // &__list {}
 }
 .list-product {
-    border-radius: 15px;
+    border-radius: rem(15);
     background: #FFF;
-    // .list-product__list
-
     &__list {
-        padding: 60px 70px 40px;
+        padding: rem(60) rem(70) rem(40);
         @media (max-width:$mobile){
-            padding: 30px 23px 20px;              
+            padding: rem(30) rem(23) rem(20);              
         }
     }
     &__item {
@@ -227,9 +191,6 @@
             border-bottom: 4px solid rgba(65, 81, 103, 0.30);
             @include adaptiveValue("padding-bottom", 35, 15, 0, 769, 375 );
             @include adaptiveValue("margin-bottom", 35, 15, 0, 769, 375 );           
-
         }
-    
     }
 }
-

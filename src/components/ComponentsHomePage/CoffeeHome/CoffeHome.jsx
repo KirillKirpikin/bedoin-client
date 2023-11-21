@@ -10,7 +10,7 @@ const CoffeHome = ({item}) => {
                 <ZoomImage src={BASE_URL_IMG + item.imgs[0]}/>
             </Link>
             <div className="list-coffe__triangles">
-                {item.type.length > 0 && item.type.slice(-3).map((t, i)=>(<div key={i} className="list-coffe__triangle">{t}</div>))}                
+                {item.type.length > 0 && item.type.map((t)=>(<div key={t._id} className="list-coffe__triangle"> <img src={BASE_URL_IMG + t.img} alt={t.label}/></div>))}                
             </div>                
             <div className="list-coffe__bottom">
                 <div className="list-coffe__price">{item.price.standart.regular} ₴</div>

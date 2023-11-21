@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { ROUTES } from '../../../utils/routes';
 const MerchHome = () => {
     return (
         <div className='home-merch'>
@@ -11,7 +13,7 @@ const MerchHome = () => {
 
                         </div>
                         <div className="home-merch__btn">
-                            <button className="btn">Переглянути мерч</button>
+                            <Link to={ROUTES.MERCH} className="btn">Переглянути мерч</Link>
                         </div>
                     </div>
                     <div className="home-merch__img">

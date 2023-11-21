@@ -1,11 +1,10 @@
-import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
-import { BASE_URL } from '../../utils/constants'
-
+import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
+import { BASE_URL } from '../../utils/constants';
 
 export const api = createApi({
     reducerPath: 'api',
     baseQuery: fetchBaseQuery({baseUrl: BASE_URL}),
-    tagTypes: ['Coffee', 'Drip', 'Merch', 'Lemonade'],
+    tagTypes: ['Coffee', 'Drip', 'Merch', 'Lemonade', 'Slider', 'Sub', 'Sticker'],
     endpoints: (builder) =>({
         getAllCoffee: builder.query({
             query: ()=>'coffee',

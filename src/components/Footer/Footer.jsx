@@ -5,7 +5,7 @@ import {ReactComponent as TelegSvg} from '../../img/social/telegram.svg'
 import {ReactComponent as YouSvg} from '../../img/social/youtube.svg'
 import {ReactComponent as Logo} from '../../img/logo.svg'
 import FooterBgBlur from '../../img/footor-blur.jpg';
-import FooterBg from '../../img/footor-min.jpg';
+import FooterBg from '../../img/Screenshot_3.png';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../utils/routes';
 

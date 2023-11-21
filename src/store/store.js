@@ -1,8 +1,6 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer,FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER, } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-
-import coffeeSlice from "./coffee/coffeeSlice";
 import { api } from "./api/api";
 import cartSlice from "./cart/cartSlice";
 import orderSlice from "./order/orderSlice";
@@ -11,10 +9,7 @@ const cartTransform = {
     in: (state) => ({ cart: state.cart }),
     out: (state) => state,
 };
-// const userTransform = {
-//     in: (state) => ({ user: state.currentUser }),
-//     out: (state) => state,
-// };
+
 
 
 const persistConfig ={
@@ -26,7 +21,6 @@ const persistConfig ={
 
 const rootReducer = combineReducers({
     [api.reducerPath]: api.reducer,
-    coffee: coffeeSlice,
     cart: cartSlice,
     order: orderSlice,
     user: userSlice

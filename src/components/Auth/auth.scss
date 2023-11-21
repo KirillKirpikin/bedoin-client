@@ -1,54 +1,51 @@
 .auth {
     background: #F9F9F9;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: rem(50);
+    padding-bottom: rem(50);
     // .auth__container
     &__container {
         display: flex;
         justify-content: center;
     }
     &__form{
-        width: 500px;
+        width: rem(500);
         border: 2px solid #000;
-        border-radius: 15px;
-        padding: 20px 30px;
-        
+        border-radius: rem(15);
+        padding: rem(20) rem(30);        
     }
     &__title{
         color:  #000;
         font-family: Montserrat;
-        font-size: 20px;
+        font-size: rem(20);
         font-style: normal;
         font-weight: 500;
         line-height: normal;
-        margin-bottom: 15px;
+        margin-bottom: rem(15);
     }
     &__reject{
         color:  red;
         font-family: Montserrat;
-        font-size: 15px;
+        font-size: rem(15);
         font-style: normal;
         font-weight: 500;
         line-height: normal;
-        margin-bottom: 15px;
+        margin-bottom: rem(15);
     }
     // .auth__input
     &__input {
-        // width: 90%;
         display: flex;
         align-items:center;
-        margin-bottom: 20px;
+        margin-bottom: rem(20);
         input{
             width: 100%;
-            padding: 23px 30px;
+            padding: rem(23) rem(30);
             align-items: center;
-            border-radius: 15px;
+            border-radius: rem(15);
             border: 2px solid #000;
             background: #FFF;
-            color: var(--415167, #415167);
-
+            color: #415167;
             font-family: Montserrat;
-            font-size: 18px;
+            font-size: rem(18);
             font-style: normal;
             font-weight: 500;
             line-height: normal;
@@ -64,10 +61,8 @@
         display: flex;
         justify-content: flex-end;
         button{
-            padding: 20px 45px;
+            padding: rem(20) rem(45);
         }
-
     }
 }
-.btn {
-}
+

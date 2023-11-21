@@ -118,6 +118,7 @@ const OrderPage = () => {
                                         Нова Пошта
                                     </label>                                
                                 </div>
+                                {delivery === 'NovaPost' && (<Adress control = {control}/>)}
                             </div>
                             <div className="order__payment select-order">
                                 <h2 className="select-order__title">оплата:</h2>
@@ -161,12 +162,12 @@ const OrderPage = () => {
                                         <input {...register('phone', {required: true})} placeholder='Номер телефону*' type="text"/>
                                     </div>
                                     <div className={`form-order__input ${errors?.email && "form-order__input-error"}`}>
-                                        <input {...register('email', {required: true})} placeholder='Email*' type="text"/>
+                                        <input {...register('email', {required: true, pattern: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/})} placeholder='Email*' type="text"/>
                                     </div>
                                     <div className={`form-order__input ${errors?.info && "form-order__input-error"}`}>
-                                        <textarea {...register('info')} placeholder='Додаткова інформація*'/>
+                                        <textarea {...register('info')} placeholder='Додаткова інформація'/>
                                     </div>
-                                    {delivery === 'NovaPost' && (<Adress control = {control}/>)}
+                                    
 
                                     <div className="form-order__btn">
                                         <button type='submit' className='btn'>Оформити замовлення</button>

@@ -1,20 +1,6 @@
-// @import '../../style/base/mixins.scss';
-
 .header {
-    // background-color: #ec9a1f;
-    padding: 25px 0;
-    z-index: 10;
-    
-
-    // .header__container
-
-    // &__container {
-    //     // display: flex;
-    // }
-
-    // .header__menu
-
-
+    padding: rem(25) 0;
+    z-index: 10;   
     &__menu {
         display: flex;
         justify-content: space-between;
@@ -22,16 +8,11 @@
     }
 }
 .menu {
-    
-
-    // .menu__body
-
     &__body {
         @media (max-width:$mobile){
             position: fixed;
-            top: 93px;
+            top: rem(93);
             left: -100%;
-            top: 93px;           
             width: 100%;
             height: 100%;
             background-color:#F9F9F9;
@@ -40,36 +21,26 @@
                 transform: translateX(100%);            
             }
         }
-        
     }
-
-
-    // .menu__list
-
     &__list {
         display: flex;
         align-items: center;
         @media (max-width:$mobile){
+            padding-top: rem(30);
+            width: rem(220);
             flex-direction: column;
             align-items: start;
-            padding-left: 20px;
-            padding-top: 30px;
+            padding-left: rem(20);
         }
-        
-        
     }
-
-    // .menu__item
-
     &__item {
         font-family: Uni Sans;
-        font-size: 20px;
+        font-size: rem(20);
         color: #FFF;
-
         @media (max-width:$mobile){
             color: black;
-            margin-bottom: 20px;
-            font-size: 38px;
+            margin-bottom: rem(25);
+            font-size: rem(40);
         }
         transition: all 0.2s ease 0s;
         &:hover{
@@ -78,7 +49,6 @@
                 fill:#415167;
             }
         }
-
         &:not(:last-child) {
             @include adaptiveValue("margin-right", 74, 15, 0, 1440, 768);
         }
@@ -89,13 +59,12 @@
             cursor: pointer;
             svg{
                 transition: all 0.2s ease 0s;
-                width: 32.727px;
-                height: 32.727px;
-                margin-left: 5px;
+                width: rem(32.727);
+                height: rem(32.727);
+                margin-left: rem(5);
                 fill: #FFF;
                 @media (max-width:$mobile){
-                    fill: black;
-                    
+                    fill: black;                    
                 }
             }
             &-active{               
@@ -106,34 +75,22 @@
                 }
             }
         }
-
-       
     }
-
-    // .menu__logo
-
     &__logo {
         svg{
             fill: white;
         }
     }
-
-    // .menu__info
-
     &__info {
         display: flex;
         align-items:center;
-        
     }
-
-    // .menu__cart
-
     &__cart {
         position: relative;
         display: flex;
         align-items: center;
         font-family: Uni Sans;
-        font-size: 20px;
+        font-size: rem(20);
         color: #FFF;
         transition: all 0.2s ease 0s;
         p{
@@ -145,92 +102,76 @@
                 fill:#415167;
             }
         }
-        
         @media (max-width:$mobile){
             p{
                 display: none;
-                
             }
-            
         }
-        
         svg{
             transition: all 0.2s ease 0s;
-            margin-left: 10px;
+            margin-left: rem(10);
             fill: #FFF;
             cursor: pointer;
             @media (max-width:$mobile){
-                width: 28px;
-                height: 28px;
-
+                width: rem(28);
+                height: rem(28);
             }
-            
         }
     }
-
     &__length{
         display: flex;
         align-items:center;
         justify-content: center;
         position: absolute;
-        top: 10px;
-        right: -11px;
+        top: rem(10);
+        right: rem(-11);
         background-color: black;
         border-radius: 50%;
-        width: 20px;
-        height: 20px;
+        width: rem(20);
+        height: rem(20);
         color: var(--ffffff, #FFF);
         font-family: Uni Sans;
-        font-size: 15px;
+        font-size: rem(15);
         font-style: normal;
         font-weight: 900;
         line-height: normal;
         @media (max-width:$mobile){
-            top: 14px;
-            right: -7px;
+            top: rem(14);
+            right: rem(-7);
         }
-
     }
-
-    // .menu__phone
-
     &__phone {
-        a{display: flex;
-        align-items: center;
-        font-family: Uni Sans;
-        font-size: 20px;
-        color: #FFF;
-
-        transition: all 0.2s ease 0s;
-        &:hover{
-            color: #415167;
-            svg{
-                fill:#415167;
-            }
-        }
-        @include adaptiveValue("margin-left", 41, 10, 0, 1440, 768, );
-        @media (max-width:$mobile){
-            p{
-                display: none;
-            }
-            
-        }
-        
-        svg{
+        a{
+            display: flex;
+            align-items: center;
+            font-family: Uni Sans;
+            font-size: rem(20);
+            color: #FFF;
             transition: all 0.2s ease 0s;
-            fill: #FFF;
-            margin-left: 10px;
-            @media (max-width:$mobile){
-                width: 28px;
-                height: 28px;
+            &:hover{
+                color: #415167;
+                svg{
+                    fill:#415167;
+                }
             }
-            
-        }}
+            @include adaptiveValue("margin-left", 41, 10, 0, 1440, 768, );
+            @media (max-width:$mobile){
+                p{
+                    display: none;
+                }            
+            }
+            svg{
+                transition: all 0.2s ease 0s;
+                fill: #FFF;
+                margin-left: rem(10);
+                @media (max-width:$mobile){
+                    width: rem(28);
+                    height: rem(28);
+                }            
+            }
+        }
     }
 }
-
-
-
 .icon-menu {
 	display: none;
 	@media (max-width: $mobile) {
@@ -264,7 +205,6 @@
 		
 	}
 }
-
 .menu-open {
     span {
         width: 0;
@@ -307,7 +247,6 @@
             color:#415167;
         p{
             color:#415167;
-            
         }
         a{
             svg{
@@ -323,5 +262,4 @@
             background-color: #415167;
         }
     }
-    
 }

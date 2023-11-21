@@ -1,13 +1,9 @@
-// @import '../../style/style';
-
 .home-contacts {
     position: relative;
-    // padding-top: 70px;
-    padding-bottom: 200px;
+    padding-bottom: rem(200);
     z-index: 5;
     background: #F9F9F9;    
 }
-
 .subs-contacts {
     display: flex;
     justify-content: space-between;
@@ -22,15 +18,14 @@
         color: #000;
         font-family: Montserrat;
         @include adaptiveValue("font-size", 34, 20, 0, 1350, 365);
-        font-size: 34px;
+        font-size: rem(34);
         font-style: normal;
         font-weight: 500;
         line-height: normal;
         flex: 0 1 50%;
         margin-bottom: rem(40);
         @media (min-width:$mobile){
-            margin-right: 20px;
-              
+            margin-right: rem(20);              
         }
     }
     // .subs-contacts__form
@@ -52,37 +47,52 @@
             position: absolute;
             top: 0;
             bottom: 0;
-            left: 14px;
+            left: rem(14);
             margin: auto 0;
-            width: 30px;
-            height: 30px;
+            width: rem(30);
+            height: rem(30);
             background: url('../../../img/mail.svg') no-repeat;
             background-size: cover;
         }
         input{
-            padding: 16px 47px;
+            padding: rem(16) rem(47);
             width: 100%;
-            border-radius: 15px;
+            border-radius: rem(15);
             border: 1px solid rgba(0, 0, 0, 0.70);
             background: #F9F8F8;
             font-family: Montserrat;
             color: black;
-            font-size: 18px;
+            font-size: rem(18);
             font-style: normal;
             font-weight: 500;
             line-height: normal;
             &::placeholder{
                 color: rgba(69, 69, 69, 0.30);
-                /* paragraph */
                 font-family: Montserrat;
-                font-size: 18px;
+                font-size: rem(18);
                 font-style: normal;
                 font-weight: 500;
                 line-height: normal;
             }
+        }        
+        &-error{
+            input{
+                border: 1.5px solid red;
+            }
+        }        
+    }
+    &__message{
+        position: absolute;
+        bottom: rem(-24);
+        left: rem(14);
+        font-family: Montserrat;
+        font-size: rem(18);
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        color:red;
+        &-success{
+            color:rgb(35, 190, 35);
         }
     }
 }
-
-
-

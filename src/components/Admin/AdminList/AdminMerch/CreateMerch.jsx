@@ -72,10 +72,7 @@ const CreateMerch = ({setOpen}) => {
             </div>
             <div className='form-update__input'>
                 <input placeholder='Введите краткое описание' type="text" {...register('shortDescr', {required: true})}/>
-            </div>
-            {/* <div className='form-update__input'>
-                <textarea placeholder='Введите полное описание' type="text" {...register('description', {required: false})}/>
-            </div> */}
+            </div>            
             <h4 className='form-update__title'> Цена:</h4>
             <div className='form-update__input form-update__input-price'>
                 <input placeholder='Введите полную стоимость' type="text" {...register('standartReg', {required: true})}/>

@@ -1,11 +1,6 @@
-// @import '../../../style/style.scss';
-
 .home-opt {
-    padding-bottom: 50px;
+    padding-bottom: rem(50);
     background: #F9F9F9;
-    // .home-opt__container
-    // &__container {}
-    // .home-opt__subtitle
     &__subtitle {
         color: #415167;
         font-family: Montserrat;
@@ -13,130 +8,94 @@
         font-weight: 300;
         margin-bottom: rem(25);
     }
-    // .home-opt__title
     &__title {
         color: #415167;
         font-family: Uni Sans;
         @include adaptiveValue("font-size", 48, 24, 0, 1320, 375);
         font-weight: 900;
         @include adaptiveValue("margin-bottom", 90, 70, 0, 1070, 375);
-
     }
 }
-
-
 .slider-opt {    
     .swiper-button-prev,
     .swiper-button-next{
         display: none;
     }
-    // .slider-opt__content
     &__content {
         position: relative;
-        border-radius: 15px;
+        border-radius: rem(15);
         background: #FFF;
     }
-    // .slider-opt__img
     &__img {
         img{
             width: 100%;
         }
     }
-
     &__triangles {
         position: absolute;
         height: 100%;
-        top: 0px;
-        right: 20px;
+        top: 0;
+        right: rem(20);
     }
-    // .slider-opt__triangle
     &__triangle {
-        background: url('../../../../public/delta.svg') 0 0/100% auto no-repeat;
-        @include adaptiveValue("width", 94, 70, 0, 1320, 1001);
-        @include adaptiveValue("height", 140, 103, 0, 1320, 1001);
-        @media (max-width: em(1000)){
-            @include adaptiveValue("width", 94, 70, 0, 1000, 679);
-            @include adaptiveValue("height", 140, 103, 0, 1000, 679);                          
+        img{
+            @include adaptiveValue("width", 94, 70, 0, 1320, 1001);
+            @media (max-width: em(1000)){
+                @include adaptiveValue("width", 94, 70, 0, 1000, 679);
+            }
+            @media (max-width: em(679)){
+                @include adaptiveValue("width", 124, 70, 0, 679, 375);
+            }
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        @media (max-width: em(679)){
-            @include adaptiveValue("width", 124, 70, 0, 679, 375);
-            @include adaptiveValue("height", 170, 103, 0,  679, 375);                          
-        }
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        //////////////////////////////////////
-        color: #000;
-        text-align: right;
-        font-family: Nunito;
-        @include adaptiveValue("font-size", 14, 11, 0, 1320, 1001);
-        @media (max-width: em(1000)){
-            @include adaptiveValue("font-size", 14, 11, 0, 1000, 679);
-        }        
-        @media (max-width: em(679)){
-            @include adaptiveValue("font-size", 18, 11, 0, 679, 375);
-        }        
-        font-style: normal;
-        font-weight: 700;
-        line-height: normal;
-        padding-left: 7px;
-        padding-bottom: 10px;
+        padding-left: rem(7);
+        margin-bottom: rem(-10);
     }
-
-    // .slider-opt__bottom
     &__bottom {
         padding: rem(25) rem(22);
     }
-    // .slider-opt__prices
     &__prices {
         display: flex;
         justify-content: space-between;
         margin-bottom: rem(15);
     }
-    // .slider-opt__left
     &__left {
         color: #C7A17A;
         font-family: Montserrat;
-        font-size: 28px;
+        font-size: rem(28);
         font-style: normal;
         font-weight: 500;
         line-height: normal;
     }
-    // .slider-opt__right
     &__right {
         color: #5B5B5B;
         font-family: Nunito;
-        font-size: 20px;
+        font-size: rem(20);
         font-style: normal;
         font-weight: 500;
         line-height: normal;
         text-decoration: line-through;
     }
-    // .slider-opt__name
     &__name {
         color: #232C38;
-        /* H8 */
         font-family: Uni Sans;
-        font-size: 20px;
+        font-size: rem(20);
         font-style: normal;
         font-weight: 900;
         line-height: normal;
         margin-bottom: rem(15);
     }
-    // .slider-opt__txt
     &__txt {
         color: #151D28;
-        /* H5 */
         font-family: Nunito;
-        font-size: 18px;
+        font-size: rem(18);
         font-style: normal;
         font-weight: 300;
         line-height: normal;
         margin-bottom: rem(25);
     }
-
     &__btn{
         button{
             display: flex;
@@ -147,16 +106,14 @@
             margin-left:10px;
         }
     }
-    
     &__navigation {
         @include adaptiveValue("margin-top", 90, 40, 0, 1320, 375);
-        padding: 0 15px;
+        padding: 0 rem(15);
         display: flex;    
         justify-content: space-evenly;
         @media (max-width:em(1000)){
             justify-content: space-around;
         }
-        
         @media (max-width:em(679)){
             justify-content: space-between;
         }
@@ -169,16 +126,13 @@
                 }
             }
         }
-        
-
     }
-    // .slider-opt__prev
     &__prev {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 45px;
-        height: 45px;        
+        width: rem(45);
+        height: rem(45);        
         border-radius:50%;
         background-color: black;
         -moz-user-select: -moz-none;
@@ -198,16 +152,15 @@
             transition: all 0.2s ease 0s;
             fill: #FFF;            
             transform: rotate(90deg);
-            margin-right: 5px;
+            margin-right: rem(5);
         }
     }
-    // .slider-opt__next
     &__next {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 45px;
-        height: 45px;        
+        width: rem(45);
+        height: rem(45);        
         border-radius:50%;
         background-color: black;
         -moz-user-select: -moz-none;
@@ -231,9 +184,3 @@
         }
     }
 }
-// .btn {
-// }
-
-
-
-

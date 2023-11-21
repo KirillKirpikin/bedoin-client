@@ -46,11 +46,11 @@ const SingleLemonadePage = () => {
         <div className='single-product'>
             <div className="single-product__container">
                 <div className="navigate">
-                    <Link className='navigate__link' to={ROUTES.HOME}>головна</Link>
+                    <Link className='navigate__link' to={ROUTES.HOME}>Головна</Link>
                     <ArrowSvg/>
-                    <Link className='navigate__link' to={ROUTES.LEMONADE}>Lemonade</Link>
+                    <Link className='navigate__link' to={ROUTES.LEMONADE}>Напої</Link>
                     <ArrowSvg/>
-                    <Link className='navigate__link navigate__link-this'>{!data ? 'Lemonade' :data.title}</Link>                    
+                    <Link className='navigate__link navigate__link-this'>{!data ? 'Напої' :data.title}</Link>                    
                 </div>
                 {isLoading ?
                     <div>Loading...</div>

@@ -28,27 +28,18 @@
     }
     // .coffee__triangle
     &__triangle {
-        background: url('../../../public/delta.svg') 0 0/100% auto no-repeat;
-        @include adaptiveValue("width", 94, 70, 0, 1320, 768);
-        @include adaptiveValue("height", 140, 103, 0, 1320, 768);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        @media (max-width:$mobile){
-            @include adaptiveValue("width", 94, 70, 0, 768, 375);
-            @include adaptiveValue("height", 140, 103, 0, 768, 375);
+        img{
+            @include adaptiveValue("width", 94, 70, 0, 1320, 768);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            @media (max-width:$mobile){
+                @include adaptiveValue("width", 94, 70, 0, 768, 375);
+                // @include adaptiveValue("height", 140, 103, 0, 768, 375);
+            }            
         }
-
-        //////////////////////////////////////
-        color: #000;
-        text-align: right;
-        font-family: Nunito;
-        @include adaptiveValue("font-size", 14, 10, 0, 1280, 375);        
-        font-style: normal;
-        font-weight: 700;
-        line-height: normal;
         padding-left: 7px;
-        padding-bottom: 10px;
+        margin-bottom: -7px;
     }
     // .coffee__bottom
     &__main {

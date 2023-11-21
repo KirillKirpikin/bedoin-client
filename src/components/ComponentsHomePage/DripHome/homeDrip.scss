@@ -1,21 +1,17 @@
-// @import '../../style/style';
-
 .list-drip {
-    // .list-drip__product
     &__product {
         display: flex;
-        width: 620px;
+        width: rem(620);
         @include adaptiveValue("width", 620, 509, 0, 1320, 1068);
-
-        border-radius: 15px;
+        border-radius: rem(15);
         background: #FFF;
-        margin-bottom: 120px;
+        margin-bottom: rem(120);
         @include adaptiveValue("margin-bottom", 120, 40, 0,  1068, 375);
-        margin-right: 25px;
+        margin-right: rem(25);
         @media (max-width: em(1068)){
               flex-direction: column;
               @include adaptiveValue("width", 500, 360, 0, 1068, 768);
-              margin-right: 10px;
+              margin-right: rem(10);
         }
         @media (max-width:$mobile){
             @include adaptiveValue("width", 600, 360, 0, 768, 320);              
@@ -23,29 +19,25 @@
     }
     // .list-drip__img
     &__img {
-        width: 280px;
-        
-        
-        
+        width: rem(280);
         @media (max-width: em(1068)){
             width: 100%;
         }
         img{
             overflow: hidden;
             object-fit: cover;
-            max-height: 280px;
-        }        
-
+            max-height: rem(280);
+        }   
     }
     // .list-drip__bottom
     &__bottom {
-        padding: 28px 0 30px 29px;
+        padding: rem(28) 0 rem(30) rem(29);
     }
     // .list-drip__price
     &__price {
         color: #C7A17A;
         font-family: Montserrat;
-        font-size: 23px;
+        font-size: rem(23);
         font-style: normal;
         font-weight: 500;
         line-height: normal;
@@ -54,32 +46,31 @@
     &__opt {
         color: #000;
         font-family: Nunito;
-        font-size: 18px;
+        font-size: rem(18);
         font-style: normal;
         font-weight: 500;
         line-height: normal;
-        margin-bottom: 20px;
+        margin-bottom: rem(20);
     }
     // .list-drip__name
     &__name {
         color: #232C38;
         font-family: Uni Sans;
-        font-size: 17px;
+        font-size: rem(17);
         font-style: normal;
         font-weight: 900;
         line-height: normal;
-        margin-bottom: 15px;
+        margin-bottom: rem(15);
     }
     // .list-drip__info
     &__info {
         color: #151D28;
-        /* paragraph */
         font-family: Nunito;
-        font-size: 18px;
+        font-size: rem(18);
         font-style: normal;
         font-weight: 500;
         line-height: normal;
-        margin-bottom: 27px;
+        margin-bottom: rem(27);
     }
     // .list-drip__btn
     &__btn {
@@ -89,13 +80,8 @@
             align-items: center;            
             svg{                
                 fill: white;
-                margin-left: 10px;
+                margin-left: rem(10);
             }
         }
     }
 }
-.btn {
-
-}
-
-

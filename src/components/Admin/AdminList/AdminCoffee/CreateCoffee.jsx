@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import DropZone from '../../../DropZone/DropZone';
 import { useCreateCoffeeMutation } from '../../../../store/api/api';
+import SelectType from '../../../CustomSelect/SelectType';
+import { useGetAllStickerQuery } from '../../../../store/api/sticker.api';
 
 const CreateCoffee = ({setOpen}) => {   
     const {
@@ -11,13 +13,30 @@ const CreateCoffee = ({setOpen}) => {
         },
         handleSubmit
     } = useForm();
+    const  {isLoading, data} = useGetAllStickerQuery()
     const [info, setInfo] = useState([]);    
     const [files, setFiles] = useState([]); 
     const [kgImg, setKgImg] = useState([]);
 
+  
     const [inStock, setInStock] = useState(true);
     const [inStockKg, setInStockKg] = useState(true);
-    const [creatCoffee] = useCreateCoffeeMutation()
+    const [creatCoffee] = useCreateCoffeeMutation();
+
+    const [selectedTypes, setSelectedTypes] = useState([]); // Стейт для хранения выбранных SelectType
+
+    const addSelectType = (e) => {
+        e.preventDefault();
+        if (selectedTypes.length < 3) {
+            setSelectedTypes([...selectedTypes, { _id: Date.now(), label: '', img: '' }]);
+        }else{
+            alert(`Максимальное количество SelectType: 3`);
+        }
+    };
+  
+    const removeSelectType = (_id) => {
+      setSelectedTypes(selectedTypes.filter((type) => type._id !== _id));
+    };
     
     
     const addInfo = (e) =>{        
@@ -33,18 +52,20 @@ const CreateCoffee = ({setOpen}) => {
         setInfo(info.map(i=>i._id === id ? {...i, [key]: value}: i))
     }
  
-    const toArray = (str)=>{
-        let t =str.replaceAll(' ', '').split(',');
-        return t;
-    }
+    
 
     const onSubmit = (data) =>{
+        
+
+        console.log(selectedTypes);
         if(files.length < 1){
             return alert('Добавьте изображение')
         }
         if(inStockKg){
             if(kgImg) return alert('Добавьте изображение kg пачки, или уберите наличее kg пачки');
         }
+        
+
         let formData = new FormData()
         formData.append('title', data.title)
         formData.append('short_description', data.shortDescr)
@@ -58,7 +79,6 @@ const CreateCoffee = ({setOpen}) => {
                 opt: data.kgOpt
             }
         }))
-        formData.append('type', toArray(data.type))
         formData.append('description', data.description)
         formData.append('in_stock', inStock)
         formData.append('packing_kg', inStockKg)
@@ -70,6 +90,7 @@ const CreateCoffee = ({setOpen}) => {
                 formData.append('img_kg', kgImg[i])
             }    
         }      
+        formData.append('type', JSON.stringify(selectedTypes))
         formData.append('info', JSON.stringify(info))
 
         creatCoffee(formData).unwrap()
@@ -100,13 +121,34 @@ const CreateCoffee = ({setOpen}) => {
                 <div className='form-update__input form-update__input-price'>
                     <input placeholder='Введите полную стоимость' type="text" {...register('kgReg', {required: true})}/>
                     <input placeholder='Введите оптовую стоимость' type="text" {...register('kgOpt', {required: true})}/>
-                </div>
-
+                </div>                
+                <h4 className='form-update__title'>Стикеры</h4>                
                 <div className='form-update__input'>
-                    <label htmlFor="typeId">введите все типы через запятую ','</label>
-                    <input id='typeId' placeholder='Введите тип' type="text" {...register('type', {required: false})}/>
+                    {isLoading ? 
+                        <div>Loading...</div> 
+                        : data ? (
+                            <div>
+                                <button className='form-update__btn form-update__btn-add' onClick={addSelectType}>Добавить SelectType</button>
+                                {selectedTypes.map((selectedType) => (
+                                    <div key={selectedType._id}>
+                                    <SelectType
+                                        arr={data} // Ваш массив данных
+                                        selected={selectedType}
+                                        setSelected={(option) => {
+                                        const updatedTypes = selectedTypes.map((type) =>
+                                            type._id === selectedType._id ? { ...type, label: option.label, img: option.img } : type
+                                        );
+                                        setSelectedTypes(updatedTypes);
+                                        }}
+                                    />
+                                    <button onClick={() => removeSelectType(selectedType._id)}>Удалить</button>
+                                    </div>
+                                ))}
+                                
+                                </div>
+                        ) : (<div>Not Found</div>)
+                    }
                 </div>
-
                 <div className='form-update__checkboxs'>
                     <div className='form-update__checkbox'>
                         <input id='stock' type="checkbox" checked={inStock} onChange={()=>setInStock(!inStock)}/>

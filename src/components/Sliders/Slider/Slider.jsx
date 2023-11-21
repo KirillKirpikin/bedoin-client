@@ -8,11 +8,12 @@ import { Link } from 'react-router-dom';
 import 'swiper/css';
 import { useGetAllCoffeeQuery } from '../../../store/api/api';
 import SpinerImg from '../../Spiner/SpinerImg';
+import { useGetAllSlideQuery } from '../../../store/api/slider.api';
 
 const Slider = () => {
     const {PREV, NEXT} = SLIDER_BUTTON_TYPES
     const sliderRef = useRef();
-    const {data = []} = useGetAllCoffeeQuery();
+    const {data = []} = useGetAllSlideQuery();
     const [isLoading, setIsLoading] = useState(true);
     const filtered = data.filter((_, i)=> i < 4)
 
@@ -37,7 +38,7 @@ const Slider = () => {
                     {filtered.map((item)=>(
                         <SwiperSlide key={item._id}>
                             <div className='main-slider__content'>
-                                <Link to={`/coffee/${item._id}`} className='main-slider__img'>
+                                <Link to={`/coffee/${item.coffeeId}`} className='main-slider__img'>
                                     {isLoading && <SpinerImg/>}
                                     <img onLoad={()=>setIsLoading(false)} className={isLoading ? 'img-none' : ''} src={BASE_URL_IMG + item.imgs[0]} alt='#'/>
                                 </Link>                            

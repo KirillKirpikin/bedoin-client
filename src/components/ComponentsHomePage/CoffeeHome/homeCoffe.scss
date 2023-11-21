@@ -1,104 +1,75 @@
-// @import '../../style/style.scss';
-
 .list-coffe {
-
-    // .list-coffe__product
-
     &__product {
-        // width: 600px;
-        // height: 789px;
         @include adaptiveValue("width", 600, 360, 0, 1320, 768);
         @media (max-width:$mobile){
-             @include adaptiveValue("width", 600, 360, 0, 768, 320);              
+            @include adaptiveValue("width", 600, 360, 0, 768, 320);              
         }
         position: relative;
-        border-radius: 15px;
+        border-radius: rem(15);
         background: #FFF;
-        margin-right: 10px;
-        margin-bottom: 60px;
-
+        margin-right: rem(10);
+        margin-bottom: rem(60);
     }
     &__img{        
-        padding: 10px;
-        // img{
-        //     width: 100%;
-        // }
-        
+        padding: rem(10);        
     }
     &__triangles{
         position: absolute;
         height: 100%;
-        top: 10px;
-        right: 20px;
-        
+        top: rem(10);
+        right: rem(20);        
     }
     &__triangle{
-        background: url('../../../../public/delta.svg') 0 0/100% auto no-repeat;
-        @include adaptiveValue("width", 94, 70, 0, 1320, 768);
-        @include adaptiveValue("height", 140, 103, 0, 1320, 768);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        //////////////////////////////////////
-        color: #000;
-        text-align: right;
-        font-family: Nunito;
-        @include adaptiveValue("font-size", 14, 10, 0, 1280, 375);        
-        font-style: normal;
-        font-weight: 700;
-        line-height: normal;
-        padding-left: 7px;
-        padding-bottom: 10px;
-        
+        img{
+            @include adaptiveValue("width", 120, 80, 0, 1320, 768);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            @media (max-width:$mobile){
+                @include adaptiveValue("width", 130, 87, 0, 768, 375);
+            }
+        }
+        padding-left: rem(7);
+        margin-bottom: -10px;
     }
-    
     &__bottom{
-        // padding: 21px 0 23px 52px;
         @include adaptiveValue("padding-left", 52, 23, 0, 1320, 375);
         @include adaptiveValue("padding-top", 21, 10, 0, 1320, 375);
-
     }
     &__price{
         color: #C7A17A;
         font-family: Montserrat;
-        font-size: 28px;
+        font-size: rem(28);
         font-style: normal;
         font-weight: 500;
         line-height: normal;
     }
     &__opt{
         color: #000;
-        /* paragraph */
         font-family: Nunito;
-        font-size: 18px;
+        font-size: rem(18);
         font-style: normal;
         font-weight: 500;
         line-height: normal;
-        margin-bottom: 20px;
-
+        margin-bottom: rem(20);
     }
     &__name{
         color: #232C38;
-        /* H8 */
         font-family: Uni Sans;
-        font-size: 20px;
+        font-size: rem(20);
         font-style: normal;
         font-weight: 900;
         line-height: normal;
-        margin-bottom: 15px;
-
+        margin-bottom: rem(15);
     }
     &__info{
         color: #151D28;
-        /* paragraph */
         font-family: Nunito;
-        font-size: 18px;
+        font-size: rem(18);
         font-style: normal;
         font-weight: 500;
         line-height: normal;
-        margin-bottom: 27px;
-
+        margin-bottom: rem(27);
     }
     &__btn{
         display: flex;
@@ -107,9 +78,8 @@
             align-items: center;            
             svg{                
                 fill: white;
-                margin-left: 10px;
+                margin-left: rem(10);
             }
         }
-
     }
 }

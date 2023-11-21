@@ -3,23 +3,37 @@ import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useGetCoffeeQuery, useUdateCoffeeMutation } from '../../../../store/api/api';
 import DropZoneUpdate from '../../../DropZone/DropZoneUpdate';
-import { toArray } from '../../../helpers/handleInfo';
+import SelectType from '../../../CustomSelect/SelectType';
+import { useGetAllStickerQuery } from '../../../../store/api/sticker.api';
 
 const UpdateCoffee = () => {
     const {id}=useParams();
     let {data, isLoading} = useGetCoffeeQuery({id});
+    let stick = useGetAllStickerQuery();
     const navigate = useNavigate();    
     const [udateCoffee] = useUdateCoffeeMutation(); 
     const {
         register,
-        formState: {
-            errors,
-        },
         handleSubmit
     } = useForm();
     const [info, setInfo] = useState([]);    
     const [inStockUpdate, setInStockUpdate] = useState(false);
     const [inStockKgUpdate, setInStockKgUpdate] = useState(false);
+
+    const [selectedTypes, setSelectedTypes] = useState([]);
+
+    const addSelectType = (e) => {
+        e.preventDefault();
+        if (selectedTypes.length < 3) {
+            setSelectedTypes([...selectedTypes, { _id: Date.now(), label: '', img: '' }]);
+        }else{
+            alert(`Максимальное количество SelectType: 3`);
+        }
+    };
+  
+    const removeSelectType = (_id) => {
+      setSelectedTypes(selectedTypes.filter((type) => type._id !== _id));
+    };
 
     const addInfo = (e) =>{        
         e.preventDefault();
@@ -56,7 +70,7 @@ const UpdateCoffee = () => {
                 opt: da.kgOpt
             }
         }))
-        formData.append('type', toArray(da.type))
+        // formData.append('type', toArray(da.type))
         formData.append('description', da.description)
         formData.append('in_stock', inStockUpdate)
         formData.append('packing_kg', inStockKgUpdate)
@@ -66,7 +80,7 @@ const UpdateCoffee = () => {
                 formData.append('img', files[i])
             }  
         }
-
+        
         if(kgImg.length > 0){
             for(let i=0; i<kgImg.length; i++){
                 formData.append('img_kg', kgImg[i])
@@ -76,6 +90,7 @@ const UpdateCoffee = () => {
         }
         
         formData.append('info', JSON.stringify(info))
+        formData.append('type', JSON.stringify(selectedTypes))
 
         formData.append('oldImgs', JSON.stringify(oldImgs))
         formData.append('oldImgsKg', JSON.stringify(oldImgsKg))
@@ -90,9 +105,11 @@ const UpdateCoffee = () => {
 
     useEffect(() => {
         if(!isLoading){
+            console.log(data.type);
             setInStockUpdate(data.in_stock)
             setInStockKgUpdate(data.packing_kg)
             setInfo(data.info)
+            setSelectedTypes(data.type)
             setOldImgs(data.imgs)
             setOldImgsKg(data.imgs_kg)                      
         }
@@ -145,11 +162,35 @@ const UpdateCoffee = () => {
                                     <input id='priceKgOpt' type="text" {...register('kgOpt', {required: true})} defaultValue={data.price.kg.opt}/>
                                 </div>                        
                             </div>
+                            <h4 className='form-update__title'>Стикеры</h4>                
+                <div className='form-update__input'>
+                    {stick.isLoading ? 
+                        <div>Loading...</div> 
+                        : stick.data ? (
+                            <div>
+                                <button className='form-update__btn form-update__btn-add' onClick={addSelectType}>Добавить SelectType</button>
+                                {selectedTypes.map((selectedType) => (
+                                    <div key={selectedType._id}>
+                                    <SelectType
+                                        arr={stick.data} // Ваш массив данных
+                                        selected={selectedType}
+                                        setSelected={(option) => {
+                                        const updatedTypes = selectedTypes.map((type) =>
+                                            type._id === selectedType._id ? { ...type, label: option.label, img: option.img } : type
+                                        );
+                                        setSelectedTypes(updatedTypes);
+                                        }}
+                                    />
+                                    <button onClick={() => removeSelectType(selectedType._id)}>Удалить</button>
+                                    </div>
+                                ))}
+                                
+                                </div>
+                        ) : (<div>Not Found</div>)
+                    }
+                </div>
 
-                            <div className='form-update__input'>
-                                <label htmlFor="typeUpd">введите все типы через запятую ','</label>
-                                <input id='typeUpd' placeholder='Введите тип' type="text" {...register('type', {required: false})} defaultValue={data.type}/>
-                            </div>
+                            
 
                             <div className='form-update__checkboxs'>
                                 <div className='form-update__checkbox'>

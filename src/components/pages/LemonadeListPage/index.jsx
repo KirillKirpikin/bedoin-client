@@ -16,7 +16,7 @@ const LemonadeListPage = () => {
                 <div className="navigate">
                     <Link className='navigate__link' to={ROUTES.HOME}>головна</Link>
                     <ArrowSvg/>
-                    <div className='navigate__link navigate__link-this'>Lemanade</div>
+                    <div className='navigate__link navigate__link-this'>Напої</div>
                 </div>
                 <div className="drip__list">               
                     {isLoading ? [...new Array(3)].map((_, i)=> <div key={i} className='listProduct__product'><SkeletonLemonade viewBox="0 0 422 652"/></div>)  

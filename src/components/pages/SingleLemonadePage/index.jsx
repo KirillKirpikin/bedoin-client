@@ -71,7 +71,7 @@ const SingleLemonadePage = () => {
                                             </div>
                                             <div className="main-product__price">
                                                 <p className="main-product__tit">Оптова ціна</p>
-                                                <span>(Від 12 шт)</span>
+                                                <span>(Від 24 шт)</span>
                                                 <div>{data.price.standart.opt} ₴</div>
                                             </div>
                                         </div>

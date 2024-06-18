@@ -58,7 +58,6 @@ const SingleCoffeePage = () => {
             select: selected,
             quantity: count,
         }        
-        console.log(payload);
         dispatch(addItemtoCart(payload));
         dispatch(openCart(true))        
     }
@@ -107,7 +106,7 @@ const SingleCoffeePage = () => {
                                     <div className="main-product__info">
                                         <h2 className="main-product__title">{data.title}</h2>
                                         <p className="main-product__lildescr">{data.short_description}</p>
-                                        <p className="main-product__tit">100% арабіка</p>
+                                        <p className="main-product__tit">100% арабіка, {data.country}</p>
                                         <div className="main-product__prices">
                                             <div className="main-product__price">
                                                 <p className="main-product__tit">Звичайна ціна</p>
@@ -115,6 +114,7 @@ const SingleCoffeePage = () => {
                                             </div>
                                             <div className="main-product__price">
                                                 <p className="main-product__tit">Оптова ціна</p>
+                                                <span>(Від 6 кг.)</span>
                                                 <div>{ currentRadio === 1 ? data.price.standart.opt : data.price.kg.opt} ₴</div>
                                             </div>                                
                                         </div>

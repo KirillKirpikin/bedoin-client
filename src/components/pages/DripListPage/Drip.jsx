@@ -10,7 +10,7 @@ const Drip = ({item}) => {
         let payload ={
             _id: item._id,
             product: 'drip',
-            packing: 0,
+            packing: 10,
             title: item.title,
             price: item.price.standart,
             img: item.imgs[0],            

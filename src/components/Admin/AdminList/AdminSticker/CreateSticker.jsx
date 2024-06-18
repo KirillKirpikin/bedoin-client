@@ -14,7 +14,6 @@ const CreateSticker = ({setOpen}) => {
     const [file, setFile] = useState(null);
     const [createSticker] = useCreateStickerMutation();
 
-    console.log(file);
     const onSubmit =(data)=>{
         
         if(file === null){

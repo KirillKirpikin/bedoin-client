@@ -16,7 +16,7 @@ const CoffeHome = ({item}) => {
                 <div className="list-coffe__price">{item.price.standart.regular} ₴</div>
                 <div className="list-coffe__opt">Оптове замовлення: {item.price.standart.opt} ₴</div>
                 <div className="list-coffe__name">{item.title}</div>
-                <div className="list-coffe__info">100% арабіка, Колумбія</div> 
+               <div className="list-coffe__info">100% арабіка, {item.country}</div> 
                 <Link to={`/coffee/${item._id}`} className='list-coffe__btn'>
                     <button className='btn btn-cart'>Додати у кошик <CartSvg/> </button>
                 </Link>              

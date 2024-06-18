@@ -1,12 +1,12 @@
 .home-drip {
     background:#F9F9F9;
-    @include adaptiveValue("padding-bottom", 200, 130, 0, 1320, 768);
+    @include adaptiveValue("padding-bottom", 130, 80, 0, 1320, 768);
     &__subtitle {
         color: #415167;
         font-family: Montserrat;
-        @include adaptiveValue("font-size", 36, 24, 0, 1320, 768);
+        font-size: rem(24);
         font-weight: 300;
-        margin-bottom: rem(25);
+        margin-bottom: rem(15);
     }
      // .home-drip__title
     &__title {
@@ -14,7 +14,7 @@
         font-family: Uni Sans;
         font-size: rem(48);
         font-weight: 900;
-        @include adaptiveValue("margin-bottom", 90, 60, 0, 1320, 768 );
+        @include adaptiveValue("margin-bottom", 70, 50, 0, 1320, 768 );
     }
      // .home-drip__list
     &__list {
@@ -38,6 +38,12 @@
         a{
             padding: rem(30) rem(65);
             font-size: rem(24);
+        }
+        @media (max-width:$mobile){
+            flex-direction: column;
+            a{
+                padding: rem(30) 0;
+            }
         }   
     }
 }

@@ -63,6 +63,15 @@
         }
     }
     &__price {
+        position: relative;
+        span{
+            font-family: Montserrat;
+            @include adaptiveValue("font-size", 20, 16, 0, 1350, 375 );
+            font-weight: 500;
+            position: absolute;
+            @include adaptiveValue("top", 38, 26, 0, 1350, 375 );
+            left: 0;
+        }
         div{
             color: #000;
             font-family: Uni Sans;
@@ -159,6 +168,7 @@
         font-weight: 900;
         line-height: normal;
         margin-bottom: rem(21);
+        text-transform: uppercase;
     }
     &__txt {
         color: #000;

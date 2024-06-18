@@ -48,17 +48,17 @@ const Footer = () => {
                                 </div>
                                 <div className="right-footer__contacts">
                                     <h3 className="right-footer__title">КОНТАКТИ</h3>
-                                    <div className="right-footer__phone"> <a href="tel:30675001303">+38 (067) 500 13 03</a></div>
+                                    <div className="right-footer__phone"> <a href="tel:380675001303">+38 (067) 500 13 03</a></div>
                                     <div className="right-footer__mail">coffeebedouin@gmail.com</div>
                                     <div className="right-footer__address">49054, м. Дніпро, вул.<br/>Грушевського 50</div>
                                 </div>
 
                             </div>
                             <ul className="right-footer__socials">
-                                <li className="right-footer__social"><a href="https://www.instagram.com/bedoincoffee/?igshid=MzRlODBiNWFlZA%3D%3D" rel="noopener noreferrer" target="blank"><FasSvg/></a></li>
-                                <li className="right-footer__social"><a href="https://www.instagram.com/bedoincoffee/?igshid=MzRlODBiNWFlZA%3D%3D" rel="noopener noreferrer" target="blank"><TelegSvg/></a></li>
+                                <li className="right-footer__social"><a href="https://www.facebook.com/bedoincoffee" rel="noopener noreferrer" target="blank"><FasSvg/></a></li>
+                                <li className="right-footer__social"><a href="https://t.me/joinchat/AAAAAExaE5UiUNJbuILusQ" rel="noopener noreferrer" target="blank"><TelegSvg/></a></li>
                                 <li className="right-footer__social"><a href="https://www.instagram.com/bedoincoffee/?igshid=MzRlODBiNWFlZA%3D%3D" rel="noopener noreferrer" target="blank"><InstSvg/></a></li>
-                                <li className="right-footer__social"><a href="https://www.instagram.com/bedoincoffee/?igshid=MzRlODBiNWFlZA%3D%3D" rel="noopener noreferrer" target="blank"><YouSvg/></a></li>
+                                <li className="right-footer__social"><a href="https://youtube.com/@bedoincoffee3120?si=q6nm-_hC2d5rVtFc" rel="noopener noreferrer" target="blank"><YouSvg/></a></li>
                             </ul>
                         </div>
                     </div>                    

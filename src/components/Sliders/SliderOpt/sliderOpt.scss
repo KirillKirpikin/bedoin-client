@@ -1,19 +1,19 @@
 .home-opt {
-    padding-bottom: rem(50);
+    // padding-bottom: rem(50);
     background: #F9F9F9;
     &__subtitle {
         color: #415167;
         font-family: Montserrat;
-        @include adaptiveValue("font-size", 36, 24, 0, 1320, 375);
+        font-size: rem(24);
         font-weight: 300;
-        margin-bottom: rem(25);
+        margin-bottom: rem(15);
     }
     &__title {
         color: #415167;
         font-family: Uni Sans;
         @include adaptiveValue("font-size", 48, 24, 0, 1320, 375);
         font-weight: 900;
-        @include adaptiveValue("margin-bottom", 90, 70, 0, 1070, 375);
+        @include adaptiveValue("margin-bottom", 70, 50, 0, 1070, 375);
     }
 }
 .slider-opt {    

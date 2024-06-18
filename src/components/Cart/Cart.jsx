@@ -5,25 +5,27 @@ import {ReactComponent as CloseSvg} from '../../img/close.svg'
 
 import CoffeeCart from './CoffeeCart';
 import { useDispatch, useSelector } from 'react-redux';
-import { calculateTotalUsual, hasDiscount, hasDiscountDrip } from '../helpers/hasDiscount';
+import { calculateTotalUsual, hasDiscount, hasDiscountDrip, hasDiscountLemon } from '../helpers/hasDiscount';
 import { Link } from 'react-router-dom';
-import { clearCart, openCart, setIsDiscountedCoffee, setIsDiscountedDrip, setTotalOpt, setTotalReg } from '../../store/cart/cartSlice';
+import { clearCart, openCart, setIsDiscountedCoffee, setIsDiscountedDrip, setIsDiscountedLemonade,setTotalOpt, setTotalReg } from '../../store/cart/cartSlice';
 
 import { ROUTES } from '../../utils/routes';
 
 const Cart = ({style}) => {
     const dispatch = useDispatch();
-    let {cartOpen, cart, isDiscounted, totalReg, totalOpt, isDiscountedDrip} = useSelector((state)=> state.cart);
+    let {cartOpen, cart, isDiscounted, totalReg, totalOpt, isDiscountedDrip, isDiscountedLemonade} = useSelector((state)=> state.cart);
   
     useEffect(()=>{
         const discountedCoffee = hasDiscount(cart);
         const discountedDrip = hasDiscountDrip(cart);
+        const discountedLemon = hasDiscountLemon(cart)
         const reg = calculateTotalUsual(cart).totalReg; 
         const opt = calculateTotalUsual(cart).totalDisc; 
         dispatch(setTotalReg(reg))
         dispatch(setTotalOpt(opt))
         dispatch(setIsDiscountedCoffee(discountedCoffee))
         dispatch(setIsDiscountedDrip(discountedDrip))
+        dispatch(setIsDiscountedLemonade(discountedLemon))
     }, [cart, dispatch])
 
     return (         
@@ -41,7 +43,7 @@ const Cart = ({style}) => {
                 ):(
                     <>
                         <div className='cart__list'>
-                            {cart && cart.map((item)=><CoffeeCart key={item._id + item.select + item.packing} cart={item} isDiscounted={isDiscounted} isDiscountedDrip={isDiscountedDrip}/>)}                                     
+                            {cart && cart.map((item)=><CoffeeCart key={item._id + item.select + item.packing} cart={item} isDiscounted={isDiscounted} isDiscountedDrip={isDiscountedDrip} isDiscountedLemonade={isDiscountedLemonade}/>)}                                     
                         </div>
                         <div className='cart__total total-cart'>
                             <div className="total-cart__item">
@@ -50,7 +52,7 @@ const Cart = ({style}) => {
                             </div>
                             <div className="total-cart__item">
                                 <div className="total-cart__title">до оплати:</div>
-                                <div className="total-cart__price">{ totalOpt}₴</div>
+                                <div className="total-cart__price">{totalOpt}₴</div>
                             </div>                           
                         </div>
                         <div className="cart__btns">

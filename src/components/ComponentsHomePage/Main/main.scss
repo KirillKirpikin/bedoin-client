@@ -19,6 +19,12 @@
             margin-bottom: rem(20);
        }
     }
+    &__btns{
+        display: flex;
+        @media (max-width:$mobile){
+            flex-direction: column;      
+        }
+    }
     // .home-main__title
     &__title {
         color: #FFF;

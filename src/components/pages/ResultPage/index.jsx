@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {ReactComponent as CartSvg} from '../../../img/cart.svg'
 import { Link, useLocation } from 'react-router-dom';
 import { ROUTES } from '../../../utils/routes';
+import { useDispatch } from 'react-redux';
+import { clearCart } from '../../../store/cart/cartSlice';
 
 const ResultPage = () => {
     const {state} = useLocation();
+    const dispatch = useDispatch();
+
+    useEffect(()=>{
+        dispatch(clearCart())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
     return (
         <div className='result'>
             <div className="result__container">

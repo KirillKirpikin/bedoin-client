@@ -6,7 +6,7 @@ import { ReactComponent as CartSvg } from '../../img/cart.svg';
 import Select from '../CustomSelect/Select';
 import Counter from '../Counter/Counter';
 
-const OneProduct = ({item, all}) => {
+const OneProduct = ({item, all, min}) => {
     const {selected, setSelected, handleAdd, count, setCount, product, arr} = all
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const option = useMemo(()=>arr,[])
@@ -25,14 +25,14 @@ const OneProduct = ({item, all}) => {
                 <div className="listProduct__price">{item.price.standart.regular} ₴</div>
                 {item.price.standart.opt && <div className="listProduct__opt">Оптове замовлення: {item.price.standart.opt} ₴</div>}
                 <div className="listProduct__name">{item.title}</div>
-                {product === 'coffee' && <div className="listProduct__info">100% арабіка, Колумбія</div> }
+                {product === 'coffee' && <div className="listProduct__info">100% арабіка, {item.country}</div>}
                 {arr && <div className="listProduct__select">
                     <Select arr={option} selected={selected} setSelected = {setSelected} />
                 </div>}
                 <div className="listProduct__bottom">
                     <div className="listProduct__counter">
                         <button className='listProduct__btn listProduct__btn-cart' onClick={handleAdd}><CartSvg/> Додати у кошик</button>
-                        <Counter count={count} setCount={setCount}/>
+                        <Counter count={count} setCount={setCount} min={min}/>
                     </div>              
                 </div>               
             </div>

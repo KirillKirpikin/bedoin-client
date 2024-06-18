@@ -79,7 +79,7 @@ const Header = () => {
                            
                         </div>
                         <div className={myClass("menu__phone")}>
-                            <a href="tel:30675001303"><p>+38 (067) 500 13 03</p> <PhoneSvg/></a>                            
+                            <a href="tel:380675001303"><p>+38 (067) 500 13 03</p> <PhoneSvg/></a>                            
                         </div>                         
                         <button onClick={()=> setIsOpen(!isOpen)} className={myClass(`icon-menu ${isOpen ? "menu-open" : ""}`)}><span></span></button>
                     </div>

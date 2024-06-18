@@ -9,16 +9,50 @@ import { ROUTES } from '../../../utils/routes';
 import Adress from '../../Post/Adress';
 import { createOrder, createOrderOffline } from '../../../store/order/orderSlice';
 import { clearCart } from '../../../store/cart/cartSlice';
+import PromoCode from '../../Promo';
+import { promo, promoOn } from '../../../utils/promo';
 
 const OrderPage = () => {    
     const dispatch = useDispatch();
-    let {cart, isDiscounted, totalReg, totalOpt} = useSelector((state)=> state.cart);
+    let {cart,isDiscountedDrip, isDiscounted, isDiscountedLemonade, totalReg, totalOpt, isPromo, promoSale} = useSelector((state)=> state.cart);
 
     const [delivery, setDelivery] = useState('Pickup');
     const [payment, setPayment] = useState('Cash');
     const [call, setCall] = useState('CallBack');
     const navigate = useNavigate();
 
+    
+    const totalFunc = (total) =>{
+        if(isPromo && promoSale.product === 'coffee' && !isDiscounted){
+            return total - promo(cart, promoSale.product, promoSale.procent);
+        }
+        if(isPromo && promoSale.product === 'drip' && !isDiscounted && !isDiscountedDrip){
+            return total - promo(cart, promoSale.product, promoSale.procent);
+        }      
+        if(isPromo && promoSale.product === 'lemonade' && !isDiscounted && !isDiscountedLemonade){
+            return total - promo(cart, promoSale.product, promoSale.procent);
+        }      
+        if(isPromo && promoSale.product === 'merch'){
+            return total - promo(cart, promoSale.product, promoSale.procent);
+        }     
+        return total               
+    }
+
+    const totalSale = () =>{
+        if(isPromo && promoSale.product === 'coffee' && !isDiscounted){
+            return true;
+        }
+        if(isPromo && promoSale.product === 'drip' && !isDiscounted && !isDiscountedDrip){
+            return true;
+        }      
+        if(isPromo && promoSale.product === 'lemonade' && !isDiscounted && !isDiscountedLemonade){
+            return true;
+        }      
+        if(isPromo && promoSale.product === 'merch'){
+            return true;
+        }     
+        return false 
+    }
     const [paymentHtml, setPaymentHtml] = useState('');
     const {
         register,
@@ -28,6 +62,7 @@ const OrderPage = () => {
         handleSubmit,
         control
     } = useForm();
+
     const onSubmit = (data) =>{
         const product = cart.map((item)=>{
             const {_id, title, packing, quantity, select} = item;
@@ -37,7 +72,7 @@ const OrderPage = () => {
         const order = {
             ...data,
             order: product,
-            total: totalOpt,
+            total: totalFunc(totalOpt),            
             delivery,
             payment,
             call
@@ -60,18 +95,9 @@ const OrderPage = () => {
                 }) 
                 .catch((error)=>{
                     console.error("Ошибка при создании заказа:", error);
-                })           
-        }
-
-        // console.log(JSON.stringify(order))
-
-        
-    }
-
-    
-
-    
-
+                })    
+        }        
+    } 
     return (
         <div className='order'>
             <div className="order__container">
@@ -89,7 +115,7 @@ const OrderPage = () => {
                     </div>
                 ):(
                     <div className='order__main'>                        
-                        <div className="order__left">
+                        <div className="order__left">                            
                             <div className="order__select select-order">
                                 <h2 className="select-order__title">доставка:</h2>
                                 <div className="select-order__radio radio-btns">                               
@@ -104,7 +130,20 @@ const OrderPage = () => {
                                         className='radio-btns__real'/>
                                         <span className='radio-btns__custom'></span>
                                         Самовивіз (м. Дніпро, вул. Грушевського 50. З понеділка по п’ятницю з 9:00 до 17:00)
-                                    </label>                        
+                                    </label>
+                                    <label className='radio-btns__label' htmlFor='courier'>
+                                        <input 
+                                        type="radio" 
+                                        name="delivery" 
+                                        value="Courier" 
+                                        id='courier' 
+                                        checked={delivery === "Courier"} 
+                                        onChange={(e) => setDelivery(e.target.value)} 
+                                        className='radio-btns__real'/>
+                                        <span className='radio-btns__custom'></span>
+                                        Доставка кур'єром(Тільки по Дніпру)
+                                    </label>
+                                    {delivery === 'Courier' && (<div className='radio-btns__label-info'>(Адресу напишіть у поле додаткова інформація)</div>)}                   
                                     <label className='radio-btns__label' htmlFor='nova-post'>
                                         <input 
                                         type="radio" 
@@ -134,7 +173,19 @@ const OrderPage = () => {
                                         className='radio-btns__real'/>
                                         <span className='radio-btns__custom'></span>
                                         Готівка при отриманні
-                                    </label>                        
+                                    </label>                    
+                                    <label className='radio-btns__label' htmlFor='score-pay'>
+                                        <input 
+                                        type="radio" 
+                                        name="payment" 
+                                        value="ScorePay" 
+                                        id='score-pay' 
+                                        checked={payment === "ScorePay"} 
+                                        onChange={(e)=>setPayment(e.target.value)} 
+                                        className='radio-btns__real'/>
+                                        <span className='radio-btns__custom'></span>
+                                        Оплата на розрахунковий рахунок
+                                    </label>      
                                     <label className='radio-btns__label' htmlFor='online-pay'>
                                         <input 
                                         type="radio" 
@@ -145,12 +196,14 @@ const OrderPage = () => {
                                         onChange={(e)=>setPayment(e.target.value)} 
                                         className='radio-btns__real'/>
                                         <span className='radio-btns__custom'></span>
-                                        Онлайн оплата
+                                        Онлайн оплата(LiqPay)
                                     </label>                                
+                                                                  
                                 </div>
                             </div>
-                            <div className="order__form form-order">
 
+
+                            <div className="order__form form-order">
                                 <form onSubmit={handleSubmit(onSubmit)} className='form-order__form'>
                                     <div className={`form-order__input ${errors?.firstName && "form-order__input-error"}`}>
                                         <input {...register('firstName', {required: true})} placeholder='Ім’я*' type="text"/>
@@ -165,10 +218,8 @@ const OrderPage = () => {
                                         <input {...register('email', {required: true, pattern: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/})} placeholder='Email*' type="text"/>
                                     </div>
                                     <div className={`form-order__input ${errors?.info && "form-order__input-error"}`}>
-                                        <textarea {...register('info')} placeholder='Додаткова інформація'/>
-                                    </div>
-                                    
-
+                                        <textarea {...register('info', {required: delivery === 'Courier' ? true : false})} placeholder='Додаткова інформація'/>
+                                    </div>                                  
                                     <div className="form-order__btn">
                                         <button type='submit' className='btn'>Оформити замовлення</button>
                                         {paymentHtml && (
@@ -207,26 +258,31 @@ const OrderPage = () => {
                             </div>
                             
                             {/* СЮДА КНОПКУ */}
-                        </div>                        
-                        <div className='order__right'>
-                            <h2 className="order__title">ваше замовлення</h2>
-                            <div className="order__list"> 
-                                {cart && cart.map((item)=>(
-                                    <CoffeeCart key={item._id + item.select + item.packing} cart={item} isDiscounted={isDiscounted}/>
-                                ))}
-                            </div>                            
-                            <div className='order__total total-cart'>
-                                <div className="total-cart__item">
-                                    <div className="total-cart__title">Загалом:</div>
-                                    <div className="total-cart__price">{totalReg}₴</div>
-                                </div>
-                                <div className="total-cart__item">
-                                    <div className="total-cart__title">до оплати:</div>
-                                    <div className="total-cart__price">{totalOpt}₴</div>
-                                </div>                           
-                            </div>
                         </div>
-                    </div>
+                            <div className='order__right'>                                
+                                <h2 className="order__title">ваше замовлення</h2>
+                                <div className="order__list"> 
+                                    {cart && cart.map((item)=>(
+                                        <CoffeeCart key={item._id + item.select + item.packing} cart={item} isDiscounted={isDiscounted} isDiscountedDrip={isDiscountedDrip} isDiscountedLemonade={isDiscountedLemonade}/>
+                                    ))}
+                                </div>                            
+                                <div className='order__total total-cart'>
+                                    <div className="total-cart__item">
+                                        <div className="total-cart__title">Загалом:</div>
+                                        <div className="total-cart__price">{totalReg}₴</div>
+                                    </div>
+                                    <div className="total-cart__item">
+                                        <div className="total-cart__title">до оплати:</div>
+                                        <div className="total-cart__price total-cart__price-span">{totalFunc(totalOpt, isPromo) }₴ <span className='promo__span'>{totalSale() && `(-${promoSale.procent}% на ${promoOn(promoSale.product)})`}</span></div>
+                                    </div>                           
+                                </div>
+                                <div className="order__select select-order" style={{marginBottom: '0px', marginTop: '25px'}}>
+                                    <h2 className="order__title" style={{marginBottom: '20px'}}>Промокод:</h2>
+                                    <p >(Не діє при оптовій закупівлі)</p>                               
+                                    <PromoCode/>
+                                </div>
+                            </div>
+                        </div>                        
                 )}                
 
             </div>                        

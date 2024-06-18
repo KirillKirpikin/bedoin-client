@@ -99,6 +99,7 @@
     }
 }
 .radio-btns {
+    position: relative;
     &__label {
         cursor: pointer;
         display: flex;
@@ -112,6 +113,14 @@
         width: 100%;
         &:not(:last-child) {
             margin-bottom: rem(50);
+        }
+        &-info{
+            position: absolute;
+            font-family: Montserrat;
+            font-weight: 500;
+            @include adaptiveValue("font-size", 17, 15, 0, 1350, 375 );
+            bottom: 46px;
+            left: 60px;
         }
     }
     // .radio-btns__real
@@ -256,5 +265,42 @@
                 text-decoration: underline;
             }
         }
+    }
+}
+
+.promo{
+    margin-top: rem(20);
+
+    &__span{
+        font-family: Montserrat;
+        @include adaptiveValue("font-size", 16, 16, 0, 1350, 375 );
+        font-weight: 600;
+        font-style: normal;
+        
+    }
+
+    &__answer{
+        font-family: Montserrat;
+        @include adaptiveValue("font-size", 24, 18, 0, 1350, 375 );
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        margin-top: rem(10);
+        margin-left: rem(10);
+        &-ok{
+            color: green;
+        }
+        &-err{
+            color: red;
+        }
+    }
+}
+
+.total-cart__price-span{
+    display: flex;
+    flex-direction: column;
+    @media (max-width:rem(550)){              
+        align-items: flex-end;
+
     }
 }

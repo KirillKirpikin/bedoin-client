@@ -17,7 +17,7 @@ const SingleLemonadePage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const {data, isLoading, isFetching, isSuccess} = useGetLemonadeQuery({id});
-    const [count, setCount] = useState(1);
+    const [count, setCount] = useState(24);
 
     const memoizedImages = useMemo(()=>{
         return data ? [...data.imgs]: [];
@@ -27,7 +27,7 @@ const SingleLemonadePage = () => {
         let payload ={
             _id: data._id,
             product: 'lemonade',
-            packing: 0,
+            packing: 22,
             title: data.title,
             price: data.price.standart,
             img: data.imgs[0],            
@@ -64,7 +64,6 @@ const SingleLemonadePage = () => {
                                     <div className="main-product__info">
                                         <h2 className="main-product__title">{data.title}</h2>
                                         <p className="main-product__lildescr">{data.short_description}</p>
-                                        <p className="main-product__tit">100% арабіка</p>
                                         <div className="main-product__prices">
                                             <div className="main-product__price">
                                                 <p className="main-product__tit">Звичайна ціна</p>
@@ -72,25 +71,18 @@ const SingleLemonadePage = () => {
                                             </div>
                                             <div className="main-product__price">
                                                 <p className="main-product__tit">Оптова ціна</p>
+                                                <span>(Від 12 шт)</span>
                                                 <div>{data.price.standart.opt} ₴</div>
                                             </div>
                                         </div>
                                         <div className="main-product__counter">
                                             <button className='main-product__btn listProduct__btn' onClick={handleAdd}><CartSvg/> Додати у кошик</button>
-                                            <Counter count={count} setCount={setCount}/>
+                                            <Counter count={count} setCount={setCount} min={24}/>
                                         </div>                                
                                     </div>
                                 </div>
                             </div>
-                            <div className="single-product__info info-product">
-                                <div className="info-product__discount">
-                                    <ul>
-                                        <li>Для оптової покупки: безкоштовна доставка від 6 кг (по місту та Україні)</li>
-                                        <li>Для розничного покупця: безкоштовна доставка від 2 кг (по місту та Україні). Якщо  заказ меньше, ніж на 2 кг, то доставка - 100 ₴</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <h3 className="info-product__title">більше про Lemonade</h3>
+                            <h3 className="info-product__title">бiльше про НапоЇ</h3>
                             <p className="info-product__txt">{data.description} </p>
                             {data.info.length > 0 && (
                                 <div className="info-product__list list-product">                                

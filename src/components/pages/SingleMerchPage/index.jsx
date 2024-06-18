@@ -74,8 +74,7 @@ const SingleMerchPage = () => {
                                     </div>
                                     <div className="main-product__info">
                                         <h2 className="main-product__title">{data.title}</h2>
-                                        <p className="main-product__lildescr">{data.short_description}</p>
-                                        <p className="main-product__tit">100% арабіка</p>
+                                        <p className="main-product__lildescr">{data.short_description}</p>                                        
                                         <div className="main-product__prices">
                                             <div className="main-product__price">
                                                 <p className="main-product__tit">Звичайна ціна</p>
@@ -84,7 +83,7 @@ const SingleMerchPage = () => {
                                         </div>
                                         <div className="main-product__options">
                                             <div className='main-product__select'>
-                                                <Select size={data.size} selected={selected} setSelected = {setSelected} /> 
+                                                <Select arr={data.size} selected={selected} setSelected = {setSelected} /> 
                                             </div>                                            
                                         </div>
                                         <div className="main-product__counter">

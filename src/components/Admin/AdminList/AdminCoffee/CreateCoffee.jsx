@@ -57,7 +57,6 @@ const CreateCoffee = ({setOpen}) => {
     const onSubmit = (data) =>{
         
 
-        console.log(selectedTypes);
         if(files.length < 1){
             return alert('Добавьте изображение')
         }
@@ -80,6 +79,7 @@ const CreateCoffee = ({setOpen}) => {
             }
         }))
         formData.append('description', data.description)
+        formData.append('country', data.country)
         formData.append('in_stock', inStock)
         formData.append('packing_kg', inStockKg)
         for(let i=0; i<files.length; i++){
@@ -111,6 +111,9 @@ const CreateCoffee = ({setOpen}) => {
                 </div>
                 <div className='form-update__input'>
                     <input placeholder='Введите полное описание' type="text" {...register('description', {required: true})}/>
+                </div>
+                <div className='form-update__input'>
+                    <input placeholder='Введите страну' type="text" {...register('country', {required: true})}/>
                 </div>
                 <h4 className='form-update__title'> Цена для пачки 250г:</h4>
                 <div className='form-update__input form-update__input-price'>

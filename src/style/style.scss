@@ -80,6 +80,7 @@ body {
 
 .main {
 	flex: 1 1 auto;
+	background: #F9F9F9;
 }
 
 .btn{
@@ -96,7 +97,7 @@ body {
 	line-height: normal;
 	border-radius: 10px;
 	background-color: #000;
-	border: 1px solid #000;
+	border: 2px solid #000;
 	width: 190;
 	transition: all 0.3s ease 0s;
 	svg{
@@ -106,6 +107,7 @@ body {
 	&:hover{
 		background-color: #FFF;
 		color: #000;
+		// border: 2px solid #000;
 		svg{
 			fill: #000;
 		}

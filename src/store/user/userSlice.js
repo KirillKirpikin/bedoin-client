@@ -38,8 +38,7 @@ const initialState = {
     currentUser:null,
     isAuth: false,
     status: null,
-    error: null,
-    
+    error: null,    
 }
 
 const userSlice = createSlice({
@@ -73,9 +72,14 @@ const userSlice = createSlice({
             state.error = null;
         })
         .addCase(checkUser.fulfilled, (state, action)=>{
+            if (action.payload) {
+                state.status = 'resolved';
+                state.currentUser = action.payload;
+                state.isAuth = true;
+            } else {
             state.status = 'resolved';
-            state.currentUser = action.payload;
-            state.isAuth = true;
+            state.isAuth = false;
+            }
         })
         .addCase(checkUser.rejected, (state, action)=>{
             state.status = 'resolved';

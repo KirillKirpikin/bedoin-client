@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 
 const Dropdown = ({handleClose, open}) => {
-    const {isAuth, currentUser} = useSelector(state=> state.user)
+    const {isAuth} = useSelector(state=> state.user)
     // console.log(currentUser.role);
 
     return (
@@ -21,7 +21,7 @@ const Dropdown = ({handleClose, open}) => {
                 <li>
                     <Link className='dropdown__link' to={ROUTES.LEMONADE} onClick={()=>{handleClose()}} >Напої</Link>
                 </li>
-                {isAuth && currentUser && (
+                {isAuth && (
                     <li>
                         <Link className='dropdown__link' to={ROUTES.ADMIN} onClick={()=>{handleClose()}} >Admin</Link>
                     </li>

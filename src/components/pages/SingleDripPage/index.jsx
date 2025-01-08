@@ -23,7 +23,7 @@ const SingleDripPage = () => {
         let payload ={
             _id: data._id,
             product: 'drip',
-            packing: 0,
+            packing: 10,
             title: data.title,
             price: data.price.standart,
             img: data.imgs[0],            
@@ -70,6 +70,7 @@ const SingleDripPage = () => {
                                             </div>
                                             <div className="main-product__price">
                                                 <p className="main-product__tit">Оптова ціна</p>
+                                                <span>(Від 3 уп.)</span>
                                                 <div>{data.price.standart.opt} ₴</div>
                                             </div>
                                         </div>
@@ -78,14 +79,6 @@ const SingleDripPage = () => {
                                             <Counter count={count} setCount={setCount}/>
                                         </div>                                
                                     </div>
-                                </div>
-                            </div>
-                            <div className="single-product__info info-product">
-                                <div className="info-product__discount">
-                                    <ul>
-                                        <li>Для оптової покупки: безкоштовна доставка від 6 кг (по місту та Україні)</li>
-                                        <li>Для розничного покупця: безкоштовна доставка від 2 кг (по місту та Україні). Якщо  заказ меньше, ніж на 2 кг, то доставка - 100 ₴</li>
-                                    </ul>
                                 </div>
                             </div>
                             <h3 className="info-product__title">більше про Drip</h3>

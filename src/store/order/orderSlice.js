@@ -7,10 +7,8 @@ export const createOrder = createAsyncThunk('order/createOrder',
 async(payload, thunkApi)=>{
     try {
         const res = await axios.post(`${BASE_URL}/orders`, payload);
-        console.log(res.data);
         return res.data
     } catch (error) {
-        console.log(error);
         return thunkApi.rejectWithValue(error)
     }
 })
@@ -18,10 +16,8 @@ export const createOrderOffline = createAsyncThunk('order/createOrderOffline',
     async(payload, thunkApi)=>{
         try {
             const res = await axios.post(`${BASE_URL}/orders/offline`, payload);
-            console.log(res.data);
             return res.data;
         } catch (error) {
-            console.log(error);
             return thunkApi.rejectWithValue(error)
         }
 })
@@ -35,7 +31,6 @@ export const getAllOrders = createAsyncThunk('order/getAllOrders',
             });            
             return res.data;
         } catch (error) {
-            console.log(error);
             return thunkApi.rejectWithValue(error)
         }
 })

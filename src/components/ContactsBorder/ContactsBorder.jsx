@@ -11,13 +11,13 @@ const ContactsBorder = () => {
             <div className="border-contacts__container">
                 <div className="border-contacts__bar">
                     <div className="border-contacts__socials">
-                        <div className="border-contacts__social"><a href="tel:30675001303"><TelegSvg/></a></div>
+                        <div className="border-contacts__social"><a target="blank" href="https://t.me/joinchat/AAAAAExaE5UiUNJbuILusQ"><TelegSvg/></a></div>
                         <div className="border-contacts__social"><a target="blank" href="https://www.instagram.com/bedoincoffee/?igshid=MzRlODBiNWFlZA%3D%3D"><InstSvg/></a></div>
-                        <div className="border-contacts__social"><a href="##"><FasSvg/></a></div>
-                        <div className="border-contacts__social border-contacts__social-last"><a href="##"><YouSvg/></a></div>
+                        <div className="border-contacts__social"><a target="blank" href="https://www.facebook.com/bedoincoffee"><FasSvg/></a></div>
+                        <div className="border-contacts__social border-contacts__social-last"><a target="blank" href="https://youtube.com/@bedoincoffee3120?si=q6nm-_hC2d5rVtFc"><YouSvg/></a></div>
                     </div>
-                    <div className="border-contacts__phone"> <a href="tel:30675001303">+38 (067) 500 13 03</a></div>
-                    <div className="border-contacts__address"><GpsSvg/> Дніпро,  вул. Грушевського 50</div>
+                    <div className="border-contacts__phone"> <a href="tel:380675001303">+38 (067) 500 13 03</a></div>
+                    <div className="border-contacts__address"><GpsSvg/> Днiпро,  вул. Грушевського 50</div>
                 </div>
             </div>  
         </div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ContactsBorder from '../../ContactsBorder/ContactsBorder';
+import {ReactComponent as MailSvg} from '../../../img/mail.svg'
 import { useForm } from 'react-hook-form';
 import { useCreateSubsMutation } from '../../../store/api/subscribe.api';
 
@@ -60,6 +61,7 @@ const ContactsHome = () => {
                                 placeholder='e-mail*'
                                 onFocus={handleBlur}
                             />
+                            <MailSvg/>
                             {isError ? <p className='subs-contacts__message'>{isError}</p> : null}
                             {isSuccess ? <p className='subs-contacts__message subs-contacts__message-success'>{isSuccess}</p> : null}
 

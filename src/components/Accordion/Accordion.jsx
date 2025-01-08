@@ -3,9 +3,21 @@ import { ReactComponent as ArrowSvg } from '../../img/arrow.svg';
 import { formatDateTime } from '../../utils/formData';
 
 const Accordion = ({item, onClick, isOpen, onDelete}) => {   
-    console.log(item);
     const formattedDate = formatDateTime(item.orderTime);
-    const itemRef = useRef(null)
+    const itemRef = useRef(null);
+
+    const getPayInfo = (pay) =>{
+        // eslint-disable-next-line default-case
+        switch(pay){
+            case 'OnlinePay': 
+                return 'Онлайн оплата';
+            case 'Cash': 
+                return 'При получении';
+            case 'ScorePay': 
+                return 'На разрохунковый рахунок';
+        }
+      }
+
     return (
         <div className="accordion">
             <div className='accordion__header' onClick={()=>onClick()}>
@@ -50,13 +62,13 @@ const Accordion = ({item, onClick, isOpen, onDelete}) => {
                         </div>
                         <div className="user-accord__box">
                             <h3  className='user-accord__title'>Доставка</h3>
-                            {item.delivery === 'NovaPost' ?
+                            {item.delivery === 'NovaPost' &&(
                                 <>
                                     <p className="user-accord__item">
                                         Доставка: Нова Пошта
                                     </p>
                                     <p className="user-accord__item">
-                                        Оплата: {item.payment === 'Cash' ? 'При получении' : 'Онлайн оплата'}
+                                        Оплата: {getPayInfo(item.payment)}
                                     </p>
                                     <p className="user-accord__item">
                                         Город: {item.city}
@@ -64,16 +76,31 @@ const Accordion = ({item, onClick, isOpen, onDelete}) => {
                                     <p className="user-accord__item">
                                         Отделение: {item.warehouses}
                                     </p>                               
-                                </>
-                            :   <>                            
+                                </>)
+                            }         
+                            {item.delivery === 'Pickup' &&  (
+                                <>                            
                                     <p className="user-accord__item">
                                         Доставка: Самовывоз
                                     </p>
                                     <p className="user-accord__item">
-                                        Оплата: {item.payment === 'Cash' ? 'При получении' : 'Онлайн оплата'}
+                                        Оплата: {getPayInfo(item.payment)}
                                     </p>                                    
-                                </>                            
-                            }         
+                                </>)
+                            }                               
+                            {item.delivery === 'Courier' &&  (
+                                <>                            
+                                    <p className="user-accord__item">
+                                        Доставка: Кур'єр
+                                    </p>
+                                    <p className="user-accord__item">
+                                        Оплата: {getPayInfo(item.payment)}
+                                    </p>
+                                    <p className="user-accord__item">
+                                        Адрес: {item.info}
+                                    </p>                                    
+                                </>)
+                            }                               
                         </div>
                     </div>
                     <div className="body-accord__bottom">

@@ -5,8 +5,9 @@ import { addDripToCart, openCart } from '../../../store/cart/cartSlice';
 import OneProduct from '../../OneProduct';
 
 const Lemonade = ({item}) => {
-    const [count, setCount] = useState(1);
+    const [count, setCount] = useState(24);
     const dispatch = useDispatch();
+    const min = 24;
 
     const handleAdd = () =>{
         let payload ={
@@ -22,7 +23,7 @@ const Lemonade = ({item}) => {
         dispatch(openCart(true));
     }
     return (
-        <OneProduct item={item} all={{ handleAdd, count, setCount, product: 'lemonade'}} />
+        <OneProduct item={item} min={min} all={{ handleAdd, count, min, setCount, product: 'lemonade'}} />
     );
 };
 

@@ -74,7 +74,7 @@ const UpdateCoffee = () => {
         formData.append('description', da.description)
         formData.append('in_stock', inStockUpdate)
         formData.append('packing_kg', inStockKgUpdate)
-        
+        formData.append('country', da.country)
         if(files.length>0){
             for(let i=0; i<files.length; i++){
                 formData.append('img', files[i])
@@ -105,7 +105,6 @@ const UpdateCoffee = () => {
 
     useEffect(() => {
         if(!isLoading){
-            console.log(data.type);
             setInStockUpdate(data.in_stock)
             setInStockKgUpdate(data.packing_kg)
             setInfo(data.info)
@@ -138,6 +137,10 @@ const UpdateCoffee = () => {
                             <div className='form-update__input'>
                                 <label htmlFor="description">Введите полное описание:</label>
                                 <textarea id="description" type="text" {...register('description', {required: true})} defaultValue={data.description}/>
+                            </div>
+                            <div className='form-update__input'>
+                                <label htmlFor="country">Введите страну:</label>
+                                <input id="country" type="text" {...register('country', {required: true})} defaultValue={data.country}/>
                             </div>
                             <h4 className='form-update__title'> Цена для пачки 250г:</h4>
                             <div className='form-update__input form-update__input-price'>

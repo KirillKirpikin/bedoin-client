@@ -4,7 +4,7 @@ import { BASE_URL } from '../../utils/constants';
 export const api = createApi({
     reducerPath: 'api',
     baseQuery: fetchBaseQuery({baseUrl: BASE_URL}),
-    tagTypes: ['Coffee', 'Drip', 'Merch', 'Lemonade', 'Slider', 'Sub', 'Sticker'],
+    tagTypes: ['Coffee', 'Drip', 'Merch', 'Lemonade', 'Slider', 'Sub', 'Sticker', 'Promo'],
     endpoints: (builder) =>({
         getAllCoffee: builder.query({
             query: ()=>'coffee',

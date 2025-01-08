@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .home-coffee {
     background:#F9F9F9;
     @include adaptiveValue("padding-top", 70, 30, 0, 1320, 768);
@@ -47,3 +48,54 @@
 }
 
 
+=======
+.home-coffee {
+    background:#F9F9F9;
+    @include adaptiveValue("padding-top", 70, 30, 0, 1320, 768);
+    @include adaptiveValue("padding-bottom", 130, 80, 0, 1320, 768);
+    &__subtitle {
+        color: #415167;
+        font-family: Montserrat;
+        font-size: rem(24);
+        font-weight: 300;
+        margin-bottom: rem(15);
+    }
+    // .home-coffee__title
+    &__title {
+        color: #415167;
+        font-family: Uni Sans;
+        font-size: rem(48);
+        font-weight: 900;
+        @include adaptiveValue("margin-bottom", 70, 50, 0, 1320, 768 );
+    }
+    // .home-coffee__list
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-right: rem(-10);                
+        // margin-bottom: rem(20);
+        @media (max-width:$mobile){
+            flex-direction: column;
+            flex-wrap: nowrap;   
+            align-items: center         
+        }
+    }
+    &__bottom{
+        display: flex;
+        justify-content: center;         
+        a{
+            padding: rem(30) rem(65);
+            font-size: rem(24);
+        }       
+        @media (max-width:$mobile){
+            flex-direction: column;
+            a{
+                padding: rem(30) 0;
+            }
+        }
+    }
+}
+
+
+>>>>>>> d548b37824d2e030f70692e7ccfb3169b09aa9c1

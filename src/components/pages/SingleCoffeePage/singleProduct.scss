@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .single-product {
     background: #F9F9F9;
     &__container{
@@ -203,4 +204,211 @@
             @include adaptiveValue("margin-bottom", 35, 15, 0, 769, 375 );           
         }
     }
+=======
+.single-product {
+    background: #F9F9F9;
+    &__container{
+        padding-bottom: rem(25);
+    }
+}
+.main-product {
+    margin-bottom: rem(60);
+    @include adaptiveValue("margin-bottom", 60, 20, 0, 1350, 375);
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        @media (max-width:$tablet){
+            flex-direction: column;
+        }
+    }
+    &__slider {
+        @include adaptiveValue("width", 450, 310, 0, 1330, 1024);
+        @include adaptiveValue(" margin-right", 72, 40, 0, 1330, 1024);
+        @media (max-width:$tablet){
+            width: 100%;
+            margin-right: 0;
+            margin-bottom: rem(25);
+        }
+    }
+    &__info {
+        display: flex;
+        flex-direction: column;
+        flex: 0 1 70%;
+    }
+    &__title {
+        color:#415167;
+        font-family: Uni Sans;
+        @include adaptiveValue("font-size", 55, 36, 0, 1350, 375 );
+        font-style: normal;
+        font-weight: 900;
+        line-height: normal;
+        @include adaptiveValue("padding-bottom", 40, 20, 0, 1350, 375 );       
+    }
+    &__lildescr {
+        color: #000;
+        font-family: Montserrat;
+        @include adaptiveValue("font-size", 24, 20, 0, 1350, 375 );
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        @include adaptiveValue("padding-bottom", 40, 20, 0, 1350, 375 );  
+    }
+    &__tit {
+        color: #000;
+        font-family: Montserrat;
+        @include adaptiveValue("font-size", 24, 20, 0, 1350, 375 );
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        @include adaptiveValue("padding-bottom", 40, 20, 0, 1350, 375 );  
+    }
+    &__prices {
+        display: flex;
+        @include adaptiveValue("padding-bottom", 40, 20, 0, 1350, 375 ); 
+        @media (max-width:$mobileSmall){            
+            justify-content: space-between;
+        }
+    }
+    &__price {
+        position: relative;
+        span{
+            font-family: Montserrat;
+            @include adaptiveValue("font-size", 20, 16, 0, 1350, 375 );
+            font-weight: 500;
+            position: absolute;
+            @include adaptiveValue("top", 38, 26, 0, 1350, 375 );
+            left: 0;
+        }
+        div{
+            color: #000;
+            font-family: Uni Sans;
+            @include adaptiveValue("font-size", 55, 24, 0, 1350, 375 );
+            font-style: normal;
+            font-weight: 900;
+            line-height: normal;
+        }
+        &:not(:last-child) {
+            @include adaptiveValue("margin-right", 150, 30, 0, 1350, 375 );  
+        }
+    }
+    // .main-produc__options
+    &__options { 
+        display: flex;
+        align-items: center;
+        margin-bottom: rem(60);
+        @media (max-width:$mobile){
+            flex-direction: column; 
+            align-items: flex-start;
+        }
+    }
+    &__select {
+        width: rem(328);
+        @include adaptiveValue("width", 328, 250, 0, 1350, 1024 );
+        @include adaptiveValue("margin-right", 70, 30, 0, 1350, 1024 );
+        @media (max-width:$mobile){
+            margin-right: 0; 
+            margin-bottom: rem(42);
+        }
+        @media (max-width:$mobileSmall){
+            width: 100%; 
+        }
+    }
+    &__radio {
+        width: rem(345);
+        @media (max-width:$mobileSmall){
+            width: 100%; 
+        }
+    }
+    &__counter {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 30px;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        background: #FFF;
+        width: rem(310);
+        @media (max-width:$mobileSmall){
+            width: 100%; 
+        }
+    }
+    &__btn{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: rem(12) rem(11);
+        svg{
+            fill: white;
+        }
+        border-radius: rem(30);
+        background: var(--000000, #000);
+        color: var(--ffffff, #FFF);
+        text-align: center;
+        font-family: Nunito;
+        font-size: rem(16);
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+}
+
+.info-product {
+    &__discount {
+        li{
+            color: #415167;
+            font-family: Montserrat;
+            @include adaptiveValue("font-size", 24, 16, 0, 1350, 375 );
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            margin-bottom: rem(18);
+            list-style: disc;
+            list-style-position: inside;            
+        }
+        @include adaptiveValue("margin-bottom",70, 50, 0, 1350, 375 );
+    }
+    &__title {
+        color: #415167;
+        font-family: Uni Sans;
+        font-size: rem(48);
+        @include adaptiveValue("font-size", 48, 24, 0, 1350, 375 );
+        font-style: normal;
+        font-weight: 900;
+        line-height: normal;
+        margin-bottom: rem(21);
+        text-transform: uppercase;
+    }
+    &__txt {
+        color: #000;
+        font-family: Montserrat;
+        font-size: rem(24);
+        @include adaptiveValue("font-size", 24, 18, 0, 1350, 375 );
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+        @include adaptiveValue("padding-bottom", 70, 40, 0, 1350, 375);
+    }
+}
+.list-product {
+    border-radius: rem(15);
+    background: #FFF;
+    &__list {
+        padding: rem(60) rem(70) rem(40);
+        @media (max-width:$mobile){
+            padding: rem(30) rem(23) rem(20);              
+        }
+    }
+    &__item {
+        color: #000;        /* Price */
+        font-family: Montserrat;
+        @include adaptiveValue("font-size", 28, 18, 0, 1350, 375 );
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        &:not(:last-child) {
+            border-bottom: 4px solid rgba(65, 81, 103, 0.30);
+            @include adaptiveValue("padding-bottom", 35, 15, 0, 769, 375 );
+            @include adaptiveValue("margin-bottom", 35, 15, 0, 769, 375 );           
+        }
+    }
+>>>>>>> d548b37824d2e030f70692e7ccfb3169b09aa9c1
 }

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .home-main {
     padding-top: rem(140);
     margin-top: rem(-96);
@@ -46,53 +45,4 @@
         margin-bottom: rem(55);
         max-width: rem(540);
     }
-=======
-.home-main {
-    padding-top: rem(140);
-    margin-top: rem(-96);
-    padding-bottom: rem(94);
-    // .home-main__container
-    &__container {
-        display: flex;
-        align-items:center;
-        @media (max-width:$mobile){
-            flex-direction: column; 
-        }        
-    }
-    // .home-main__info
-    &__info {
-        flex: 0 1 70%;      
-        @media (max-width:$mobile){
-            display: flex;
-            flex-direction: column;
-            margin-bottom: rem(20);
-       }
-    }
-    &__btns{
-        display: flex;
-        @media (max-width:$mobile){
-            flex-direction: column;      
-        }
-    }
-    // .home-main__title
-    &__title {
-        color: #FFF;
-        font-family: Uni Sans;
-        @include adaptiveValue("font-size", 150, 36,  0, 1350, 365);
-        font-style: normal;
-        font-weight: 900;
-        line-height: normal;
-    }
-    // .home-main__txt
-    &__txt {
-        color: #FFF;
-        font-family: Montserrat;
-        @include adaptiveValue("font-size", 36, 24,  0, 1350, 365);
-        font-style: normal;
-        font-weight: 300;
-        line-height: normal;
-        margin-bottom: rem(55);
-        max-width: rem(540);
-    }
->>>>>>> d548b37824d2e030f70692e7ccfb3169b09aa9c1
 }

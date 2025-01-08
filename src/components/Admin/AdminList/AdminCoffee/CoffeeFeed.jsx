@@ -1,10 +1,9 @@
-<<<<<<< HEAD
 import { useEffect, useState } from "react";
 import { useGetAllAdminCoffeeQuery } from "../../../../store/api/api";
 import { BASE_URL, BASE_URL_IMG } from "../../../../utils/constants";
 
-const  CoffeeFeed = () => {
-    const {data, isLoading} = useGetAllAdminCoffeeQuery();
+const CoffeeFeed = () => {
+    const { data, isLoading } = useGetAllAdminCoffeeQuery();
     const [feedXML, setFeedXML] = useState(null);
 
     const generateProductXML = (product) => `
@@ -12,11 +11,13 @@ const  CoffeeFeed = () => {
         <id>${product._id}</id>
         <title>${product.title}</title>
         <description>${product.description}</description>
-        <link>${BASE_URL + 'coffee/' + product._id}</link>
+        <link>${BASE_URL + "coffee/" + product._id}</link>
         <image_link>${BASE_URL_IMG + product.imgs[0]}</image_link>
-        <availability>${product.in_stock === true ?  'in stock' : 'out of stock'}</availability>
-        <price>${product.price.standart.regular + '.00'}</price>
-        <sale_price>${product.price.standart.opt + '.00'}</sale_price>
+        <availability>${
+            product.in_stock === true ? "in stock" : "out of stock"
+        }</availability>
+        <price>${product.price.standart.regular + ".00"}</price>
+        <sale_price>${product.price.standart.opt + ".00"}</sale_price>
         <condition>new</condition>
         <brand>Bedoin</brand>
         </item>
@@ -26,83 +27,22 @@ const  CoffeeFeed = () => {
         <?xml version="1.0" encoding="UTF-8"?>
         <rss xmlns:g="http://base.google.com/ns/1.0" version="2.0">
         <channel>
-            ${products.map(generateProductXML).join('\n')}
+            ${products.map(generateProductXML).join("\n")}
         </channel>
         </rss>
     `;
 
-    useEffect(()=>{
-        if(!isLoading && data && data.length > 0){
+    useEffect(() => {
+        if (!isLoading && data && data.length > 0) {
             const generatedXML = generateXML(data);
             setFeedXML(generatedXML);
         }
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isLoading])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isLoading]);
 
-    return(
-        <div>
-        {feedXML ? (
-            <pre>{feedXML}</pre>
-        ) : (
-            <p>Генерация XML...</p>
-        )}
-    </div>
-    )
-}
-
-=======
-import { useEffect, useState } from "react";
-import { useGetAllAdminCoffeeQuery } from "../../../../store/api/api";
-import { BASE_URL, BASE_URL_IMG } from "../../../../utils/constants";
-
-const  CoffeeFeed = () => {
-    const {data, isLoading} = useGetAllAdminCoffeeQuery();
-    const [feedXML, setFeedXML] = useState(null);
-
-    const generateProductXML = (product) => `
-        <item>
-        <id>${product._id}</id>
-        <title>${product.title}</title>
-        <description>${product.description}</description>
-        <link>${BASE_URL + 'coffee/' + product._id}</link>
-        <image_link>${BASE_URL_IMG + product.imgs[0]}</image_link>
-        <availability>${product.in_stock === true ?  'in stock' : 'out of stock'}</availability>
-        <price>${product.price.standart.regular + '.00'}</price>
-        <sale_price>${product.price.standart.opt + '.00'}</sale_price>
-        <condition>new</condition>
-        <brand>Bedoin</brand>
-        </item>
-    `;
-
-    const generateXML = (products) => `
-        <?xml version="1.0" encoding="UTF-8"?>
-        <rss xmlns:g="http://base.google.com/ns/1.0" version="2.0">
-        <channel>
-            ${products.map(generateProductXML).join('\n')}
-        </channel>
-        </rss>
-    `;
-
-    useEffect(()=>{
-        if(!isLoading && data && data.length > 0){
-            const generatedXML = generateXML(data);
-            setFeedXML(generatedXML);
-        }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isLoading])
-
-    return(
-        <div>
-        {feedXML ? (
-            <pre>{feedXML}</pre>
-        ) : (
-            <p>Генерация XML...</p>
-        )}
-    </div>
-    )
-}
-
->>>>>>> d548b37824d2e030f70692e7ccfb3169b09aa9c1
+    return (
+        <div>{feedXML ? <pre>{feedXML}</pre> : <p>Генерация XML...</p>}</div>
+    );
+};
 export default CoffeeFeed;

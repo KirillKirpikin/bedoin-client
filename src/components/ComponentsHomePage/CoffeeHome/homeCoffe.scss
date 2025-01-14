@@ -1,50 +1,50 @@
 .list-coffe {
     &__product {
-        @include adaptiveValue("width", 600, 360, 0, 1320, 768);
-        @media (max-width:$mobile){
-            @include adaptiveValue("width", 600, 360, 0, 768, 320);              
+        @include adaptiveValue("width", 554, 360, 0, 1320, 768);
+        @media (max-width: $mobile) {
+            @include adaptiveValue("width", 554, 360, 0, 768, 320);
         }
         position: relative;
         border-radius: rem(15);
-        background: #FFF;
+        background: #fff;
         margin-right: rem(10);
         margin-bottom: rem(50);
     }
-    &__img{        
-        padding: rem(10);        
+    &__img {
+        padding: rem(10);
     }
-    &__triangles{
+    &__triangles {
         position: absolute;
         height: 100%;
         top: rem(10);
-        right: rem(20);        
+        right: rem(20);
     }
-    &__triangle{
-        img{
+    &__triangle {
+        img {
             @include adaptiveValue("width", 120, 80, 0, 1320, 768);
             display: flex;
             align-items: center;
             justify-content: center;
-            @media (max-width:$mobile){
+            @media (max-width: $mobile) {
                 @include adaptiveValue("width", 130, 87, 0, 768, 375);
             }
         }
         padding-left: rem(7);
         margin-bottom: -10px;
     }
-    &__bottom{
+    &__bottom {
         @include adaptiveValue("padding-left", 52, 23, 0, 1320, 375);
         @include adaptiveValue("padding-top", 21, 10, 0, 1320, 375);
     }
-    &__price{
-        color: #C7A17A;
+    &__price {
+        color: #c7a17a;
         font-family: Montserrat;
         font-size: rem(28);
         font-style: normal;
         font-weight: 500;
         line-height: normal;
     }
-    &__opt{
+    &__opt {
         color: #000;
         font-family: Nunito;
         font-size: rem(18);
@@ -53,8 +53,8 @@
         line-height: normal;
         margin-bottom: rem(20);
     }
-    &__name{
-        color: #232C38;
+    &__name {
+        color: #232c38;
         font-family: Uni Sans;
         font-size: rem(20);
         font-style: normal;
@@ -62,8 +62,8 @@
         line-height: normal;
         margin-bottom: rem(15);
     }
-    &__info{
-        color: #151D28;
+    &__info {
+        color: #151d28;
         font-family: Nunito;
         font-size: rem(18);
         font-style: normal;
@@ -71,12 +71,12 @@
         line-height: normal;
         margin-bottom: rem(27);
     }
-    &__btn{
+    &__btn {
         display: flex;
-        button{
+        button {
             display: flex;
-            align-items: center;            
-            svg{                
+            align-items: center;
+            svg {
                 fill: white;
                 margin-left: rem(10);
             }

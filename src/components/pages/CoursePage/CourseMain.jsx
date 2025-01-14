@@ -21,7 +21,7 @@ const CourseMain = ({ scroll }) => {
                 <div className="course-main__info">
                     <h1 className="course-main__title">школа бариста</h1>
                     <p className="course-main__txt">
-                        Навчання кавових професіоналів в Дніпрі
+                        Навчання кавових професіоналів у Дніпрі
                     </p>
                     <div className="course-main__btns">
                         <button onClick={() => scroll()} className="btn-white">

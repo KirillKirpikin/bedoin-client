@@ -18,7 +18,7 @@ const CourseCoach = () => {
                                     Bedoin Coffee
                                 </li>
                                 <li>
-                                    Працює у ресторанній сфері вже понад 10
+                                    Працює у ресторанній сфері вже понад 10+
                                     років, учасник та фіналіст кавових
                                     чемпіонатів
                                 </li>
@@ -61,7 +61,7 @@ const CourseCoach = () => {
                 </div>
                 <div className="course-coach__numbers">
                     <div className="course-coach__number">
-                        <h4>20</h4>
+                        <h4>20+</h4>
                         <p>років досвіду в кавовому бізнесі</p>
                     </div>
                     <div className="course-coach__number">
@@ -69,7 +69,7 @@ const CourseCoach = () => {
                         <p>навчили бариста</p>
                     </div>
                     <div className="course-coach__number">
-                        <h4>10</h4>
+                        <h4>10+</h4>
                         <p>відкритих кав’ярень</p>
                     </div>
                 </div>

@@ -5,11 +5,7 @@ import { useState } from "react";
 
 const CreatePromo = ({ setOpen }) => {
     const option = ["coffee", "merch", "lemonade", "drip"];
-    const {
-        register,
-        formState: { errors },
-        handleSubmit,
-    } = useForm();
+    const { register, handleSubmit } = useForm();
 
     const [selected, setSelected] = useState(option[0]);
 

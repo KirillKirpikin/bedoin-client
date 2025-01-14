@@ -1,0 +1,378 @@
+.course-main {
+    padding-top: rem(230);
+    margin-top: rem(-96);
+    padding-bottom: rem(170);
+    position: relative;
+    overflow: hidden;
+
+    &__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.48); /* Полупрозрачный черный фон */
+        z-index: 1;
+    }
+    // .home-main__container
+    &__container {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        @media (max-width: $mobile) {
+            flex-direction: column;
+        }
+    }
+    // .home-main__info
+    &__info {
+        flex: 0 1 98%;
+        @media (max-width: $mobile) {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: rem(20);
+        }
+    }
+    &__btns {
+        display: flex;
+        @media (max-width: $mobile) {
+            flex-direction: column;
+        }
+    }
+    // .home-main__title
+    &__title {
+        color: #fff;
+        font-family: Uni Sans;
+        @include adaptiveValue("font-size", 150, 36, 0, 1350, 365);
+        font-style: normal;
+        font-weight: 900;
+        line-height: normal;
+    }
+    // .home-main__txt
+    &__txt {
+        color: #fff;
+        font-family: Montserrat;
+        @include adaptiveValue("font-size", 48, 24, 0, 1350, 365);
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        margin-bottom: rem(55);
+        max-width: rem(700);
+        // text-transform: uppercase;
+    }
+}
+
+.course-coach {
+    h2 {
+        font-family: Montserrat;
+        @include adaptiveValue("font-size", 48, 24, 0, 1350, 365);
+        font-style: normal;
+        font-weight: 900;
+        line-height: normal;
+        margin-bottom: rem(55);
+        max-width: rem(700);
+        text-transform: uppercase;
+        @include adaptiveValue("margin-top", 170, 35, 0, 1350, 365);
+    }
+
+    &__item {
+        display: flex;
+        gap: rem(30);
+
+        &-first {
+            margin-bottom: rem(80);
+            @media (max-width: $mobile) {
+                flex-direction: column;
+                gap: rem(20);
+                margin-bottom: rem(20);
+            }
+        }
+        &-second {
+            @media (max-width: $mobile) {
+                flex-direction: column-reverse;
+                gap: rem(20);
+            }
+        }
+    }
+    &__info {
+        flex-basis: 50%;
+        h3 {
+            font-family: Montserrat;
+            line-height: 110%;
+
+            @include adaptiveValue("font-size", 48, 20, 0, 1350, 365);
+            font-weight: 600;
+            @include adaptiveValue("margin-bottom", 60, 20, 0, 1350, 365);
+        }
+        ul {
+            li {
+                margin-bottom: rem(40);
+                font-weight: 300;
+                font-family: Nunito;
+                display: flex;
+                @include adaptiveValue("font-size", 24, 18, 0, 1350, 365);
+
+                &::before {
+                    content: "•";
+                    padding: 0 10px;
+                }
+            }
+        }
+    }
+
+    &__img {
+        width: rem(200);
+        height: auto;
+        object-fit: cover;
+        flex-basis: 50%;
+        border-radius: rem(15);
+        @media (max-width: $mobile) {
+            max-height: 250px;
+            width: 100%;
+            overflow: hidden;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        overflow: hidden; /* Скрыть излишки изображения */
+        position: relative;
+        img {
+            width: 100%;
+            height: auto; /* Сохраняем пропорции изображения */
+            position: absolute;
+            /* Сдвигаем изображение вниз на 50% */
+            transform: translateY(-50%);
+            @media (max-width: $mobile) {
+                position: relative;
+                height: auto;
+                width: 100%;
+                object-fit: cover;
+                object-position: top;
+                transform: translateY(-20%);
+            }
+        }
+        .max {
+            top: 50%;
+        }
+        .dima {
+            top: 60%;
+        }
+    }
+
+    &__numbers {
+        display: flex;
+        justify-content: space-between;
+        padding: rem(100) 0;
+        gap: rem(10);
+        @media (max-width: $mobile) {
+            flex-direction: column;
+            gap: rem(20);
+        }
+    }
+
+    &__number {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-basis: calc(100% / 3);
+        h4 {
+            font-family: Uni Sans;
+
+            @include adaptiveValue("font-size", 200, 55, 0, 1750, 365);
+            font-weight: 900;
+            color: #45525b;
+        }
+        p {
+            font-family: Montserrat;
+            font-weight: 300;
+            text-align: center;
+            max-width: 80%;
+            @include adaptiveValue("font-size", 36, 24, 0, 1750, 365);
+        }
+    }
+}
+
+.course-cards {
+    &__card {
+        border: 1px solid #0000004d;
+        border-radius: rem(20);
+        background-color: #ffffff;
+        padding: rem(48) rem(74);
+        margin-bottom: rem(20);
+        @media (max-width: $mobile) {
+            padding: rem(30) rem(15);
+        }
+        p {
+            font-family: Nunito;
+            font-weight: 300;
+            max-width: rem(520);
+            line-height: 136%;
+            @include adaptiveValue("font-size", 18, 14, 0, 1350, 365);
+        }
+    }
+    &__header {
+        display: flex;
+        align-items: center;
+        margin-bottom: rem(40);
+        @media (max-width: $mobile) {
+            margin-bottom: rem(20);
+        }
+
+        h2 {
+            margin-right: 40px;
+            @include adaptiveValue("font-size", 65, 28, 0, 1350, 365);
+            font-weight: 600;
+            line-height: 121%;
+            @media (max-width: $mobile) {
+                margin-right: 10px;
+            }
+        }
+    }
+
+    &__info {
+        display: flex;
+        gap: rem(60);
+        margin-bottom: rem(60);
+        @media (max-width: $mobile) {
+            flex-direction: column;
+            gap: rem(20);
+            margin-bottom: rem(20);
+        }
+
+        h4 {
+            font-family: Montserrat;
+            @include adaptiveValue("font-size", 34, 14, 0, 1350, 365);
+            line-height: 121%;
+            font-weight: 600;
+            span {
+                font-weight: 500;
+            }
+        }
+    }
+
+    &__btn {
+        margin-top: 60px;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.course-form {
+    margin-top: rem(50);
+    margin-bottom: rem(100);
+    position: relative;
+    &__content {
+        display: flex;
+        gap: rem(40);
+        padding: rem(64) rem(80);
+        margin: 0 rem(-80);
+        background-color: #f2f2f2;
+        @media (max-width: $mobile) {
+            flex-direction: column;
+            padding: rem(64) rem(15);
+            margin: 0 rem(-15);
+        }
+    }
+
+    &__left {
+        flex-basis: 50%;
+
+        h2 {
+            font-family: Montserrat;
+
+            @include adaptiveValue("font-size", 65, 28, 0, 1350, 365);
+            font-weight: 600;
+            line-height: 121%;
+            margin-bottom: rem(40);
+        }
+
+        p {
+            font-weight: 400;
+            font-family: Montserrat;
+            line-height: 121%;
+            @include adaptiveValue("font-size", 35, 18, 0, 1350, 365);
+        }
+    }
+
+    &__form {
+        width: 100%;
+        margin: 0 auto;
+        flex-basis: 50%;
+    }
+
+    &__select {
+        margin-bottom: rem(26);
+        p {
+            font-family: Uni Sans;
+            font-weight: 900;
+            text-transform: uppercase;
+            @include adaptiveValue("font-size", 20, 14, 0, 1350, 365);
+            @include adaptiveValue("margin-bottom", 20, 5, 0, 1350, 365);
+        }
+    }
+
+    &__input {
+        margin-bottom: rem(26);
+
+        p {
+            font-family: Uni Sans;
+            font-weight: 900;
+            text-transform: uppercase;
+            @include adaptiveValue("font-size", 20, 14, 0, 1350, 365);
+            @include adaptiveValue("margin-bottom", 20, 5, 0, 1350, 365);
+        }
+
+        input {
+            color: #424347;
+            font-size: rem(16);
+            font-style: normal;
+            font-weight: 400;
+            line-height: rem(22);
+            border-radius: rem(5);
+            border: 1px solid black;
+            background: #ffffff;
+            padding: rem(16) rem(22);
+            width: 100%;
+        }
+        textarea {
+            color: #424347;
+            font-size: rem(16);
+            font-style: normal;
+            font-weight: 400;
+            line-height: rem(22);
+            border-radius: rem(5);
+            border: 1px solid black;
+            background: #ffffff;
+            width: 100%;
+            padding: rem(7);
+            height: rem(140);
+            resize: vertical;
+        }
+    }
+
+    &__btn {
+        display: flex;
+        justify-content: flex-end;
+        @media (max-width: $mobile) {
+            justify-content: center;
+        }
+    }
+    &__unswer {
+        // position: absolute;
+        height: rem(23);
+        margin-bottom: rem(10);
+        display: flex;
+        justify-content: center;
+
+        font-family: Montserrat;
+        font-size: rem(18);
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        color: red;
+
+        &-success {
+            color: rgb(35, 190, 35);
+        }
+    }
+}

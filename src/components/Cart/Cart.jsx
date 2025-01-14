@@ -62,11 +62,11 @@ const Cart = ({ style }) => {
     useEffect(() => {
         // Проверяем корзину каждые 30 секунд
         const interval = setInterval(() => {
-            console.log(1);
             checkCartExpiration();
         }, 300 * 1000); // 30 секунд
 
         return () => clearInterval(interval); // Очищаем интервал при размонтировании
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {

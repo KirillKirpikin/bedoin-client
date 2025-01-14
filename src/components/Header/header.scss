@@ -1,31 +1,31 @@
 .header {
     padding: rem(25) 0;
-    z-index: 10;   
+    z-index: 10;
     &__menu {
         display: flex;
         justify-content: space-between;
-        align-items:center;
+        align-items: center;
     }
 }
 .menu {
     &__body {
-        @media (max-width:$mobile){
+        @media (max-width: $mobile) {
             position: fixed;
             top: rem(93);
             left: -100%;
             width: 100%;
             height: 100%;
-            background-color:#F9F9F9;
+            background-color: #f9f9f9;
             transition: all 0.3s ease 0s;
-            &-active{            
-                transform: translateX(100%);            
+            &-active {
+                transform: translateX(100%);
             }
         }
     }
     &__list {
         display: flex;
         align-items: center;
-        @media (max-width:$mobile){
+        @media (max-width: $mobile) {
             padding-top: rem(30);
             width: rem(220);
             flex-direction: column;
@@ -35,92 +35,94 @@
     }
     &__item {
         font-family: Uni Sans;
-        font-size: rem(20);
-        color: #FFF;
-        @media (max-width:$mobile){
+        font-size: rem(14);
+        font-weight: 900;
+        color: #fff;
+        @media (max-width: $mobile) {
             color: black;
             margin-bottom: rem(25);
             font-size: rem(40);
         }
         transition: all 0.2s ease 0s;
-        &:hover{
+        &:hover {
             color: #415167;
-            svg{
-                fill:#415167;
+            svg {
+                fill: #415167;
             }
         }
         &:not(:last-child) {
             @include adaptiveValue("margin-right", 74, 15, 0, 1440, 768);
         }
-        &-drop{
+        &-drop {
             display: flex;
-            align-items:center;
+            align-items: center;
             position: relative;
             cursor: pointer;
-            svg{
+            svg {
                 transition: all 0.2s ease 0s;
                 width: rem(32.727);
                 height: rem(32.727);
                 margin-left: rem(5);
-                fill: #FFF;
-                @media (max-width:$mobile){
-                    fill: black;                    
+                fill: #fff;
+                @media (max-width: $mobile) {
+                    fill: black;
                 }
             }
-            &-active{               
+            &-active {
                 color: #415167;
-                svg{
+                svg {
                     transform: rotate(180deg);
-                    fill:#415167;
+                    fill: #415167;
                 }
             }
         }
     }
     &__logo {
-        svg{
+        svg {
             fill: white;
         }
     }
     &__info {
         display: flex;
-        align-items:center;
+        align-items: center;
     }
     &__cart {
         position: relative;
         display: flex;
         align-items: center;
         font-family: Uni Sans;
-        font-size: rem(20);
-        color: #FFF;
+        font-size: rem(14);
+        font-weight: 900;
+        color: #fff;
         transition: all 0.2s ease 0s;
-        p{
+        p {
             cursor: pointer;
         }
-        &:hover{
+        &:hover {
             color: #415167;
-            svg{
-                fill:#415167;
+            svg {
+                fill: #415167;
             }
         }
-        @media (max-width:$mobile){
-            p{
+        @media (max-width: $mobile) {
+            p {
                 display: none;
             }
         }
-        svg{
+        svg {
             transition: all 0.2s ease 0s;
             margin-left: rem(10);
-            fill: #FFF;
+            fill: #fff;
             cursor: pointer;
-            @media (max-width:$mobile){
+            @media (max-width: $mobile) {
                 width: rem(28);
                 height: rem(28);
             }
         }
     }
-    &__length{
+    &__length {
         display: flex;
-        align-items:center;
+        align-items: center;
         justify-content: center;
         position: absolute;
         top: rem(10);
@@ -129,81 +131,81 @@
         border-radius: 50%;
         width: rem(20);
         height: rem(20);
-        color: var(--ffffff, #FFF);
+        color: var(--ffffff, #fff);
         font-family: Uni Sans;
         font-size: rem(15);
         font-style: normal;
         font-weight: 900;
         line-height: normal;
-        @media (max-width:$mobile){
+        @media (max-width: $mobile) {
             top: rem(14);
             right: rem(-7);
         }
     }
     &__phone {
-        a{
+        a {
             display: flex;
             align-items: center;
             font-family: Uni Sans;
-            font-size: rem(20);
-            color: #FFF;
+            font-size: rem(14);
+            font-weight: 900;
+            color: #fff;
             transition: all 0.2s ease 0s;
-            &:hover{
+            &:hover {
                 color: #415167;
-                svg{
-                    fill:#415167;
+                svg {
+                    fill: #415167;
                 }
             }
-            @include adaptiveValue("margin-left", 41, 10, 0, 1440, 768, );
-            @media (max-width:$mobile){
-                p{
+            @include adaptiveValue("margin-left", 41, 10, 0, 1440, 768);
+            @media (max-width: $mobile) {
+                p {
                     display: none;
-                }            
+                }
             }
-            svg{
+            svg {
                 transition: all 0.2s ease 0s;
-                fill: #FFF;
+                fill: #fff;
                 margin-left: rem(10);
-                @media (max-width:$mobile){
+                @media (max-width: $mobile) {
                     width: rem(28);
                     height: rem(28);
-                }            
+                }
             }
         }
     }
 }
 .icon-menu {
-	display: none;
-	@media (max-width: $mobile) {
-		display: block;
-		position: relative;
-		width: rem(30);
-		height: rem(20);
-		margin-left: rem(20);
-		cursor: pointer;
-		z-index: 5;
-		span,
-		&::before,
-		&::after {
-			content: "";
-			transition: all 0.3s ease 0s;
-			right: 0;
-			position: absolute;
-			width: 100%;
-			height: rem(2.4);
-			background-color: #FFFFFF;
-		}
-		&::before {
-			top: 0;
-		}
-		&::after {
-			bottom: 0;
-		}
-		span {
-			top: calc(50% - rem(1));
-		}
-		
-	}
+    display: none;
+    @media (max-width: $mobile) {
+        display: block;
+        position: relative;
+        width: rem(30);
+        height: rem(20);
+        margin-left: rem(20);
+        cursor: pointer;
+        z-index: 5;
+        span,
+        &::before,
+        &::after {
+            content: "";
+            transition: all 0.3s ease 0s;
+            right: 0;
+            position: absolute;
+            width: 100%;
+            height: rem(2.4);
+            background-color: #ffffff;
+        }
+        &::before {
+            top: 0;
+        }
+        &::after {
+            bottom: 0;
+        }
+        span {
+            top: calc(50% - rem(1));
+        }
+    }
 }
 .menu-open {
     span {
@@ -211,7 +213,7 @@
     }
     &::before,
     &::after {
-        background-color: #FFFFFF;
+        background-color: #ffffff;
     }
     &::before {
         top: calc(50% - rem(1));
@@ -223,18 +225,17 @@
     }
 }
 
-.color-black{
-    color:#000;
-    p{
-        color:#000;
-        
+.color-black {
+    color: #000;
+    p {
+        color: #000;
     }
-    a{
-        svg{
+    a {
+        svg {
             fill: #000;
         }
     }
-    svg{
+    svg {
         fill: black;
     }
     span,
@@ -243,17 +244,17 @@
         background-color: #000;
     }
 
-    &:hover{
-            color:#415167;
-        p{
-            color:#415167;
+    &:hover {
+        color: #415167;
+        p {
+            color: #415167;
         }
-        a{
-            svg{
+        a {
+            svg {
                 fill: #415167;
             }
         }
-        svg{
+        svg {
             fill: #415167;
         }
         span,

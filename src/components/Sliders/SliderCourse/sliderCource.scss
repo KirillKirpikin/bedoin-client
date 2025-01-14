@@ -1,0 +1,48 @@
+.course-slider {
+    background-color: #ffffff;
+    padding: 70px 12px;
+
+    h2 {
+        font-family: Uni Sans;
+        font-style: normal;
+        font-weight: 900;
+        line-height: normal;
+        @include adaptiveValue("font-size", 48, 24, 0, 1350, 365);
+        text-transform: uppercase;
+        margin-bottom: rem(70);
+    }
+    &__img {
+        max-height: rem(210);
+        height: rem(410);
+        overflow: hidden; /* Скрыть излишки изображения */
+        position: relative;
+        border-top-left-radius: rem(10);
+        border-top-right-radius: rem(10);
+        img {
+            width: 100%;
+            height: auto; /* Сохраняем пропорции изображения */
+            position: absolute;
+            top: 50%; /* Сдвигаем изображение вниз на 50% */
+            transform: translateY(
+                -50%
+            ); /* Центрируем изображение по вертикали */
+        }
+    }
+    &__text {
+        margin-top: rem(15);
+        h5 {
+            font-family: Montserrat;
+            font-weight: 400;
+            font-size: rem(14);
+            line-height: rem(17);
+            margin-bottom: rem(8);
+        }
+        h4 {
+            font-family: Montserrat;
+            font-weight: 500;
+            font-size: rem(18);
+            line-height: rem(24);
+            margin-bottom: rem(8);
+        }
+    }
+}

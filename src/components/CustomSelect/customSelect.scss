@@ -3,15 +3,15 @@
     position: relative;
     &__btn {
         display: flex;
-        align-items:center;
+        align-items: center;
         justify-content: space-between;
         border-radius: rem(10);
         border: 1px solid #000;
-        background: #FFF;        
+        background: #fff;
         box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
         height: rem(58);
         overflow: hidden;
-        span{
+        span {
             color: #000;
             font-family: Montserrat;
             font-size: rem(20);
@@ -21,14 +21,14 @@
         }
         padding: rem(16) rem(22);
         cursor: pointer;
-        svg{
+        svg {
             fill: #000;
             width: rem(20);
             height: rem(20);
             transition: all 0.4s ease 0s;
         }
-        &-active{
-            svg{
+        &-active {
+            svg {
                 transform: rotate(180deg);
             }
         }
@@ -45,19 +45,21 @@
         top: 85%;
         left: 0;
         width: 100%;
-        z-index: 5;        
+        z-index: 5;
+        max-height: 400px;
+        overflow-y: auto;
         border-radius: 0 0 rem(10) rem(10);
         border-right: 1px solid #000;
         border-bottom: 1px solid #000;
         border-left: 1px solid #000;
-        background: #FFF;
+        background: #fff;
     }
     &__item {
         padding: rem(10);
         cursor: pointer;
         transition: all 0.2s;
-        @media (any-hover: hover){
-            &:hover{
+        @media (any-hover: hover) {
+            &:hover {
                 text-decoration: underline;
             }
         }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CoffeHome from "./CoffeHome";
 import { useGetAllCoffeeQuery } from "../../../store/api/api";
 import { Link } from "react-router-dom";
@@ -6,8 +6,19 @@ import SkeletonHomeCoffee from "../../Skeleton/SkeletonHomeCoffee";
 import NotFound from "../../NotFound";
 
 const CoffeeListHome = () => {
-    const { isLoading, data } = useGetAllCoffeeQuery();
+    const { isLoading, data, refetch } = useGetAllCoffeeQuery();
     const filtered = data && data.filter((_, i) => i < 6);
+
+    const fetchData = async () => {
+        await refetch();
+    };
+
+    useEffect(() => {
+        fetchData();
+        const intervalId = setInterval(fetchData, 10000);
+        return () => clearInterval(intervalId);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [refetch]);
 
     return (
         <div className="home-coffee">

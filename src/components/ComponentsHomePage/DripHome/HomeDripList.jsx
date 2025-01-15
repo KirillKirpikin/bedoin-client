@@ -1,31 +1,45 @@
-import React from 'react';
-import DripHome from './DripHome';
-import { useGetAllDripQuery } from '../../../store/api/drip.api';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from "react";
+import DripHome from "./DripHome";
+import { useGetAllDripQuery } from "../../../store/api/drip.api";
+import { Link } from "react-router-dom";
 const DripListHome = () => {
-    const { isLoading, data } = useGetAllDripQuery();    
-    const filtered = data && data.filter((_, i)=> i < 2)
+    const { isLoading, data, refetch } = useGetAllDripQuery();
+    const filtered = data && data.filter((_, i) => i < 2);
 
+    const fetchData = async () => {
+        await refetch();
+    };
 
-    
+    useEffect(() => {
+        fetchData();
+        const intervalId = setInterval(fetchData, 10000);
+        return () => clearInterval(intervalId);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [refetch]);
+
     return (
         <div className="home-drip">
             <div className="home-drip__container">
-            <h3 className='home-drip__subtitle'>Зручне пакування кави для дому та подорожей</h3>
-                <h2 className='home-drip__title'>ДРIП</h2>                
+                <h3 className="home-drip__subtitle">
+                    Зручне пакування кави для дому та подорожей
+                </h3>
+                <h2 className="home-drip__title">ДРIП</h2>
                 <div className="home-drip__list list-drip">
-                    {isLoading ? 
+                    {isLoading ? (
                         <div>Loading...</div>
-                        : data && data.length > 0 ? (
-                            filtered.map(item => (
-                                <DripHome key={item._id} item={item}/>                
-                            ))
-                        ): (<div>Not Found</div>)
-                    }     
+                    ) : data && data.length > 0 ? (
+                        filtered.map((item) => (
+                            <DripHome key={item._id} item={item} />
+                        ))
+                    ) : (
+                        <div>Not Found</div>
+                    )}
                 </div>
-                <div className='home-drip__bottom'> 
-                    <Link to={'/drip'} className='btn'>Переглянути drip</Link>
-                </div> 
+                <div className="home-drip__bottom">
+                    <Link to={"/drip"} className="btn">
+                        Переглянути drip
+                    </Link>
+                </div>
             </div>
         </div>
     );

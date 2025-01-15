@@ -96,7 +96,11 @@ const OneProduct = ({ item, all, min }) => {
                         )}
                     </div>
                 )}
-                <div className="listProduct__bottom">
+                <div
+                    className={`listProduct__bottom ${
+                        product === "coffee" ? "listProduct__bottom-coffee" : ""
+                    }`}
+                >
                     <div className="listProduct__counter">
                         <button
                             className="listProduct__btn listProduct__btn-cart"

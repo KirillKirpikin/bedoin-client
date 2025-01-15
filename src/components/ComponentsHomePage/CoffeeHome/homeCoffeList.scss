@@ -1,5 +1,5 @@
 .home-coffee {
-    background:#F9F9F9;
+    background: #f9f9f9;
     @include adaptiveValue("padding-top", 70, 30, 0, 1320, 768);
     @include adaptiveValue("padding-bottom", 130, 80, 0, 1320, 768);
     &__subtitle {
@@ -15,35 +15,39 @@
         font-family: Uni Sans;
         font-size: rem(48);
         font-weight: 900;
-        @include adaptiveValue("margin-bottom", 70, 50, 0, 1320, 768 );
+        @include adaptiveValue("margin-bottom", 70, 50, 0, 1320, 768);
     }
     // .home-coffee__list
     &__list {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        margin-right: rem(-10);                
-        // margin-bottom: rem(20);
-        @media (max-width:$mobile){
-            flex-direction: column;
-            flex-wrap: nowrap;   
-            align-items: center         
+        display: grid;
+        gap: rem(20);
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        // flex-wrap: wrap;
+        // justify-content: space-between;
+        // margin-right: rem(-10);
+        margin-bottom: rem(30);
+        @media (max-width: 1000px) {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+        }
+        @media (max-width: 680px) {
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr;
         }
     }
-    &__bottom{
+    &__bottom {
         display: flex;
-        justify-content: center;         
-        a{
+        justify-content: center;
+        a {
             padding: rem(30) rem(65);
             font-size: rem(24);
-        }       
-        @media (max-width:$mobile){
+        }
+        @media (max-width: $mobile) {
             flex-direction: column;
-            a{
+            a {
                 padding: rem(30) 0;
             }
         }
     }
 }
-
-

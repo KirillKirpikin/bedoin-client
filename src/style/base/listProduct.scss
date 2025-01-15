@@ -1,13 +1,13 @@
-.listProduct{
+.listProduct {
     &__product {
         position: relative;
         border-radius: 15px;
-        background: #FFF;
-        @include adaptiveValue("width", 422, 333, 0,  1340, 1070);
-        @media (max-width: em(1069)){
-            @include adaptiveValue("width", 422, 359, 0,  895, 768);
+        background: #fff;
+        @include adaptiveValue("width", 422, 333, 0, 1340, 1070);
+        @media (max-width: em(1069)) {
+            @include adaptiveValue("width", 422, 359, 0, 895, 768);
         }
-        @media (max-width:$mobile){
+        @media (max-width: $mobile) {
             width: 92%;
         }
         margin: 0 10px;
@@ -15,7 +15,7 @@
     }
     // .coffee__img
     &__img {
-        img{
+        img {
             width: 100%;
         }
     }
@@ -28,15 +28,15 @@
     }
     // .coffee__triangle
     &__triangle {
-        img{
+        img {
             @include adaptiveValue("width", 94, 70, 0, 1320, 768);
             display: flex;
             align-items: center;
             justify-content: center;
-            @media (max-width:$mobile){
+            @media (max-width: $mobile) {
                 @include adaptiveValue("width", 94, 70, 0, 768, 375);
                 // @include adaptiveValue("height", 140, 103, 0, 768, 375);
-            }            
+            }
         }
         padding-left: 7px;
         margin-bottom: -7px;
@@ -47,7 +47,7 @@
     }
     // .coffee__price
     &__price {
-        color: #C7A17A;
+        color: #c7a17a;
         font-family: Montserrat;
         font-size: 28px;
         font-style: normal;
@@ -67,7 +67,7 @@
     }
     // .coffee__name
     &__name {
-        color: #232C38;
+        color: #232c38;
         /* H8 */
         font-family: Uni Sans;
         font-size: 20px;
@@ -78,7 +78,7 @@
     }
     // .coffee__info
     &__info {
-        color: #151D28;
+        color: #151d28;
         /* paragraph */
         font-family: Nunito;
         font-size: 18px;
@@ -87,30 +87,33 @@
         line-height: normal;
         margin-bottom: 25px;
     }
-    &__select{
+    &__select {
         margin-bottom: rem(25);
         width: rem(226);
     }
-    &__bottom{
+    &__bottom {
         width: 311px;
+        &-coffee {
+            width: 100%;
+        }
     }
-    &__counter{
+    &__counter {
         display: flex;
         align-items: center;
         justify-content: space-between;
         border-radius: 30px;
         border: 1px solid rgba(0, 0, 0, 0.15);
-        background: #FFF;
+        background: #fff;
         width: 100%;
     }
-    &__btn{
+    &__btn {
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 12px 11px;        
+        padding: 12px 11px;
         border-radius: 30px;
         background: var(--000000, #000);
-        color: var(--ffffff, #FFF);
+        color: var(--ffffff, #fff);
         text-align: center;
         font-family: Nunito;
         font-size: 16px;
@@ -119,20 +122,17 @@
         line-height: normal;
         transition: all 0.3s ease 0s;
         border-right: 1px solid rgba(0, 0, 0, 0.15);
-        svg{
-            fill:#FFF;
+        svg {
+            fill: #fff;
             transition: all 0.3s ease 0s;
         }
 
-        &:hover{
-            background-color: #FFF;
+        &:hover {
+            background-color: #fff;
             color: #000;
-            svg{
+            svg {
                 fill: #000;
             }
-            
         }
-              
-    }    
+    }
 }
-

@@ -1,16 +1,9 @@
 import React, { useEffect } from "react";
-import Modal from "../Modal/Modal";
 import { ReactComponent as CartSvg } from "../../img/cart.svg";
 import { ReactComponent as CloseSvg } from "../../img/close.svg";
+import Modal from "../Modal/Modal";
 
-import CoffeeCart from "./CoffeeCart";
 import { useDispatch, useSelector } from "react-redux";
-import {
-    calculateTotalUsual,
-    hasDiscount,
-    hasDiscountDrip,
-    hasDiscountLemon,
-} from "../helpers/hasDiscount";
 import { Link } from "react-router-dom";
 import {
     clearCart,
@@ -21,10 +14,17 @@ import {
     setTotalOpt,
     setTotalReg,
 } from "../../store/cart/cartSlice";
+import {
+    calculateTotalUsual,
+    hasDiscount,
+    hasDiscountDrip,
+    hasDiscountLemon,
+} from "../helpers/hasDiscount";
+import CoffeeCart from "./CoffeeCart";
 
 import { ROUTES } from "../../utils/routes";
 
-const CART_EXPIRATION_TIME = 30 * 60 * 1000;
+const CART_EXPIRATION_TIME = 30 * 30 * 1000;
 
 const Cart = ({ style }) => {
     const dispatch = useDispatch();
@@ -46,28 +46,6 @@ const Cart = ({ style }) => {
         };
         localStorage.setItem("cart", JSON.stringify(cartData));
     };
-
-    const checkCartExpiration = () => {
-        const cartData = localStorage.getItem("cart");
-        if (cartData) {
-            const parsedCart = JSON.parse(cartData);
-            const currentTime = new Date().getTime();
-            if (currentTime > parsedCart.expiration) {
-                dispatch(clearCart());
-                localStorage.removeItem("cart"); // Очистить localStorage
-            }
-        }
-    };
-
-    useEffect(() => {
-        // Проверяем корзину каждые 30 секунд
-        const interval = setInterval(() => {
-            checkCartExpiration();
-        }, 300 * 1000); // 30 секунд
-
-        return () => clearInterval(interval); // Очищаем интервал при размонтировании
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
 
     useEffect(() => {
         if (cart.length > 0) {

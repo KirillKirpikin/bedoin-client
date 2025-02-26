@@ -1,8 +1,14 @@
 .single-product {
     background: #f9f9f9;
+    position: relative;
     &__container {
         padding-bottom: rem(25);
     }
+}
+
+.disabled {
+    opacity: 0.4;
+    pointer-events: none;
 }
 .main-product {
     margin-bottom: rem(60);

@@ -1,4 +1,25 @@
 .listProduct {
+    &__disabled {
+        opacity: 0.5;
+        .listProduct__main {
+            pointer-events: none;
+        }
+        // &::before {
+        //     content: "";
+        //     position: absolute;
+        //     top: 0;
+        //     left: 0;
+        //     width: 100%;
+        //     height: 100%; // Высота полосы
+        //     background: rgba(
+        //         255,
+        //         255,
+        //         255,
+        //         0.7
+        //     ); // Белый фон с прозрачностью 70%
+        //     z-index: 1; // Убедитесь, что этот элемент находится выше других элементов
+        // }
+    }
     &__product {
         position: relative;
         border-radius: 15px;

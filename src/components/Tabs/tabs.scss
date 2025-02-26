@@ -1,0 +1,76 @@
+.tabs {
+    margin-bottom: 50px;
+    &__btns {
+        display: flex;
+        gap: 20px;
+        @include adaptiveValue("gap", 20, 10, 0, 1350, 375);
+        margin-bottom: -1px;
+        margin-left: 20px;
+
+        @media (max-width: 863px) {
+            margin-bottom: 10px;
+            margin-left: 0px;
+            justify-content: space-between;
+            flex-wrap: wrap;
+
+            button {
+                border-bottom: 1px solid #000;
+                border-radius: 12px;
+                flex-basis: 48%;
+            }
+        }
+        button {
+            font-family: Montserrat;
+            padding: 20px 50px;
+            @include adaptiveValue("padding-left", 50, 10, 0, 1350, 375);
+            @include adaptiveValue("padding-right", 50, 10, 0, 1350, 375);
+            @include adaptiveValue("font-size", 24, 20, 0, 1350, 375);
+
+            font-weight: 500;
+            text-transform: uppercase;
+            border-top: 1px solid #000;
+            border-right: 1px solid #000;
+            border-left: 1px solid #000;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+        .active-tab {
+            background: white;
+            border-bottom: 1px solid white;
+
+            @media (max-width: 863px) {
+                border-bottom: 1px solid #000;
+                border: 1px solid rgb(197, 196, 196);
+            }
+        }
+    }
+
+    &__body {
+        border: 1px solid #000;
+        border-radius: 20px;
+        padding: 66px 77px;
+        @include adaptiveValue("padding-top", 66, 30, 0, 1350, 375);
+        @include adaptiveValue("padding-bottom", 66, 30, 0, 1350, 375);
+        @include adaptiveValue("padding-right", 77, 30, 0, 1350, 375);
+        @include adaptiveValue("padding-left", 77, 30, 0, 1350, 375);
+        background: white;
+        &-info {
+            display: none;
+        }
+        &-active {
+            display: grid;
+            grid-template: 1fr / repeat(2, 1fr);
+            @media (max-width: 863px) {
+                grid-template: 1fr / 1fr;
+            }
+        }
+        &-items {
+            display: flex;
+            flex-wrap: wrap;
+            font-size: 24px;
+            font-weight: 500;
+            font-family: Montserrat;
+            margin-bottom: 7px;
+        }
+    }
+}

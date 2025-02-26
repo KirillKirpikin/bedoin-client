@@ -22,7 +22,11 @@ const OneProduct = ({ item, all, min }) => {
     const option = useMemo(() => arr, []);
 
     return (
-        <div className="listProduct__product">
+        <div
+            className={`listProduct__product ${
+                !item.in_stock ? "listProduct__disabled" : ""
+            }`}
+        >
             <Link to={`/${product}/${item._id}`} className="listProduct__img">
                 <ZoomImage src={BASE_URL_IMG + item.imgs[0]} />
             </Link>
@@ -105,6 +109,7 @@ const OneProduct = ({ item, all, min }) => {
                         <button
                             className="listProduct__btn listProduct__btn-cart"
                             onClick={handleAdd}
+                            disabled={!item.in_stock}
                         >
                             <CartSvg /> Додати у кошик
                         </button>

@@ -65,6 +65,7 @@ const SingleCoffeePage = () => {
             packing: currentRadio === 1 ? 250 : 1000,
             img: currentRadio === 1 ? data.imgs[0] : isKg(data),
             price: currentRadio === 1 ? data.price.standart : data.price.kg,
+            id: currentRadio === 1 ? data.id_standart : data.id_kg,
             select: selected,
             quantity: count,
         };

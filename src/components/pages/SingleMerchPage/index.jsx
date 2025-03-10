@@ -30,6 +30,7 @@ const SingleMerchPage = () => {
             packing: 0,
             title: data.title,
             price: data.price.standart,
+            id: data.id_standart,
             img: data.imgs[0],
             select: selected,
             quantity: count,

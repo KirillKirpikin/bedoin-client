@@ -1,94 +1,170 @@
-import React, { useState } from 'react';
-import { addInfo, changeInfo, removeInfo } from '../../../helpers/handleInfo';
-import { useForm } from 'react-hook-form';
-import { useCreateLemonadeMutation } from '../../../../store/api/lemonade.api';
-import DropZone from '../../../DropZone/DropZone';
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { useCreateLemonadeMutation } from "../../../../store/api/lemonade.api";
+import DropZone from "../../../DropZone/DropZone";
+import { addInfo, changeInfo, removeInfo } from "../../../helpers/handleInfo";
 
-const CreateLemonade = ({setOpen}) => {
+const CreateLemonade = ({ setOpen }) => {
     const {
         register,
-        formState:{
-            errors,
-        },
-        handleSubmit
-    }= useForm();
+
+        handleSubmit,
+    } = useForm();
 
     const [info, setInfo] = useState([]);
     const [files, setFiles] = useState([]);
     const [inStock, setInStock] = useState(true);
-    const [createLemonade] = useCreateLemonadeMutation() ;
+    const [createLemonade] = useCreateLemonadeMutation();
 
-
-    const onSubmit = (data) =>{
-        if(files.length < 1){
-            return alert('Добавьте изображение')
+    const onSubmit = (data) => {
+        if (files.length < 1) {
+            return alert("Добавьте изображение");
         }
-        let formData = new FormData()
-        formData.append('title', data.title)
-        formData.append('short_description', data.shortDescr)
-        formData.append('price', JSON.stringify({ 
-            standart: {
-                regular: data.standartReg,
-                opt: data.standartOpt
-            }
-        }))
-        formData.append('description', data.description)
-        formData.append('in_stock', inStock)
-        for(let i=0; i<files.length; i++){
-            formData.append('img', files[i])
-        }
-        formData.append('info', JSON.stringify(info))
-        
-
-        createLemonade(formData).unwrap()
-            .then((data)=>{
-                alert(data.message)
-                setOpen(false)
+        let formData = new FormData();
+        formData.append("title", data.title);
+        formData.append("short_description", data.shortDescr);
+        formData.append(
+            "price",
+            JSON.stringify({
+                standart: {
+                    regular: data.standartReg,
+                    opt: data.standartOpt,
+                },
             })
+        );
+        formData.append("description", data.description);
+        formData.append("id_standart", data.idStandart);
+        formData.append("in_stock", inStock);
+        for (let i = 0; i < files.length; i++) {
+            formData.append("img", files[i]);
+        }
+        formData.append("info", JSON.stringify(info));
 
-    }
+        createLemonade(formData)
+            .unwrap()
+            .then((data) => {
+                alert(data.message);
+                setOpen(false);
+            });
+    };
 
     return (
-        <form className='form-update' onSubmit={handleSubmit(onSubmit)}>
-            <div className='form-update__input'>
-                <input placeholder='Введите название' type="text" {...register('title', {required: true})}/>
+        <form className="form-update" onSubmit={handleSubmit(onSubmit)}>
+            <div className="form-update__input">
+                <input
+                    placeholder="Введите название"
+                    type="text"
+                    {...register("title", { required: true })}
+                />
             </div>
-            <div className='form-update__input'>
-                <input placeholder='Введите краткое описание' type="text" {...register('shortDescr', {required: true})}/>
+            <div className="form-update__input">
+                <input
+                    placeholder="Введите краткое описание"
+                    type="text"
+                    {...register("shortDescr", { required: true })}
+                />
             </div>
-            <div className='form-update__input'>
-                <textarea placeholder='Введите полное описание' type="text" {...register('description', {required: true})}/>
+            <div className="form-update__input">
+                <textarea
+                    placeholder="Введите полное описание"
+                    type="text"
+                    {...register("description", { required: true })}
+                />
             </div>
-            <h4 className='form-update__title'> Цена:</h4>
-            <div className='form-update__input form-update__input-price'>
-                <input placeholder='Введите полную стоимость' type="text" {...register('standartReg', {required: true})}/>
-                <input placeholder='Введите оптовую стоимость' type="text" {...register('standartOpt', {required: true})}/>
+            <h4 className="form-update__title"> Идентификатор для LiqPay</h4>
+
+            <div className="form-update__input form-update__input-price">
+                <input
+                    placeholder="Введите id для стандартной почки"
+                    type="text"
+                    {...register("idStandart", { required: true })}
+                />
             </div>
-            <div className='form-update__checkboxs'>
-                <div className='form-update__checkbox'>
-                    <input id='stock' type="checkbox" checked={inStock} onChange={()=>setInStock(!inStock)}/>
+            <h4 className="form-update__title"> Цена:</h4>
+            <div className="form-update__input form-update__input-price">
+                <input
+                    placeholder="Введите полную стоимость"
+                    type="text"
+                    {...register("standartReg", { required: true })}
+                />
+                <input
+                    placeholder="Введите оптовую стоимость"
+                    type="text"
+                    {...register("standartOpt", { required: true })}
+                />
+            </div>
+            <div className="form-update__checkboxs">
+                <div className="form-update__checkbox">
+                    <input
+                        id="stock"
+                        type="checkbox"
+                        checked={inStock}
+                        onChange={() => setInStock(!inStock)}
+                    />
                     <label htmlFor="stock">В наличии</label>
                 </div>
             </div>
-            <div className='form-update__drop'>
-                <DropZone files={files} setFiles={setFiles} title={'Lemonade'}/>
+            <div className="form-update__drop">
+                <DropZone
+                    files={files}
+                    setFiles={setFiles}
+                    title={"Lemonade"}
+                />
             </div>
-            <button onClick={(e)=>addInfo(e, info, setInfo)} className='form-update__btn form-update__btn-add'>Добавить Свойство</button>
-            {info.map(item=>(
-                <div className='form-update__info' key={item._id}>
-                    <div className='form-update__input form-update__input-info'>
-                        <input placeholder='Введите стоимость' value={item.name} type="text" onChange={(e)=> changeInfo('name',  e.target.value, item._id, info, setInfo)} />
+            <button
+                onClick={(e) => addInfo(e, info, setInfo)}
+                className="form-update__btn form-update__btn-add"
+            >
+                Добавить Свойство
+            </button>
+            {info.map((item) => (
+                <div className="form-update__info" key={item._id}>
+                    <div className="form-update__input form-update__input-info">
+                        <input
+                            placeholder="Введите стоимость"
+                            value={item.name}
+                            type="text"
+                            onChange={(e) =>
+                                changeInfo(
+                                    "name",
+                                    e.target.value,
+                                    item._id,
+                                    info,
+                                    setInfo
+                                )
+                            }
+                        />
                     </div>
-                    <div className='form-update__input form-update__input-info'>
-                        <input placeholder='Введите стоимость' value={item.text} type="text" onChange={(e)=> changeInfo('text',  e.target.value, item._id, info, setInfo)} />
+                    <div className="form-update__input form-update__input-info">
+                        <input
+                            placeholder="Введите стоимость"
+                            value={item.text}
+                            type="text"
+                            onChange={(e) =>
+                                changeInfo(
+                                    "text",
+                                    e.target.value,
+                                    item._id,
+                                    info,
+                                    setInfo
+                                )
+                            }
+                        />
                     </div>
-                    <button onClick={()=>removeInfo(item._id, info, setInfo)} className='form-update__btn form-update__btn-close'>Удалить</button>
+                    <button
+                        onClick={() => removeInfo(item._id, info, setInfo)}
+                        className="form-update__btn form-update__btn-close"
+                    >
+                        Удалить
+                    </button>
                 </div>
             ))}
 
-            <div  className='form-update__buttons'> 
-                <button className='btn' type='submit'>Добавить</button>                        
-            </div>            
+            <div className="form-update__buttons">
+                <button className="btn" type="submit">
+                    Добавить
+                </button>
+            </div>
         </form>
     );
 };

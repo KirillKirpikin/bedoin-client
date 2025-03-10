@@ -33,6 +33,7 @@ const CoffeeProduct = ({ item }) => {
             packing: currentRadio,
             img: currentRadio === 250 ? item.imgs[0] : isKg(item),
             price: currentRadio === 250 ? item.price.standart : item.price.kg,
+            id: currentRadio === 250 ? item.id_standart : item.id_kg,
             select: selected,
             quantity: count,
         };

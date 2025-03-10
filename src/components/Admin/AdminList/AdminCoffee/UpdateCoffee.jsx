@@ -5,9 +5,9 @@ import {
     useGetCoffeeQuery,
     useUdateCoffeeMutation,
 } from "../../../../store/api/api";
-import DropZoneUpdate from "../../../DropZone/DropZoneUpdate";
-import SelectType from "../../../CustomSelect/SelectType";
 import { useGetAllStickerQuery } from "../../../../store/api/sticker.api";
+import SelectType from "../../../CustomSelect/SelectType";
+import DropZoneUpdate from "../../../DropZone/DropZoneUpdate";
 
 const UpdateCoffee = () => {
     const { id } = useParams();
@@ -141,6 +141,8 @@ const UpdateCoffee = () => {
         formData.append("description", da.description);
         formData.append("in_stock", inStockUpdate);
         formData.append("packing_kg", inStockKgUpdate);
+        formData.append("id_standart", da.idStandart);
+        formData.append("id_kg", da.idKg);
         formData.append("country", da.country);
         if (files.length > 0) {
             for (let i = 0; i < files.length; i++) {
@@ -240,6 +242,27 @@ const UpdateCoffee = () => {
                                     type="text"
                                     {...register("country", { required: true })}
                                     defaultValue={data.country}
+                                />
+                            </div>
+                            <h4 className="form-update__title">
+                                {" "}
+                                Идентификатор для LiqPay
+                            </h4>
+
+                            <div className="form-update__input form-update__input-price">
+                                <input
+                                    placeholder="Введите id для стандартной почки"
+                                    type="text"
+                                    {...register("idStandart", {
+                                        required: true,
+                                    })}
+                                    defaultValue={data.id_standart}
+                                />
+                                <input
+                                    placeholder="Введите id для Кг пачки"
+                                    type="text"
+                                    {...register("idKg", { required: true })}
+                                    defaultValue={data.id_kg}
                                 />
                             </div>
                             <h4 className="form-update__title">

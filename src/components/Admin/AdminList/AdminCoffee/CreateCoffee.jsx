@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import DropZone from "../../../DropZone/DropZone";
 import { useCreateCoffeeMutation } from "../../../../store/api/api";
-import SelectType from "../../../CustomSelect/SelectType";
 import { useGetAllStickerQuery } from "../../../../store/api/sticker.api";
+import SelectType from "../../../CustomSelect/SelectType";
+import DropZone from "../../../DropZone/DropZone";
 
 const CreateCoffee = ({ setOpen }) => {
     const {
         register,
-        formState: { errors },
+
         handleSubmit,
     } = useForm();
     const { isLoading, data } = useGetAllStickerQuery();
@@ -145,6 +145,8 @@ const CreateCoffee = ({ setOpen }) => {
         );
         formData.append("description", data.description);
         formData.append("country", data.country);
+        formData.append("id_standart", data.idStandart);
+        formData.append("id_kg", data.idKg);
         formData.append("in_stock", inStock);
         formData.append("packing_kg", inStockKg);
         for (let i = 0; i < files.length; i++) {
@@ -197,6 +199,20 @@ const CreateCoffee = ({ setOpen }) => {
                     {...register("country", { required: true })}
                 />
             </div>
+            <h4 className="form-update__title"> Идентификатор для LiqPay</h4>
+
+            <div className="form-update__input form-update__input-price">
+                <input
+                    placeholder="Введите id для стандартной почки"
+                    type="text"
+                    {...register("idStandart", { required: true })}
+                />
+                <input
+                    placeholder="Введите id для Кг пачки"
+                    type="text"
+                    {...register("idKg", { required: true })}
+                />
+            </div>
             <h4 className="form-update__title"> Цена для пачки 250г:</h4>
             <div className="form-update__input form-update__input-price">
                 <input
@@ -210,6 +226,7 @@ const CreateCoffee = ({ setOpen }) => {
                     {...register("standartOpt", { required: true })}
                 />
             </div>
+
             <h4 className="form-update__title"> Цена для пачки 1кг:</h4>
             <div className="form-update__input form-update__input-price">
                 <input

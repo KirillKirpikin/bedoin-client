@@ -31,7 +31,7 @@ const MerchListPage = () => {
                     </Link>
                     <ArrowSvg />
                     <div className="navigate__link navigate__link-this">
-                        мерч
+                        Аксесуари
                     </div>
                 </div>
                 <div className="merch__list">
@@ -46,7 +46,7 @@ const MerchListPage = () => {
                             <MerchProduct key={item._id} item={item} />
                         ))
                     ) : (
-                        <NotFound product={"Мерча"} />
+                        <NotFound product={"Аксесуарів"} />
                     )}
                 </div>
             </div>

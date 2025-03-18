@@ -61,11 +61,11 @@ const SingleMerchPage = () => {
                     </Link>
                     <ArrowSvg />
                     <Link className="navigate__link" to={ROUTES.MERCH}>
-                        мерч
+                        Аксесуари
                     </Link>
                     <ArrowSvg />
                     <Link className="navigate__link navigate__link-this">
-                        {!data ? "мерч" : data.title}
+                        {!data ? "Аксесуари" : data.title}
                     </Link>
                 </div>
                 {isLoading ? (

@@ -261,7 +261,7 @@ const UpdateCoffee = () => {
                                 <input
                                     placeholder="Введите id для Кг пачки"
                                     type="text"
-                                    {...register("idKg", { required: true })}
+                                    {...register("idKg", { required: false })}
                                     defaultValue={data.id_kg}
                                 />
                             </div>

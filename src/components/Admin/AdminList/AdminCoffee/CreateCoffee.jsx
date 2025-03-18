@@ -210,7 +210,7 @@ const CreateCoffee = ({ setOpen }) => {
                 <input
                     placeholder="Введите id для Кг пачки"
                     type="text"
-                    {...register("idKg", { required: true })}
+                    {...register("idKg", { required: false })}
                 />
             </div>
             <h4 className="form-update__title"> Цена для пачки 250г:</h4>

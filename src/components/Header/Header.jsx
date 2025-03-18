@@ -98,7 +98,7 @@ const Header = () => {
                             </li>
                             <li className={myClass("menu__item")}>
                                 <Link to={ROUTES.MERCH} onClick={handleClose}>
-                                    МЕРЧ
+                                    АКСЕСУАРИ
                                 </Link>
                             </li>
                             <li className={myClass("menu__item")}>

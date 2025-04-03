@@ -1,19 +1,21 @@
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import { ReactComponent as CartSvg } from "../../../img/cart.svg";
 import { ReactComponent as ArrowSvg } from "../../../img/arrow.svg";
-import CoffeeCart from "../../Cart/CoffeeCart";
-import { ROUTES } from "../../../utils/routes";
-import Adress from "../../Post/Adress";
+import { ReactComponent as CartSvg } from "../../../img/cart.svg";
+import { clearCart } from "../../../store/cart/cartSlice";
 import {
     createOrder,
+    createOrderMono,
     createOrderOffline,
 } from "../../../store/order/orderSlice";
-import { clearCart } from "../../../store/cart/cartSlice";
-import PromoCode from "../../Promo";
 import { promo, promoOn } from "../../../utils/promo";
+import { ROUTES } from "../../../utils/routes";
+import CoffeeCart from "../../Cart/CoffeeCart";
+import Adress from "../../Post/Adress";
+import PromoCode from "../../Promo";
+import Cookies from "js-cookie";
 
 const OrderPage = () => {
     const dispatch = useDispatch();
@@ -32,6 +34,9 @@ const OrderPage = () => {
     const [payment, setPayment] = useState("Cash");
     const [call, setCall] = useState("CallBack");
     const navigate = useNavigate();
+    Cookies.remove("SAuid");
+    const saUid = Cookies.get("SAuid");
+    const { isAuth } = useSelector((state) => state.user);
 
     const totalFunc = (total) => {
         if (isPromo && promoSale.product === "coffee" && !isDiscounted) {
@@ -107,6 +112,8 @@ const OrderPage = () => {
         return price.regular;
     };
 
+    console.log(payment);
+
     const onSubmit = (data) => {
         const product = cart.map((item) => {
             const {
@@ -138,6 +145,7 @@ const OrderPage = () => {
             delivery,
             payment,
             call,
+            isConversion: saUid ? true : false,
         };
 
         if (payment === "OnlinePay") {
@@ -148,11 +156,21 @@ const OrderPage = () => {
                 .catch((error) => {
                     console.error("Ошибка при создании заказа:", error);
                 });
+        } else if (payment === "OnlinePayMono") {
+            dispatch(createOrderMono(order))
+                .then((response) => {
+                    window.location.href = response.payload.payUrl;
+                })
+                .catch((error) => {
+                    console.error("Ошибка при создании заказа:", error);
+                });
         } else {
             dispatch(createOrderOffline(order))
                 .then((response) => {
                     dispatch(clearCart());
-                    navigate(ROUTES.RESULT, { state: { result: response } });
+                    navigate(
+                        `${ROUTES.RESULT}?orderId=${response.payload.orderId}&total=${response.payload.total}`
+                    );
                 })
                 .catch((error) => {
                     console.error("Ошибка при создании заказа:", error);
@@ -310,6 +328,28 @@ const OrderPage = () => {
                                         <span className="radio-btns__custom"></span>
                                         Онлайн оплата(LiqPay)
                                     </label>
+                                    {isAuth && (
+                                        <label
+                                            className="radio-btns__label"
+                                            htmlFor="online-pay-mono"
+                                        >
+                                            <input
+                                                type="radio"
+                                                name="payment"
+                                                value="OnlinePayMono"
+                                                id="online-pay-mono"
+                                                checked={
+                                                    payment === "OnlinePayMono"
+                                                }
+                                                onChange={(e) =>
+                                                    setPayment(e.target.value)
+                                                }
+                                                className="radio-btns__real"
+                                            />
+                                            <span className="radio-btns__custom"></span>
+                                            Онлайн оплата(MonoBank)
+                                        </label>
+                                    )}
                                 </div>
                             </div>
 

@@ -8,11 +8,13 @@ import { clearCart } from "../../store/cart/cartSlice";
 import { checkUser } from "../../store/user/userSlice";
 import Cart from "../Cart/Cart";
 import Spiner from "../Spiner/Spiner";
+import { useReferralTracking } from "../../hooks/useReferralTracking";
 // import '../../style/style.scss';
 
 function App() {
     const [isLoading, setIsLoading] = useState(true);
     const dispatch = useDispatch();
+    useReferralTracking();
 
     useEffect(() => {
         dispatch(checkUser());

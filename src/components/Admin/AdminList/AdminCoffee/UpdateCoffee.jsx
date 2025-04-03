@@ -137,7 +137,6 @@ const UpdateCoffee = () => {
                 },
             })
         );
-        // formData.append('type', toArray(da.type))
         formData.append("description", da.description);
         formData.append("in_stock", inStockUpdate);
         formData.append("packing_kg", inStockKgUpdate);

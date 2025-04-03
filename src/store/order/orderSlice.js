@@ -14,6 +14,18 @@ export const createOrder = createAsyncThunk(
     }
 );
 
+export const createOrderMono = createAsyncThunk(
+    "order/createOrderMono",
+    async (payload, thunkApi) => {
+        try {
+            const res = await axios.post(`${BASE_URL}/orders/mono`, payload);
+            return res.data;
+        } catch (error) {
+            return thunkApi.rejectWithValue(error);
+        }
+    }
+);
+
 export const singUp = createAsyncThunk(
     "order/singUp",
     async (payload, thunkApi) => {
@@ -32,7 +44,9 @@ export const createOrderOffline = createAsyncThunk(
             const res = await axios.post(`${BASE_URL}/orders/offline`, payload);
             return res.data;
         } catch (error) {
-            return thunkApi.rejectWithValue(error);
+            return thunkApi.rejectWithValue(
+                error.response?.data || "Ошибка запроса"
+            );
         }
     }
 );
@@ -76,6 +90,9 @@ const orderSlice = createSlice({
     initialState,
     extraReducers: (builder) => {
         builder.addCase(createOrder.fulfilled, (state, action) => {
+            state.orders.push(action.payload);
+        });
+        builder.addCase(createOrderMono.fulfilled, (state, action) => {
             state.orders.push(action.payload);
         });
         builder.addCase(createOrderOffline.fulfilled, (state, action) => {

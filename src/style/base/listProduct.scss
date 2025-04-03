@@ -21,6 +21,10 @@
         // }
     }
     &__product {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
         position: relative;
         border-radius: 15px;
         background: #fff;

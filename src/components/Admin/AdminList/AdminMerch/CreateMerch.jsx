@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useCreateMerchMutation } from "../../../../store/api/merch.api";
 import DropZone from "../../../DropZone/DropZone";
+import { toArray } from "../../../helpers/handleInfo";
 
 const CreateMerch = ({ setOpen }) => {
     const {
@@ -26,11 +27,6 @@ const CreateMerch = ({ setOpen }) => {
 
     const changeInfo = (key, value, id) => {
         setInfo(info.map((i) => (i._id === id ? { ...i, [key]: value } : i)));
-    };
-
-    const toArray = (str) => {
-        let t = str.replaceAll(" ", "").split(",");
-        return t;
     };
 
     const onSubmit = (data) => {
@@ -77,11 +73,11 @@ const CreateMerch = ({ setOpen }) => {
                 />
             </div>
             <div className="form-update__input">
-                <input
+                <textarea
                     placeholder="Введите краткое описание"
                     type="text"
                     {...register("shortDescr", { required: true })}
-                />
+                ></textarea>
             </div>
             <h4 className="form-update__title"> Идентификатор для LiqPay</h4>
 

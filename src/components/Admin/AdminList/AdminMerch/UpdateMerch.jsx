@@ -100,14 +100,14 @@ const UpdateMerch = () => {
                                 <label htmlFor="short_description">
                                     Введите краткое описание:
                                 </label>
-                                <input
+                                <textarea
                                     id="short_description"
                                     type="text"
                                     {...register("short_description", {
                                         required: true,
                                     })}
                                     defaultValue={data.short_description}
-                                />
+                                ></textarea>
                             </div>
                             <h4 className="form-update__title">
                                 {" "}

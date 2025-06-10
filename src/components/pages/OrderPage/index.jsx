@@ -36,7 +36,6 @@ const OrderPage = () => {
     const navigate = useNavigate();
     Cookies.remove("SAuid");
     const saUid = Cookies.get("SAuid");
-    const { isAuth } = useSelector((state) => state.user);
 
     const totalFunc = (total) => {
         if (isPromo && promoSale.product === "coffee" && !isDiscounted) {
@@ -328,28 +327,27 @@ const OrderPage = () => {
                                         <span className="radio-btns__custom"></span>
                                         Онлайн оплата(LiqPay)
                                     </label>
-                                    {isAuth && (
-                                        <label
-                                            className="radio-btns__label"
-                                            htmlFor="online-pay-mono"
-                                        >
-                                            <input
-                                                type="radio"
-                                                name="payment"
-                                                value="OnlinePayMono"
-                                                id="online-pay-mono"
-                                                checked={
-                                                    payment === "OnlinePayMono"
-                                                }
-                                                onChange={(e) =>
-                                                    setPayment(e.target.value)
-                                                }
-                                                className="radio-btns__real"
-                                            />
-                                            <span className="radio-btns__custom"></span>
-                                            Онлайн оплата(MonoBank)
-                                        </label>
-                                    )}
+                                    <label
+                                        className="radio-btns__label"
+                                        htmlFor="online-pay-mono"
+                                    >
+                                        <input
+                                            type="radio"
+                                            name="payment"
+                                            value="OnlinePayMono"
+                                            id="online-pay-mono"
+                                            checked={
+                                                payment === "OnlinePayMono"
+                                            }
+                                            onChange={(e) =>
+                                                setPayment(e.target.value)
+                                            }
+                                            className="radio-btns__real"
+                                        />
+                                        <span className="radio-btns__custom"></span>
+                                        plata by mono (оплата карткою, ApplePay,
+                                        GooglePay)
+                                    </label>
                                 </div>
                             </div>
 

@@ -10,9 +10,9 @@ const Accordion = ({ item, onClick, isOpen, onDelete }) => {
         // eslint-disable-next-line default-case
         switch (pay) {
             case "OnlinePayMono":
-                return "Через МоноБанк";
+                return "Через Monobank";
             case "OnlinePay":
-                return "Онлайн оплата";
+                return "Через LiqPay";
             case "Cash":
                 return "При получении";
             case "ScorePay":

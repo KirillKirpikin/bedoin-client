@@ -9,6 +9,8 @@ import { checkUser } from "../../store/user/userSlice";
 import Cart from "../Cart/Cart";
 import Spiner from "../Spiner/Spiner";
 import { useReferralTracking } from "../../hooks/useReferralTracking";
+import Radio from "../Radio/Radio";
+
 // import '../../style/style.scss';
 
 function App() {
@@ -57,6 +59,8 @@ function App() {
                     </Suspense>
                 )}
             </main>
+            <Radio />
+
             <Footer />
         </div>
     );

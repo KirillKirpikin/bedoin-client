@@ -1,0 +1,112 @@
+.vinyl-widget {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+}
+
+.vinyl-btns {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transform: translateX(-100px); /* ховаємо за платівку */
+    opacity: 0;
+    z-index: 1;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.vinyl-btns.show {
+    transform: translateX(0); /* плавно виїжджає */
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.vinyl-btns button {
+    background: none;
+    border: none;
+    padding: 0 5px;
+    font-size: 20px;
+    cursor: pointer;
+    color: black;
+    transition: transform 0.2s ease;
+}
+
+.vinyl-btns button:hover {
+    transform: scale(1.2);
+}
+
+/* Мобільна адаптація */
+@media (max-width: 768px) {
+    .vinyl-btns {
+        margin-left: 10px;
+    }
+    .vinyl-btns button {
+        font-size: 15px;
+    }
+    .vinyl {
+        width: 70px;
+        height: 70px;
+    }
+
+    .vinyl-btns {
+        transform: translateX(-80px);
+    }
+}
+
+/* Платівка */
+.vinyl {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    cursor: pointer;
+    animation: spin 3s linear infinite;
+    animation-play-state: paused; /* ← стоїть, поки не відтворюється */
+    position: relative;
+    z-index: 2; /* Платівка зверху */
+}
+
+.spinning {
+    animation-play-state: running; /* ← а от тепер крутиться */
+}
+
+@media (max-width: 768px) {
+    .vinyl {
+        width: 70px;
+        height: 70px;
+    }
+    .vinyl-widget {
+        bottom: 10px;
+        left: 10px;
+    }
+}
+
+.vinyl-widget.active .vinyl {
+    animation: spin 3s linear infinite;
+}
+
+/* Анімація обертання */
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Плеєр SoundCloud */
+.soundcloud-frame {
+    width: 320px;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: opacity 0.5s ease, height 0.5s ease;
+    margin-top: 10px;
+}
+
+/* Коли відкритий */
+.vinyl-widget.active .soundcloud-frame {
+    height: 166px;
+    opacity: 1;
+}

@@ -23,10 +23,12 @@ import {
 import CoffeeCart from "./CoffeeCart";
 
 import { ROUTES } from "../../utils/routes";
+import { useTranslation } from "react-i18next";
 
 const CART_EXPIRATION_TIME = 30 * 30 * 1000;
 
 const Cart = ({ style }) => {
+    const { t } = useTranslation();
     const dispatch = useDispatch();
     let {
         cartOpen,
@@ -122,6 +124,11 @@ const Cart = ({ style }) => {
                                 </div>
                                 <div className="total-cart__price">
                                     {totalOpt}₴
+                                    {totalReg > totalOpt && (
+                                        <span className="total_mat">
+                                            {t("OrderTotalTxt")}
+                                        </span>
+                                    )}
                                 </div>
                             </div>
                         </div>

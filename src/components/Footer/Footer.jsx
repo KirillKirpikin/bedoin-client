@@ -8,6 +8,7 @@ import FooterBgBlur from "../../img/footor-blur.jpg";
 import FooterBg from "../../img/Screenshot_3.png";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../utils/routes";
+import { TWithBreaks } from "../TWithBreaks";
 
 const Footer = () => {
     const [imageSrc, setImageSrc] = useState(FooterBgBlur);
@@ -143,8 +144,7 @@ const Footer = () => {
                             <Logo />
                         </div>
                         <div className="bottom-footer__text">
-                            Створення культури споживання натуральної кави для
-                            тих, хто шукає нові відчуття
+                            <TWithBreaks i18nKey="FooterTxt" />
                         </div>
                     </div>
                     <div className="bottom-footer__down">

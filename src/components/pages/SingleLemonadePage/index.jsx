@@ -17,7 +17,7 @@ const SingleLemonadePage = () => {
     const { data, isLoading, isFetching, isSuccess } = useGetLemonadeQuery({
         id,
     });
-    const [count, setCount] = useState(24);
+    const [count, setCount] = useState(1);
 
     const memoizedImages = useMemo(() => {
         return data ? [...data.imgs] : [];
@@ -103,7 +103,8 @@ const SingleLemonadePage = () => {
                                         <Counter
                                             count={count}
                                             setCount={setCount}
-                                            min={24}
+                                            min={1}
+                                            isLemonade={false}
                                         />
                                     </div>
                                 </div>

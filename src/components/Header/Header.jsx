@@ -17,8 +17,11 @@ import { useClickOutside } from "../../utils/useClickOutside";
 
 import { useDispatch, useSelector } from "react-redux";
 import { openCart } from "../../store/cart/cartSlice";
+import LanguageSwitch from "../LanguageSwitch";
+import { useTranslation } from "react-i18next";
 
 const Header = () => {
+    const { i18n } = useTranslation();
     const [isOpen, setIsOpen] = useState(false);
     const [dropDown, setDropdown] = useState(false);
     const { cart } = useSelector(({ cart }) => cart);
@@ -33,6 +36,13 @@ const Header = () => {
             document.body.style.overflow = "auto";
         }
     };
+
+    useEffect(() => {
+        const savedLanguage = localStorage.getItem("i18nextLng");
+        if (savedLanguage) {
+            i18n.changeLanguage(savedLanguage);
+        }
+    }, [i18n]);
 
     const handleClose = () => {
         isOpen && setIsOpen(false);
@@ -76,6 +86,7 @@ const Header = () => {
         >
             <div className="header__container">
                 <div className="header__menu menu">
+                    {/* <div className="menu__left"> */}
                     <nav
                         className={`menu__body ${
                             isOpen ? "menu__body-active" : ""
@@ -116,9 +127,11 @@ const Header = () => {
                             </li>
                         </ul>
                     </nav>
+                    {/* </div> */}
                     <Link to={ROUTES.HOME} className={myClass("menu__logo")}>
                         <Logo />
                     </Link>
+                    {/* <div className="menu__right"> */}
                     <div className="menu__info">
                         <div
                             className={myClass("menu__cart")}
@@ -137,6 +150,9 @@ const Header = () => {
                                 <p>+38 (067) 500 13 03</p> <PhoneSvg />
                             </a>
                         </div>
+                        <div>
+                            <LanguageSwitch />
+                        </div>
                         <button
                             onClick={() => setIsOpen(!isOpen)}
                             className={myClass(
@@ -146,6 +162,7 @@ const Header = () => {
                             <span></span>
                         </button>
                     </div>
+                    {/* </div> */}
                 </div>
             </div>
         </header>

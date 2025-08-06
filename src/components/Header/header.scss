@@ -3,10 +3,11 @@
     z-index: 10;
     &__menu {
         display: flex;
-        justify-content: space-between;
         align-items: center;
+        justify-content: space-between;
     }
 }
+
 .menu {
     &__body {
         @media (max-width: $mobile) {
@@ -33,6 +34,39 @@
             padding-left: rem(20);
         }
     }
+    &__item-langs {
+        @include adaptiveValue("margin-left", 41, 10, 0, 1440, 768);
+        @media (max-width: $mobile) {
+            display: flex;
+            flex-direction: column;
+            span {
+                display: none;
+            }
+        }
+    }
+    &__item-lang {
+        font-family: Uni Sans;
+        font-size: rem(14);
+        font-weight: 900;
+        color: #fff;
+
+        @media (max-width: $mobile) {
+            font-size: rem(16);
+        }
+        transition: all 0.2s ease 0s;
+        &:hover {
+            color: #415167;
+            svg {
+                fill: #415167;
+            }
+        }
+    }
+    &__item-lang-active {
+        p {
+            color: #415167 !important;
+        }
+    }
+
     &__item {
         font-family: Uni Sans;
         font-size: rem(14);
@@ -77,7 +111,11 @@
             }
         }
     }
+
     &__logo {
+        flex: 0;
+        text-align: center;
+        margin: 0 20px;
         svg {
             fill: white;
         }
@@ -89,7 +127,7 @@
     &__cart {
         position: relative;
         display: flex;
-        align-items: center;
+        align-items: flex-end;
         font-family: Uni Sans;
         font-size: rem(14);
         font-weight: 900;

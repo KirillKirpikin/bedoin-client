@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import BgSmall from "../../../img/courseBgMin.jpeg";
 import BgNorm from "../../../img/courseBgMax.jpeg";
+import { TWithBreaks } from "../../TWithBreaks";
 
 const CourseMain = ({ scroll }) => {
     const [imageSrc, setImageSrc] = useState(BgSmall);
@@ -21,11 +22,11 @@ const CourseMain = ({ scroll }) => {
                 <div className="course-main__info">
                     <h1 className="course-main__title">школа бариста</h1>
                     <p className="course-main__txt">
-                        Навчання кавових професіоналів у Дніпрі
+                        <TWithBreaks i18nKey="SchoolMainTxt" />
                     </p>
                     <div className="course-main__btns">
                         <button onClick={() => scroll()} className="btn-white">
-                            Детальніше про курс
+                            <TWithBreaks i18nKey="SchoolBtn" />
                         </button>
                     </div>
                 </div>

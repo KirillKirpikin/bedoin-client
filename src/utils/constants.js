@@ -27,16 +27,16 @@ export const SLIDER_BUTTON_TYPES = {
 };
 
 export const SLIDER_COURSE = [
-    { id: 1, img: Slide_1, title: "Початківцям і професійним бариста" },
-    { id: 2, img: Slide_2, title: "Власникам кавового бізнесу" },
-    { id: 3, img: Slide_3, title: "Адміністраторам та керуючим Horeca" },
-    { id: 4, img: Slide_4, title: "Любителям кави" },
-    { id: 5, img: Slide_5, title: "Тим, хто мріє відкрити власну кав'ярню" },
-    { id: 6, img: Slide_1, title: "Початківцям і професійним бариста" },
-    { id: 7, img: Slide_2, title: "Власникам кавового бізнесу" },
-    { id: 8, img: Slide_3, title: "Адміністраторам та керуючим Horeca" },
-    { id: 9, img: Slide_4, title: "Любителям кави" },
-    { id: 10, img: Slide_5, title: "Тим, хто мріє відкрити власну кав'ярню" },
+    { id: 1, img: Slide_1, title: "SchoolSliderText1" },
+    { id: 2, img: Slide_2, title: "SchoolSliderText2" },
+    { id: 3, img: Slide_3, title: "SchoolSliderText3" },
+    { id: 4, img: Slide_4, title: "SchoolSliderText4" },
+    { id: 5, img: Slide_5, title: "SchoolSliderText5" },
+    { id: 6, img: Slide_1, title: "SchoolSliderText1" },
+    { id: 7, img: Slide_2, title: "SchoolSliderText2" },
+    { id: 8, img: Slide_3, title: "SchoolSliderText3" },
+    { id: 9, img: Slide_4, title: "SchoolSliderText4" },
+    { id: 10, img: Slide_5, title: "SchoolSliderText5" },
 ];
 
 export const CARD_COURSE = [
@@ -46,7 +46,7 @@ export const CARD_COURSE = [
         title: "Базовий курс бариста",
         period: "12 годин",
         group: "1-5 людей",
-        text: "Дізнайтеся основи кавової справи: теорія кави, її походження, смак і аромати. Ідеально підходить для початківців.",
+        text: "SchoolCourseText1",
     },
     {
         id: 2,
@@ -54,7 +54,7 @@ export const CARD_COURSE = [
         title: "Базовий +  Latte Art",
         period: "14 годин",
         group: "індивідуальний",
-        text: "Опануйте основи кавового мистецтва та навчіться створювати ефектні малюнки на каві за допомогою латте-арту.",
+        text: "SchoolCourseText2",
     },
 
     {
@@ -63,7 +63,7 @@ export const CARD_COURSE = [
         title: "Професійний курс бариста",
         period: "18 годин",
         group: "індивідуальний",
-        text: "Поглиблене навчання всіх аспектів кавової справи: робота за баром, альтернативні методи, калібрування смаку та використання професійного обладнання.",
+        text: "SchoolCourseText3",
     },
     {
         id: 4,
@@ -71,7 +71,7 @@ export const CARD_COURSE = [
         title: "Як відкрити кав’ярню",
         period: "18 годин",
         group: "2-10 людини",
-        text: "Практичний курс для майбутніх власників кав’ярень: організація робочого процесу, налаштування обладнання та секрети успішного бізнесу.",
+        text: "SchoolCourseText4",
     },
     {
         id: 5,
@@ -79,6 +79,6 @@ export const CARD_COURSE = [
         title: "Професійна обсмажка кави",
         period: "30 годин",
         group: "1-3 людини",
-        text: " Дізнайтеся все про обсмажування кави, включаючи дефекти, калібрування смаку та створення ідеального продукту.",
+        text: "SchoolCourseText5",
     },
 ];

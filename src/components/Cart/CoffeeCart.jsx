@@ -100,7 +100,7 @@ const CoffeeCart = ({
                     {cart.select ? (
                         <div className="product-cart__select">
                             {" "}
-                            {cart.product === "coffee" && "Помел:"}{" "}
+                            {cart.product === "coffee" && "Помел:"}
                             <span>{cart.select}</span>
                         </div>
                     ) : (
@@ -114,7 +114,10 @@ const CoffeeCart = ({
                             <Counter
                                 count={count}
                                 setCount={setCount}
-                                min={cart.product === "lemonade" ? 24 : 1}
+                                min={1}
+                                isLemonade={
+                                    cart.product === "lemonade" ? true : false
+                                }
                             />
                         </div>
                         <div className="product-cart__total">

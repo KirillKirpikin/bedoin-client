@@ -1,82 +1,101 @@
-.border-contacts{
-    border-top: 1px solid rgba(0, 0, 0, 0.70);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.70);
+.border-contacts {
+    border-top: 1px solid rgba(0, 0, 0, 0.7);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.7);
     margin-left: rem(5);
     margin-right: rem(5);
-    &__bar{        
+    &__bar {
         display: flex;
-        align-items:center;
-        margin-left:rem(-15);
+        align-items: center;
+        margin-left: rem(-15);
         margin-right: rem(-15);
-        border-left: 1px solid rgba(0, 0, 0, 0.70);
-        border-right: 1px solid rgba(0, 0, 0, 0.70);        
-        @media (max-width:$mobile){
-            flex-direction: column;   
+        border-left: 1px solid rgba(0, 0, 0, 0.7);
+        border-right: 1px solid rgba(0, 0, 0, 0.7);
+        @media (max-width: $mobile) {
+            flex-direction: column;
             align-items: stretch;
-        }       
+        }
     }
     // .home-contacts__socials
     &__socials {
         display: flex;
-        align-items:center;
+        align-items: center;
         flex: 1 0 30%;
     }
     // .home-contacts__social
     &__social {
-        border-right:1px solid rgba(0, 0, 0, 0.70);
-        a{
-            svg{
+        border-right: 1px solid rgba(0, 0, 0, 0.7);
+        a {
+            svg {
                 fill: #000;
-                &:hover{
-                    fill: #A7A7A7;
+                &:hover {
+                    fill: #a7a7a7;
                 }
             }
         }
-        padding-top: rem(7);
-        padding-bottom: rem(7);
+        padding-top: rem(10);
+        padding-bottom: rem(10);
         @include adaptiveValue("padding-right", 40, 10, 0, 1320, 768);
-        @include adaptiveValue("padding-left", 40, 10, 0, 1320, 768);              
-        @media (max-width:$mobile){
-            &-last{
-                border-right:none;
+        @include adaptiveValue("padding-left", 40, 10, 0, 1320, 768);
+        @media (max-width: $mobile) {
+            &-last {
+                border-right: none;
             }
-            padding-right: calc((100% - (147px))/8);
-            padding-left: calc((100% - (147px))/8);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.70);         
-        }   
+            padding-right: calc((100% - (147px)) / 8);
+            padding-left: calc((100% - (147px)) / 8);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.7);
+        }
     }
     // .home-contacts__phone
     &__phone {
         display: flex;
+        position: relative;
+        flex-direction: column;
+        align-items: center;
         color: #000;
         font-family: Uni Sans;
-        padding: rem(16) 0;
-        justify-content: center;       
+        padding: rem(19) 0;
+        justify-content: center;
         font-size: rem(20);
-        font-weight: 900;        
+        font-weight: 900;
         flex: 1 1 30%;
-        a{
-            white-space: nowrap;     
+        a {
+            white-space: nowrap;
         }
-        border-bottom:none;
-        border-right: 1px solid rgba(0, 0, 0, 0.70);
-        @media (max-width:$mobile){
-            border-bottom: 1px solid rgba(0, 0, 0, 0.70);
-            border-right:none;
-        }    
+        border-bottom: none;
+        border-right: 1px solid rgba(0, 0, 0, 0.7);
+        @media (max-width: $mobile) {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.7);
+            border-right: none;
+        }
+        p {
+            position: absolute;
+            font-family: Montserrat;
+            bottom: 3px;
+            font-size: rem(11);
+            font-weight: 700;
+        }
     }
     // .home-contacts__address
     &__address {
+        position: relative;
         flex: 1 1 40%;
         flex-wrap: nowrap;
         justify-content: center;
         white-space: nowrap;
-        padding: rem(16) 0;
+        padding: rem(19) 0;
         display: flex;
         align-items: center;
-        color:  #000;
+        color: #000;
         font-family: Uni Sans;
         font-size: rem(20);
-        font-weight: 900;    
+        font-weight: 900;
+        p {
+            position: absolute;
+            font-family: Montserrat;
+            top: 3px;
+            left: 15%;
+            font-size: rem(11);
+            font-weight: 700;
+        }
     }
 }

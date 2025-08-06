@@ -6,7 +6,7 @@ import { ReactComponent as CartSvg } from "../../img/cart.svg";
 import Select from "../CustomSelect/Select";
 import Counter from "../Counter/Counter";
 
-const OneProduct = ({ item, all, min }) => {
+const OneProduct = ({ item, all, min, isLemonade }) => {
     const {
         selected,
         setSelected,
@@ -113,7 +113,12 @@ const OneProduct = ({ item, all, min }) => {
                         >
                             <CartSvg /> Додати у кошик
                         </button>
-                        <Counter count={count} setCount={setCount} min={min} />
+                        <Counter
+                            count={count}
+                            setCount={setCount}
+                            min={min}
+                            isLemonade={isLemonade}
+                        />
                     </div>
                 </div>
             </div>

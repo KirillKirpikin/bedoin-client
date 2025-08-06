@@ -8,6 +8,7 @@ import ContactsBorder from "../../ContactsBorder/ContactsBorder";
 // import SkeletonDrip from '../../Skeleton/SkeletonDrip';
 import NotFound from "../../NotFound";
 import SkeletonLemonade from "../../Skeleton/SkeletonLemonade";
+import { TWithBreaks } from "../../TWithBreaks";
 
 const DripListPage = () => {
     const { isLoading, data, refetch } = useGetAllDripQuery();
@@ -49,21 +50,7 @@ const DripListPage = () => {
                     )}
                 </div>
                 <p className="home-coffee__subtitle">
-                    DRIP COFFEE від Bedoin – це спешелті кава у зручному
-                    пакуванні
-                    <br />
-                    <br />
-                    Наша кава у Drip-пакуванні – це ідеальний варіант для тих,
-                    хто цінує зручність та бажає отримувати якісний фільтр в
-                    будь-якому місці.
-                    <br />
-                    <br />
-                    Ці маленькі кавові друзі стануть Вашим незамінним супутником
-                    під час походів, відряджень та мандрівок або просто у офісі,
-                    коли дуже потрібна фільтр-кава. Bedoin пропонує оптові ціни
-                    на нашу дріп-каву для бізнес-партнерів.
-                    <br />
-                    <br />
+                    <TWithBreaks i18nKey="DripSubTitle" />
                 </p>
             </div>
             <ContactsBorder />

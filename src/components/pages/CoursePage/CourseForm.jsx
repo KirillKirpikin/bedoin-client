@@ -3,11 +3,13 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { singUp } from "../../../store/order/orderSlice";
 import Select from "../../CustomSelect/Select";
+import { useTranslation } from "react-i18next";
 
 const CourseForm = () => {
     const dispatch = useDispatch();
     const [isError, setError] = useState(null);
     const [isSuccess, setIsSuccess] = useState(null);
+    const { t } = useTranslation();
 
     const option = [
         "Вступний бариста",
@@ -71,8 +73,8 @@ const CourseForm = () => {
             <div className="course-form__container">
                 <div className="course-form__content">
                     <div className="course-form__left">
-                        <h2>Хочеш приєднатись?</h2>
-                        <p>Залишай свої дані, ми тобі перетелефонуємо</p>
+                        <h2>{t("SchoolFormTitle")}</h2>
+                        <p>{t("SchoolFormTxt")}</p>
                     </div>
 
                     <form
@@ -109,7 +111,7 @@ const CourseForm = () => {
                         </div>
 
                         <div className="course-form__input">
-                            <p>Додаткова інформація</p>
+                            <p>{t("SchoolFormInfo")}</p>
                             <textarea
                                 placeholder="Додаткова інформація"
                                 type="text"

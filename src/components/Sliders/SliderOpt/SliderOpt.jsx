@@ -9,9 +9,12 @@ import { Link } from "react-router-dom";
 import "swiper/css";
 import { useGetAllCoffeeQuery } from "../../../store/api/api";
 import ZoomImage from "../../ZoomImage";
+import { useTranslation } from "react-i18next";
+import { TWithBreaks } from "../../TWithBreaks";
 
 const SliderOpt = () => {
     const { PREV, NEXT } = SLIDER_BUTTON_TYPES;
+    const { t } = useTranslation();
     const optSliderRef = useRef();
     const { data = [] } = useGetAllCoffeeQuery();
     const filtered = data.filter(
@@ -31,13 +34,8 @@ const SliderOpt = () => {
     return (
         <div className="home-opt">
             <div className="home-opt__container">
-                <h3 className="home-opt__subtitle">
-                    При замовленні від 6 кілограм кави - діє оптовий прайс на
-                    каву, безкоштовна доставка
-                </h3>
-                <h2 className="home-opt__title">
-                    КОМБIНУЙ СМАКИ ТА ОТРИМУЙ ЗНИЖКУ
-                </h2>
+                <h3 className="home-opt__subtitle">{t("OptSubTitle")}</h3>
+                <h2 className="home-opt__title">{t("OptTitle")}</h2>
                 <Swiper
                     ref={optSliderRef}
                     slidesPerView={1}
@@ -141,28 +139,7 @@ const SliderOpt = () => {
                     </div>
                 </Swiper>
                 <p className="home-coffee__subtitle">
-                    <br />
-                    <br />
-                    Ласкаво просимо до світу якісної кави, де кожне зерно має
-                    свою унікальну історію. Замовляй свіжообсмажену каву, яка
-                    зроблена спеціально для тебе
-                    <br />
-                    <br />
-                    Пропонуємо вибір Specialty і Premium кави для бізнесу
-                    <br />
-                    <br />
-                    Оптова Ціна від 6 кг
-                    <br />
-                    <br />
-                    Bedoin розуміє потреби вашого бізнесу, тому ми пропонуємо
-                    оптові ціни та безкошовну доставку для замовлень від 6 кг
-                    кави.
-                    <br />
-                    <br />
-                    Ми переймаємося вашим комфортом. Тому ми пропонуємо
-                    безкоштовну доставку по Дніпру та послуги Нової Пошти для
-                    замовлень з усієї України. Твоя улюблена кава Bedoin завжди
-                    поруч – швидко та легко.
+                    <TWithBreaks i18nKey="InformationHomePage" />
                 </p>
             </div>
         </div>

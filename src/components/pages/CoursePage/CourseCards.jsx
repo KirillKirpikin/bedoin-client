@@ -1,5 +1,6 @@
 import React from "react";
 import { CARD_COURSE } from "../../../utils/constants";
+import { TWithBreaks } from "../../TWithBreaks";
 
 const CourseCards = ({ scroll }) => {
     return (
@@ -19,7 +20,9 @@ const CourseCards = ({ scroll }) => {
                                 Група: <span>{item.group}</span>
                             </h4>
                         </div>
-                        <p>{item.text}</p>
+                        <p>
+                            <TWithBreaks i18nKey={item.text} />
+                        </p>
                     </div>
                 ))}
                 <div className="course-cards__btn">

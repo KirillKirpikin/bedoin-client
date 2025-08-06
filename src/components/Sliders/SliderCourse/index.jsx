@@ -4,12 +4,17 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import { FreeMode, Autoplay } from "swiper/modules";
 import { SLIDER_COURSE } from "../../../utils/constants";
+import { TWithBreaks } from "../../TWithBreaks";
+import { useTranslation } from "react-i18next";
 
 const SliderCourse = () => {
+    const { t } = useTranslation();
     return (
         <section className="course-slider">
             <div className="course-slider__container">
-                <h2>Кому це корисно?</h2>
+                <h2>
+                    <TWithBreaks i18nKey="SchoolSliderTitle" />
+                </h2>
             </div>
             <Swiper
                 slidesPerView={1}
@@ -47,7 +52,7 @@ const SliderCourse = () => {
                             </div>
                             <div className="course-slider__text">
                                 <h5>Школа підходить</h5>
-                                <h4>{item.title}</h4>
+                                <h4>{t(`${item.title}`)}</h4>
                             </div>
                         </div>
                     </SwiperSlide>

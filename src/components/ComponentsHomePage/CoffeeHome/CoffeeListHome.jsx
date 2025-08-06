@@ -4,10 +4,12 @@ import { useGetAllCoffeeQuery } from "../../../store/api/api";
 import { Link } from "react-router-dom";
 import SkeletonHomeCoffee from "../../Skeleton/SkeletonHomeCoffee";
 import NotFound from "../../NotFound";
+import { useTranslation } from "react-i18next";
 
 const CoffeeListHome = () => {
     const { isLoading, data, refetch } = useGetAllCoffeeQuery();
     const filtered = data && data.filter((_, i) => i < 6);
+    const { t } = useTranslation();
 
     const fetchData = async () => {
         await refetch();
@@ -23,8 +25,10 @@ const CoffeeListHome = () => {
     return (
         <div className="home-coffee">
             <div className="home-coffee__container">
-                <h3 className="home-coffee__subtitle">Обери свою</h3>
-                <h2 className="home-coffee__title">КАВУ</h2>
+                <h3 className="home-coffee__subtitle">
+                    {t("CofeeListSubTitle")}
+                </h3>
+                <h2 className="home-coffee__title"> {t("CofeeListTitle")}</h2>
                 <div className="home-coffee__list list-coffe">
                     {isLoading ? (
                         [...new Array(2)].map((_, i) => (

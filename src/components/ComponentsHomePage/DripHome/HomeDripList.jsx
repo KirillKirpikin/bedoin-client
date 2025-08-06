@@ -2,9 +2,11 @@ import React, { useEffect } from "react";
 import DripHome from "./DripHome";
 import { useGetAllDripQuery } from "../../../store/api/drip.api";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 const DripListHome = () => {
     const { isLoading, data, refetch } = useGetAllDripQuery();
     const filtered = data && data.filter((_, i) => i < 2);
+    const { t } = useTranslation();
 
     const fetchData = async () => {
         await refetch();
@@ -20,10 +22,8 @@ const DripListHome = () => {
     return (
         <div className="home-drip">
             <div className="home-drip__container">
-                <h3 className="home-drip__subtitle">
-                    Зручне пакування кави для дому та подорожей
-                </h3>
-                <h2 className="home-drip__title">ДРIП</h2>
+                <h3 className="home-drip__subtitle">{t("DripListSubTitle")}</h3>
+                <h2 className="home-drip__title"> {t("DripListTitle")}</h2>
                 <div className="home-drip__list list-drip">
                     {isLoading ? (
                         <div>Loading...</div>

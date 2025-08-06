@@ -7,6 +7,7 @@ import ContactsBorder from "../../ContactsBorder/ContactsBorder";
 import { useGetAllCoffeeQuery } from "../../../store/api/api";
 import SkeletonCoffee from "../../Skeleton/SkeletonCoffee";
 import NotFound from "../../NotFound";
+import { TWithBreaks } from "../../TWithBreaks";
 
 const CoffeeListPage = () => {
     const { data, isLoading, refetch } = useGetAllCoffeeQuery();
@@ -35,11 +36,10 @@ const CoffeeListPage = () => {
                     </div>
                 </div>
                 <div className="coffee__text">
-                    При замовленні від 6 кілограм кави - діє оптовий прайс на
-                    каву, безкоштовна доставка
+                    <TWithBreaks i18nKey="CoffeText" />
                 </div>
                 <h1 className="coffee__title">
-                    КОМБIНУЙ СМАКИ ТА ОТРИМУЙ ЗНИЖКУ
+                    <TWithBreaks i18nKey="CoffeTitle" />
                 </h1>
                 <div className="coffee__list">
                     {isLoading ? (
@@ -57,24 +57,7 @@ const CoffeeListPage = () => {
                     )}
                 </div>
                 <p className="home-coffee__subtitle">
-                    Унікальні Пропозиції від Bedoin для Вашого Бізнесу
-                    <br />
-                    <br />
-                    Bedoin пропонує умови для співпраці: Оптові ціни від 6 кг та
-                    Індивідуальний Підхід: Кожен Партнер - Особливий
-                    <br />
-                    <br />
-                    Ми розуміємо, що кожен бізнес має свої особливості та
-                    смакові уподобання. Bedoin надає індивідуальний підхід для
-                    кожного партнера, незалежно від того, чи це кав'ярня,
-                    готель, ресторан чи офіс. Ми працюємо, щоб кожна чашка кави
-                    відповідала вашим унікальним очікуванням.
-                    <br />
-                    <br />
-                    Наша кава - це не просто напій, це досвід, який ми
-                    пропонуємо вашим клієнтам. Кожне зерно обсмажене з любов'ю
-                    та майстерністю, щоб Ваш бізнес завжди мав конкурентну
-                    перевагу.
+                    <TWithBreaks i18nKey="CoffeSubTitle" />
                 </p>
             </div>
 

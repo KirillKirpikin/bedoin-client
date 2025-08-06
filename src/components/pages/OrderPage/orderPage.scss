@@ -1,39 +1,39 @@
 .order {
     padding-bottom: rem(50);
-    background: #F9F9F9;
+    background: #f9f9f9;
     &__title {
         color: var(--415167, #415167);
         font-family: Uni Sans;
-        @include adaptiveValue("font-size", 36, 24, 0, 1350, 375 );
+        @include adaptiveValue("font-size", 36, 24, 0, 1350, 375);
         font-style: normal;
         font-weight: 900;
         line-height: normal;
-        @include adaptiveValue("margin-bottom",  60, 40, 0, 1350, 375 );
+        @include adaptiveValue("margin-bottom", 60, 40, 0, 1350, 375);
     }
-    &__main{
+    &__main {
         display: flex;
         align-items: flex-start;
-        @media (max-width:$tablet){
+        @media (max-width: $tablet) {
             flex-direction: column-reverse;
             align-items: stretch;
         }
     }
     &__left {
         flex: 1 0 40%;
-        @media (min-width:$tablet){
-            margin-right: rem(32);              
+        @media (min-width: $tablet) {
+            margin-right: rem(32);
         }
     }
     &__right {
         padding: rem(45);
         border-radius: rem(10);
         border: 1px solid #000;
-        background: #FFF;
+        background: #fff;
         flex: 1 1 auto;
-        @media (max-width:$tablet){
+        @media (max-width: $tablet) {
             margin-bottom: rem(20);
         }
-        @media (max-width:$mobile){
+        @media (max-width: $mobile) {
             padding: rem(10);
         }
     }
@@ -41,8 +41,8 @@
         padding-right: rem(10);
         max-height: rem(1055);
         overflow: auto;
-        @media (max-width:$tablet){
-            max-height: rem(705); 
+        @media (max-width: $tablet) {
+            max-height: rem(705);
         }
     }
     &__empty {
@@ -50,25 +50,25 @@
         flex-direction: column;
         align-items: center;
         padding-bottom: rem(150);
-        @include adaptiveValue("padding-bottom", 150, 69, 0, 1350, 375 );
-        h5{
+        @include adaptiveValue("padding-bottom", 150, 69, 0, 1350, 375);
+        h5 {
             color: #000;
             font-family: Montserrat;
-            @include adaptiveValue("font-size", 28, 20, 0, 1350, 375 );
+            @include adaptiveValue("font-size", 28, 20, 0, 1350, 375);
             font-style: normal;
             font-weight: 500;
             line-height: normal;
         }
-        svg{
+        svg {
             width: rem(200);
             height: rem(200);
-            fill:#000;
+            fill: #000;
             margin: rem(50) 0;
-            @media (max-width:$mobile){
-                margin: rem(30) 0; 
+            @media (max-width: $mobile) {
+                margin: rem(30) 0;
             }
         }
-        a{
+        a {
             color: #000;
             font-family: Montserrat;
             font-size: rem(20);
@@ -78,24 +78,24 @@
             text-decoration-line: underline;
         }
     }
-    &__total{ 
+    &__total {
         margin-bottom: rem(-20);
     }
 }
 .select-order {
-    @include adaptiveValue("margin-bottom", 100, 70, 0, 1350, 375 );
+    @include adaptiveValue("margin-bottom", 100, 70, 0, 1350, 375);
     &__title {
         color: #000;
         font-family: Uni Sans;
-        @include adaptiveValue("font-size", 36, 24, 0, 1350, 375 );
+        @include adaptiveValue("font-size", 36, 24, 0, 1350, 375);
         font-style: normal;
         font-weight: 900;
         line-height: normal;
-        @include adaptiveValue("margin-bottom", 60, 30, 0, 1350, 375 );
+        @include adaptiveValue("margin-bottom", 60, 30, 0, 1350, 375);
     }
-    &__radio {   
+    &__radio {
         display: flex;
-        flex-direction: column;   
+        flex-direction: column;
     }
 }
 .radio-btns {
@@ -104,9 +104,9 @@
         cursor: pointer;
         display: flex;
         align-items: center;
-        color:  #000;
+        color: #000;
         font-family: Montserrat;
-        @include adaptiveValue("font-size", 24, 18, 0, 1350, 375 );
+        @include adaptiveValue("font-size", 24, 18, 0, 1350, 375);
         font-style: normal;
         font-weight: 500;
         line-height: normal;
@@ -114,43 +114,44 @@
         &:not(:last-child) {
             margin-bottom: rem(50);
         }
-        &-info{
+        &-info {
             position: absolute;
             font-family: Montserrat;
             font-weight: 500;
-            @include adaptiveValue("font-size", 17, 15, 0, 1350, 375 );
+            @include adaptiveValue("font-size", 17, 15, 0, 1350, 375);
             bottom: 46px;
             left: 60px;
         }
     }
     // .radio-btns__real
-    &__real{
+    &__real {
         width: 0;
         height: 0;
         position: absolute;
         opacity: 0;
         z-index: -1;
-    }:checked + .radio-btns__custom{
-            &::before{
-                transform: translate(-50%, -50%) scale(1);
-            }
+    }
+    :checked + .radio-btns__custom {
+        &::before {
+            transform: translate(-50%, -50%) scale(1);
         }
+    }
     &__custom {
         position: relative;
         display: block;
         width: rem(30);
         height: rem(30);
         background: #415167;
-        border-radius:50%;
+        border-radius: 50%;
         margin-right: rem(30);
         flex: 0 0 auto;
-        &::before{
-            content: '';
+        &::before {
+            content: "";
             display: inline-block;
             width: rem(14);
             height: rem(14);
             background: white;
-            border-radius:50%;
+            border-radius: 50%;
             position: absolute;
             left: 50%;
             top: 50%;
@@ -161,28 +162,28 @@
 }
 .form-order {
     margin-bottom: rem(25);
-    &__select{
+    &__select {
         margin-top: rem(25);
         margin-bottom: rem(50);
         @include adaptiveValue("width", 528, 350, 0, 1320, 991);
-        @media (max-width:$tablet){
+        @media (max-width: $tablet) {
             width: 100%;
         }
-    }    
+    }
     &__input {
         margin-bottom: rem(50);
         @include adaptiveValue("width", 528, 350, 0, 1320, 991);
-        @media (max-width:$tablet){
+        @media (max-width: $tablet) {
             width: 100%;
         }
         textarea,
-        input{
+        input {
             width: 100%;
             padding: rem(29) rem(33);
             align-items: center;
             border-radius: rem(15);
             border: 2px solid #000;
-            background: #FFF;
+            background: #fff;
             color: var(--415167, #415167);
             font-family: Montserrat;
             font-size: rem(18);
@@ -190,49 +191,49 @@
             font-weight: 500;
             line-height: normal;
         }
-        textarea{
+        textarea {
             @include adaptiveValue("width", 528, 350, 0, 1320, 1024);
-            @media (max-width:$tablet){
+            @media (max-width: $tablet) {
                 width: 100%;
             }
             height: rem(196);
             resize: none;
         }
-        &-error{
+        &-error {
             textarea,
-            input{
-                border: 2px solid #B00404; 
+            input {
+                border: 2px solid #b00404;
             }
         }
     }
-    &__btn{
-        @media (min-width:$mobile){              
+    &__btn {
+        @media (min-width: $mobile) {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        button{
+        button {
             margin-bottom: 10px;
         }
     }
 }
 .select-form {
     position: relative;
-    &__input{
+    &__input {
         width: 100%;
         padding: rem(29) rem(33);
         align-items: center;
         border-radius: rem(15);
         border: 2px solid #000;
-        background: #FFF;
-        color:#415167;
+        background: #fff;
+        color: #415167;
         font-family: Montserrat;
         font-size: rem(18);
         font-style: normal;
         font-weight: 500;
         line-height: normal;
-        &-error{
-            border: 2px solid #B00404;
+        &-error {
+            border: 2px solid #b00404;
         }
     }
     &__content {
@@ -247,12 +248,12 @@
         top: 62%;
         left: 0;
         width: 100%;
-        z-index: 5;        
+        z-index: 5;
         border-radius: 0 0 rem(15) rem(15);
         border-right: 2px solid #000;
         border-bottom: 2px solid #000;
         border-left: 2px solid #000;
-        background: #FFF;
+        background: #fff;
         overflow: auto;
         max-height: rem(200);
     }
@@ -260,47 +261,52 @@
         padding: rem(10) rem(20);
         cursor: pointer;
         transition: all 0.2s;
-        @media (any-hover: hover){
-            &:hover{
+        @media (any-hover: hover) {
+            &:hover {
                 text-decoration: underline;
             }
         }
     }
 }
 
-.promo{
+.promo {
     margin-top: rem(20);
 
-    &__span{
+    &__span {
         font-family: Montserrat;
-        @include adaptiveValue("font-size", 16, 16, 0, 1350, 375 );
+        @include adaptiveValue("font-size", 16, 16, 0, 1350, 375);
         font-weight: 600;
         font-style: normal;
-        
     }
 
-    &__answer{
+    &__answer {
         font-family: Montserrat;
-        @include adaptiveValue("font-size", 24, 18, 0, 1350, 375 );
+        @include adaptiveValue("font-size", 24, 18, 0, 1350, 375);
         font-style: normal;
         font-weight: 500;
         line-height: normal;
         margin-top: rem(10);
         margin-left: rem(10);
-        &-ok{
+        &-ok {
             color: green;
         }
-        &-err{
+        &-err {
             color: red;
         }
     }
 }
 
-.total-cart__price-span{
+.total-cart__price-span {
     display: flex;
     flex-direction: column;
-    @media (max-width:rem(550)){              
+    @media (max-width: rem(550)) {
         align-items: flex-end;
-
     }
+}
+
+.total_mat {
+    font-size: rem(16);
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 700;
 }

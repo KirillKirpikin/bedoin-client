@@ -7,6 +7,7 @@ import ContactsBorder from "../../ContactsBorder/ContactsBorder";
 import Lemonade from "./Lemonade";
 import SkeletonLemonade from "../../Skeleton/SkeletonLemonade";
 import NotFound from "../../NotFound";
+import { TWithBreaks } from "../../TWithBreaks";
 
 const LemonadeListPage = () => {
     const { isLoading, data, refetch } = useGetAllLemonadeQuery();
@@ -49,28 +50,7 @@ const LemonadeListPage = () => {
                     )}
                 </div>
                 <p className="home-coffee__subtitle">
-                    Бажаєте здивувати своїх клієнтів і подарувати їм неабиякі
-                    враження? Наші кавові напої Teddy – це саме те, що вам
-                    потрібно
-                    <br />
-                    <br />
-                    Засновані на колд-брю каві, наші напої TEDDY - це унікальне
-                    поєднання кавових вражень та фруктових смаків,
-                    <br />
-                    <br />
-                    ## TEDDY BERRIEBON – Це газований напій на основі колд-брю
-                    кави з додаванням малинового соку та ферментованого ананасу.
-                    <br />
-                    <br />
-                    ## TEDDY ALEANDFANT – Апельсиновий, кавовий напій, трохи
-                    газований, смакує охолодженим. Примітно, що на кожну пляшку
-                    витрачено 12гр кави – тобто повноцінна порція енергії.
-                    <br />
-                    <br />
-                    Ми пропонуємо оптові ціни на нашу спеціальну лінійку кавових
-                    напоїв Teddy для бізнес-партнерів
-                    <br />
-                    <br />
+                    <TWithBreaks i18nKey="DrinkSubTitle" />
                 </p>
             </div>
             <ContactsBorder />

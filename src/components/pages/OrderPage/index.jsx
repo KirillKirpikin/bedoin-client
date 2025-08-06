@@ -16,6 +16,8 @@ import CoffeeCart from "../../Cart/CoffeeCart";
 import Adress from "../../Post/Adress";
 import PromoCode from "../../Promo";
 import Cookies from "js-cookie";
+import { useTranslation } from "react-i18next";
+import { TWithBreaks } from "../../TWithBreaks";
 
 const OrderPage = () => {
     const dispatch = useDispatch();
@@ -29,6 +31,8 @@ const OrderPage = () => {
         isPromo,
         promoSale,
     } = useSelector((state) => state.cart);
+
+    const { t } = useTranslation();
 
     const [delivery, setDelivery] = useState("Pickup");
     const [payment, setPayment] = useState("Cash");
@@ -219,9 +223,7 @@ const OrderPage = () => {
                                             className="radio-btns__real"
                                         />
                                         <span className="radio-btns__custom"></span>
-                                        Самовивіз (м. Дніпро, вул. Грушевського
-                                        50. З понеділка по п’ятницю з 9:00 до
-                                        17:00)
+                                        {t("OrderPickUp1")}
                                     </label>
                                     <label
                                         className="radio-btns__label"
@@ -239,7 +241,7 @@ const OrderPage = () => {
                                             className="radio-btns__real"
                                         />
                                         <span className="radio-btns__custom"></span>
-                                        Доставка кур'єром(Тільки по Дніпру)
+                                        {t("OrderPickUp2")}
                                     </label>
                                     {delivery === "Courier" && (
                                         <div className="radio-btns__label-info">
@@ -263,7 +265,7 @@ const OrderPage = () => {
                                             className="radio-btns__real"
                                         />
                                         <span className="radio-btns__custom"></span>
-                                        Нова Пошта
+                                        <TWithBreaks i18nKey="OrderPickUp3" />
                                     </label>
                                 </div>
                                 {delivery === "NovaPost" && (
@@ -289,7 +291,7 @@ const OrderPage = () => {
                                             className="radio-btns__real"
                                         />
                                         <span className="radio-btns__custom"></span>
-                                        Готівка при отриманні
+                                        <TWithBreaks i18nKey="OrderPaymentCash" />
                                     </label>
                                     <label
                                         className="radio-btns__label"
@@ -307,7 +309,7 @@ const OrderPage = () => {
                                             className="radio-btns__real"
                                         />
                                         <span className="radio-btns__custom"></span>
-                                        Оплата на розрахунковий рахунок
+                                        <TWithBreaks i18nKey="OrderPaymentScorePay" />
                                     </label>
                                     <label
                                         className="radio-btns__label"
@@ -325,7 +327,7 @@ const OrderPage = () => {
                                             className="radio-btns__real"
                                         />
                                         <span className="radio-btns__custom"></span>
-                                        Онлайн оплата(LiqPay)
+                                        <TWithBreaks i18nKey="OrderPaymentLiqPay" />
                                     </label>
                                     <label
                                         className="radio-btns__label"
@@ -345,8 +347,7 @@ const OrderPage = () => {
                                             className="radio-btns__real"
                                         />
                                         <span className="radio-btns__custom"></span>
-                                        plata by mono (оплата карткою, ApplePay,
-                                        GooglePay)
+                                        <TWithBreaks i18nKey="OrderPaymentMonoPay" />
                                     </label>
                                 </div>
                             </div>
@@ -464,7 +465,7 @@ const OrderPage = () => {
                                         className="radio-btns__real"
                                     />
                                     <span className="radio-btns__custom"></span>
-                                    Зателефонувати після замовлення
+                                    {t("OrderCallBack")}
                                 </label>
                                 <label
                                     className="radio-btns__label"
@@ -482,7 +483,7 @@ const OrderPage = () => {
                                         className="radio-btns__real"
                                     />
                                     <span className="radio-btns__custom"></span>
-                                    Можете мені не дзвонити
+                                    {t("OrderNotCallBack")}
                                 </label>
                             </div>
 
@@ -531,6 +532,11 @@ const OrderPage = () => {
                                                     promoSale.product
                                                 )})`}
                                         </span>
+                                        {totalReg > totalOpt && (
+                                            <span className="total_mat">
+                                                {t("OrderTotalTxt")}
+                                            </span>
+                                        )}
                                     </div>
                                 </div>
                             </div>
@@ -545,9 +551,9 @@ const OrderPage = () => {
                                     className="order__title"
                                     style={{ marginBottom: "20px" }}
                                 >
-                                    Промокод:
+                                    {t("OrderPromoTitle")}
                                 </h2>
-                                <p>(Не діє при оптовій закупівлі)</p>
+                                <p>{t("OrderPromoNotice")}</p>
                                 <PromoCode />
                             </div>
                         </div>

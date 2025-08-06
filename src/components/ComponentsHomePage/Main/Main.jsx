@@ -1,32 +1,39 @@
-import React, { useEffect, useState } from 'react';
-import Slider from '../../Sliders/Slider/Slider';
+import React, { useEffect, useState } from "react";
+import Slider from "../../Sliders/Slider/Slider";
 import BgSmall from "../../../img/bg-blur.jpg";
 import BgMin from "../../../img/bg-minMin.jpg";
-import { Link } from 'react-router-dom';
-import { ROUTES } from '../../../utils/routes';
+import { Link } from "react-router-dom";
+import { ROUTES } from "../../../utils/routes";
+import { useTranslation } from "react-i18next";
 
 const Main = () => {
     const [imageSrc, setImageSrc] = useState(BgSmall);
+    const { t } = useTranslation();
 
-    useEffect(()=>{
+    useEffect(() => {
         const img = new Image();
         img.src = BgMin;
-        img.onload=()=>{
-            setImageSrc(BgMin)
+        img.onload = () => {
+            setImageSrc(BgMin);
         };
-    },[])
+    }, []);
 
     return (
-        <section className='home-main' style={{background:`url(${imageSrc})  0 0/cover no-repeat`}}>
-            <div className='home-main__container'>
-                <div className='home-main__info'>
-                    <h1 className='home-main__title'>BEDOIN COFFEE</h1>
-                    <p className='home-main__txt'>Виробництво і продаж якісної кави в Україні</p>
-                    <div className='home-main__btns'>
-                        <Link to={ROUTES.COFFEE} className='btn'>Перейти в магазин</Link>
+        <section
+            className="home-main"
+            style={{ background: `url(${imageSrc})  0 0/cover no-repeat` }}
+        >
+            <div className="home-main__container">
+                <div className="home-main__info">
+                    <h1 className="home-main__title">BEDOIN COFFEE</h1>
+                    <p className="home-main__txt">{t("HomePageTxt")}</p>
+                    <div className="home-main__btns">
+                        <Link to={ROUTES.COFFEE} className="btn">
+                            {t("HomePageBtn")}
+                        </Link>
                     </div>
-                </div>                
-                <Slider/>               
+                </div>
+                <Slider />
             </div>
         </section>
     );

@@ -57,9 +57,14 @@ const Accordion = ({ item, onClick, isOpen, onDelete }) => {
                     </div>
                     {item &&
                         item.order &&
-                        item.order.map((prod) => (
+                        item.order.map((prod, index) => (
                             <div
-                                key={prod._id + prod.packing + prod.select}
+                                key={
+                                    prod._id +
+                                    prod.packing +
+                                    prod.select +
+                                    index
+                                }
                                 className="body-accord__row"
                             >
                                 <div className="body-accord__item">
@@ -100,6 +105,23 @@ const Accordion = ({ item, onClick, isOpen, onDelete }) => {
                         </div>
                         <div className="user-accord__box">
                             <h3 className="user-accord__title">Доставка</h3>
+                            {item.delivery === "RozetkaPost" && (
+                                <>
+                                    <p className="user-accord__item">
+                                        Доставка: Rozetka delivery
+                                    </p>
+                                    <p className="user-accord__item">
+                                        Оплата: {getPayInfo(item.payment)}
+                                    </p>
+                                    <p className="user-accord__item">
+                                        Город: {item.city}
+                                    </p>
+
+                                    <p className="user-accord__item">
+                                        Отделение: {item.warehouses}
+                                    </p>
+                                </>
+                            )}
                             {item.delivery === "NovaPost" && (
                                 <>
                                     <p className="user-accord__item">
@@ -111,6 +133,7 @@ const Accordion = ({ item, onClick, isOpen, onDelete }) => {
                                     <p className="user-accord__item">
                                         Город: {item.city}
                                     </p>
+
                                     <p className="user-accord__item">
                                         Отделение: {item.warehouses}
                                     </p>
@@ -139,6 +162,9 @@ const Accordion = ({ item, onClick, isOpen, onDelete }) => {
                                     </p>
                                 </>
                             )}
+                            <p className="user-accord__item">
+                                Promo: {item.promo ? item.promo : "без"}
+                            </p>
                         </div>
                     </div>
                     <div className="body-accord__bottom">

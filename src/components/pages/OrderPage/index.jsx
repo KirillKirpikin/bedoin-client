@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { ReactComponent as ArrowSvg } from "../../../img/arrow.svg";
 import { ReactComponent as CartSvg } from "../../../img/cart.svg";
-import { clearCart } from "../../../store/cart/cartSlice";
+import { clearCart, clearAdress } from "../../../store/cart/cartSlice";
 import {
     createOrder,
     createOrderMono,
@@ -18,6 +18,7 @@ import PromoCode from "../../Promo";
 import Cookies from "js-cookie";
 import { useTranslation } from "react-i18next";
 import { TWithBreaks } from "../../TWithBreaks";
+import AdressRozetka from "../../Post/AdressRozetka";
 
 const OrderPage = () => {
     const dispatch = useDispatch();
@@ -98,6 +99,7 @@ const OrderPage = () => {
         formState: { errors },
         handleSubmit,
         control,
+        resetField,
     } = useForm();
 
     const priceForOrder = (product, price) => {
@@ -114,8 +116,6 @@ const OrderPage = () => {
         }
         return price.regular;
     };
-
-    console.log(payment);
 
     const onSubmit = (data) => {
         const product = cart.map((item) => {
@@ -147,9 +147,12 @@ const OrderPage = () => {
             total: totalFunc(totalOpt),
             delivery,
             payment,
+            promo: promoSale ? promoSale.name : null,
             call,
             isConversion: saUid ? true : false,
         };
+
+        console.log(order);
 
         if (payment === "OnlinePay") {
             dispatch(createOrder(order))
@@ -259,17 +262,45 @@ const OrderPage = () => {
                                             value="NovaPost"
                                             id="nova-post"
                                             checked={delivery === "NovaPost"}
-                                            onChange={(e) =>
-                                                setDelivery(e.target.value)
-                                            }
+                                            onChange={(e) => {
+                                                setDelivery(e.target.value);
+                                                dispatch(clearAdress());
+                                                resetField("city");
+                                                resetField("warehouses");
+                                            }}
                                             className="radio-btns__real"
                                         />
                                         <span className="radio-btns__custom"></span>
                                         <TWithBreaks i18nKey="OrderPickUp3" />
                                     </label>
+                                    {delivery === "NovaPost" && (
+                                        <Adress control={control} />
+                                    )}
+                                    <label
+                                        className="radio-btns__label"
+                                        htmlFor="rozetka-post"
+                                    >
+                                        <input
+                                            type="radio"
+                                            name="delivery"
+                                            value="RozetkaPost"
+                                            id="rozetka-post"
+                                            checked={delivery === "RozetkaPost"}
+                                            onChange={(e) => {
+                                                setDelivery(e.target.value);
+                                                dispatch(clearAdress());
+                                                resetField("city");
+                                                resetField("warehouses");
+                                            }}
+                                            className="radio-btns__real"
+                                        />
+                                        <span className="radio-btns__custom"></span>
+                                        <p>Rozetka Delivery</p>
+                                    </label>
                                 </div>
-                                {delivery === "NovaPost" && (
-                                    <Adress control={control} />
+
+                                {delivery === "RozetkaPost" && (
+                                    <AdressRozetka control={control} />
                                 )}
                             </div>
                             <div className="order__payment select-order">

@@ -1,94 +1,96 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { addCity, addWarehouse } from "../../store/cart/cartSlice";
+import { useEffect, useRef, useState } from "react";
 import { Controller } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
+import { addCity, addWarehouse } from "../../store/cart/cartSlice";
 
-const Adress = ({ control }) => {
+const AdressRozetka = ({ control }) => {
     const dispatch = useDispatch();
     const { city, warehouse } = useSelector((state) => state.cart);
 
-    const serchTimeout = useRef(null);
+    const REACT_APP_ROZETKA_TOKEN = process.env.REACT_APP_ROZETKA_TOKEN;
 
-    const [citys, setCitys] = useState([]);
+    const searchTimeout = useRef(null);
+    const warehouseTimeout = useRef(null);
+
+    const [cities, setCities] = useState([]);
     const [isCityFocused, setCityFocused] = useState(false);
-    // const [inputCity, setInputCity] = useState(city ? city.Present : '');
-
-    const warhTumeout = useRef(null);
 
     const [warehouses, setWarehouses] = useState([]);
-    // const [inputWarehouse, setInputWarehouse] = useState(warehouse ? warehouse.Description : '');
     const [isWarehousesFocused, setWarehousesFocused] = useState(false);
 
+    // ====== Поиск города ======
     const handleCity = (e) => {
         const inputValue = e.target.value;
-        if (serchTimeout.current) {
-            clearTimeout(serchTimeout.current);
-        }
-        serchTimeout.current = setTimeout(async () => {
+        if (searchTimeout.current) clearTimeout(searchTimeout.current);
+
+        searchTimeout.current = setTimeout(async () => {
             if (inputValue.length > 0) {
                 try {
-                    const requestData = {
-                        apiKey: "82c3f9cbcb4cc76129f229ea79fe5c18",
-                        modelName: "Address",
-                        calledMethod: "searchSettlements",
-                        methodProperties: {
-                            CityName: inputValue,
-                            Limit: "50",
-                            Page: "1",
-                        },
-                    };
-                    const res = await axios.post(
-                        "https://api.novaposhta.ua/v2.0/json/",
-                        requestData
+                    const res = await axios.get(
+                        `https://api-seller.rozetka.com.ua/localities/search?name=${encodeURIComponent(
+                            inputValue
+                        )}`,
+                        {
+                            headers: {
+                                Authorization: `Bearer ${REACT_APP_ROZETKA_TOKEN}`,
+                                "Content-Type": "application/json",
+                            },
+                        }
                     );
-                    const adress = res.data.data[0].Addresses;
-                    setCitys(adress);
+                    if (res.data.success) {
+                        setCities(res.data.content.localities);
+                    } else {
+                        setCities([]);
+                    }
                 } catch (error) {
-                    console.error("Ошибка запроса:", error);
+                    console.error("Rozetka city request error:", error);
                 }
             }
         }, 500);
     };
 
+    // ====== Поиск складов ======
     const handleWarehouses = (e) => {
         const inputValue = e.target.value;
-        if (warhTumeout.current) {
-            clearTimeout(warhTumeout.current);
-        }
-        warhTumeout.current = setTimeout(async () => {
-            if (inputValue > 0) {
+        if (warehouseTimeout.current) clearTimeout(warehouseTimeout.current);
+
+        warehouseTimeout.current = setTimeout(async () => {
+            if (city?.id) {
                 try {
-                    const requestData = {
-                        apiKey: "82c3f9cbcb4cc76129f229ea79fe5c18",
-                        modelName: "Address",
-                        calledMethod: "getWarehouses",
-                        methodProperties: {
-                            CityRef: city.DeliveryCity,
-                            FindByString: inputValue,
-                        },
-                    };
-                    const res = await axios.post(
-                        "https://api.novaposhta.ua/v2.0/json/",
-                        requestData
+                    const res = await axios.get(
+                        `https://api-seller.rozetka.com.ua/delivery-service-pickups/search?locality_id=${
+                            city.id
+                        }&delivery_service_id=1&status=1&expand=titleTranslate&pageSize=0&street=${encodeURIComponent(
+                            inputValue
+                        )}`,
+                        {
+                            headers: {
+                                Authorization: `Bearer ${REACT_APP_ROZETKA_TOKEN}`,
+                                "Content-Type": "application/json",
+                                "Content-Language": "uk",
+                            },
+                        }
                     );
-                    const adress = res.data.data;
-                    setWarehouses(adress);
+                    if (res.data.success) {
+                        setWarehouses(res.data.content.deliveryServicePickups);
+                    } else {
+                        setWarehouses([]);
+                    }
                 } catch (error) {
-                    console.error("Ошибка запроса:", error);
+                    console.error("Rozetka warehouse request error:", error);
                 }
             }
-        }, 1000);
+        }, 700);
     };
+    // ====== Фокусы ======
 
+    // ====== Чистим таймауты ======
     useEffect(() => {
         return () => {
-            if (serchTimeout.current) {
-                clearTimeout(serchTimeout.current);
-            }
-            if (warhTumeout.current) {
-                clearTimeout(warhTumeout.current);
-            }
+            if (searchTimeout.current) clearTimeout(searchTimeout.current);
+            if (warehouseTimeout.current)
+                clearTimeout(warehouseTimeout.current);
         };
     }, []);
 
@@ -99,7 +101,7 @@ const Adress = ({ control }) => {
                     control={control}
                     name="city"
                     rules={{ required: true }}
-                    defaultValue={city ? city.Present : ""}
+                    defaultValue={city ? city.title : ""}
                     render={({ field, fieldState }) => (
                         <>
                             <input
@@ -107,10 +109,10 @@ const Adress = ({ control }) => {
                                     fieldState.error &&
                                     "select-form__input-error"
                                 }`}
-                                placeholder="Оберіть місто"
+                                placeholder="Оберіть місто (Rozetka)"
                                 {...field}
                                 onChange={(e) => {
-                                    field.onChange(e.target.value); // ✅ фикс
+                                    field.onChange(e.target.value); // важно: value, не весь event
                                     handleCity(e);
                                 }}
                                 onFocus={() => setCityFocused(true)}
@@ -122,19 +124,19 @@ const Adress = ({ control }) => {
                                 autoComplete="off"
                             />
 
-                            {isCityFocused && citys.length > 0 && (
+                            {isCityFocused && cities.length > 0 && (
                                 <div className="select-form__content">
-                                    {citys.map((c) => (
+                                    {cities.map((item) => (
                                         <div
-                                            key={c.Ref}
+                                            key={item.id}
                                             onClick={() => {
-                                                field.onChange(c.Present); // строка в инпут
-                                                dispatch(addCity(c)); // весь объект в Redux
-                                                setCityFocused(false); // закрыть список
+                                                field.onChange(item.title); // в инпут строка
+                                                dispatch(addCity(item)); // в Redux весь объект
+                                                setCityFocused(false); // закрыть меню
                                             }}
                                             className="select-form__item"
                                         >
-                                            {c.Present}
+                                            {item.title}
                                         </div>
                                     ))}
                                 </div>
@@ -144,13 +146,13 @@ const Adress = ({ control }) => {
                 />
             </div>
 
-            {city?.Ref && (
+            {city?.id && (
                 <div className="form-order__select select-form">
                     <Controller
                         control={control}
                         name="warehouses"
                         rules={{ required: true }}
-                        defaultValue={warehouse ? warehouse.Description : ""}
+                        defaultValue={warehouse ? warehouse.titleTranslate : ""}
                         render={({ field, fieldState }) => (
                             <>
                                 <input
@@ -158,10 +160,10 @@ const Adress = ({ control }) => {
                                         fieldState.error &&
                                         "select-form__input-error"
                                     }`}
-                                    placeholder="Оберіть відділення"
+                                    placeholder="Оберіть відділення (Rozetka)"
                                     {...field}
                                     onChange={(e) => {
-                                        field.onChange(e.target.value); // ✅ фикс
+                                        field.onChange(e.target.value); // фикс: value, а не event
                                         handleWarehouses(e);
                                     }}
                                     onFocus={() => setWarehousesFocused(true)}
@@ -179,23 +181,23 @@ const Adress = ({ control }) => {
                                 {isWarehousesFocused &&
                                     warehouses.length > 0 && (
                                         <div className="select-form__content">
-                                            {warehouses.map((w) => (
+                                            {warehouses.map((item) => (
                                                 <div
-                                                    key={w.Ref}
+                                                    key={item.id}
                                                     onClick={() => {
                                                         field.onChange(
-                                                            w.Description
-                                                        );
+                                                            item.titleTranslate
+                                                        ); // строка в инпут
                                                         dispatch(
-                                                            addWarehouse(w)
-                                                        );
+                                                            addWarehouse(item)
+                                                        ); // объект в Redux
                                                         setWarehousesFocused(
                                                             false
-                                                        );
+                                                        ); // закрыть список
                                                     }}
                                                     className="select-form__item"
                                                 >
-                                                    {w.Description}
+                                                    {item.titleTranslate}
                                                 </div>
                                             ))}
                                         </div>
@@ -209,4 +211,4 @@ const Adress = ({ control }) => {
     );
 };
 
-export default Adress;
+export default AdressRozetka;
